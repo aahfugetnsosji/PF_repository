@@ -41,4 +41,4 @@
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です。
+- [【無料のAi・PNG白黒シルエットイラスト】](https://www.silhouette-illust.com/)

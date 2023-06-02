@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  namespace :public do
+    get 'users/show'
+    get 'users/edit'
+  end
   # ユーザー用devise
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -15,6 +19,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get 'about' => 'homes#about', as: 'about'
+    # マイページ・ユーザーページ用
+    resources :users, only: [:show, :update, :destroy]
+    get 'mypage' => "users#mypage"
+    get 'mypage/edit' => "users#edit"
+    get 'unsubscribe' => "users#unsubscribe"
   end
   
   # 管理者用
