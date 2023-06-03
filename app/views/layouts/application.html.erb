@@ -12,13 +12,38 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
+      <% if user_signed_in? %><!-- ユーザログイン後メニュー -->
+        <li>
+          <%= link_to "About", about_path %>
+        </li>
+        <li>
+          <%= link_to "マイページ", mypage_path %>
+        </li>
+        <li>
+          <%= link_to "投稿する", root_path %><!-- URL変更 -->
+        </li>
+        <li>
+          <%= link_to "全国の投稿一覧", root_path %><!-- URL変更 -->
+        </li>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </li>
-      <% elsif admin_signed_in? %>
+      <% elsif admin_signed_in? %><!-- 管理者ログイン後メニュー -->
         <li>
           <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "About", about_path %>
+        </li>
+        <li>
+          <%= link_to "無料会員登録", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_user_session_path %>
+        </li>
+        <li>
+          <%= link_to "ゲストログイン", root_path %><!-- URL変更 -->
         </li>
       <% end %>
     </header>

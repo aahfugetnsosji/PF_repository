@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    if @user.id == current_user.id
+    if @user == current_user
       redirect_to mypage_path
     end
   end
@@ -24,9 +24,17 @@ class Public::UsersController < ApplicationController
   end
   
   def unsubscribe
+    @user = current_user
   end
   
   def destroy
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
+      @user.destroy
+      redirect_to root_path
+    else
+      redirect_to mypage_path
+    end
   end
   
   private

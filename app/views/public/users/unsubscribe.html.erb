@@ -2,6 +2,18 @@
   <div class="row">
     <div class="col">
       <h3>本当に退会しますか？</h3>
+      <p>
+        退会すると、今までの投稿・コメントが全て削除されます。<br>
+        また、新規投稿や、他の人の投稿へコメントすることができなくなります。<br>
+        それでも良い場合は下の退会ボタンを押してください。
+      </p>
+      <p>ご利用ありがとうございました。</p>
+      <%= link_to "退会する", user_path(@user.id), method: :delete, "data-confirm" => "本当に退会しますか？" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= link_to "退会しない", mypage_path %>
     </div>
   </div>
 </div>
