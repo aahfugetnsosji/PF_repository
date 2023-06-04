@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:mypage, :unsubscribe]
-  before_action :set_user, only: [:show]
+  before_action :authenticate_user!, only: [:mypage, :edit, :update, :unsubscribe] #未ログインユーザのアクセス制限
+  before_action :set_user, only: [:show] #ユーザページの表示はログイン不要
 
   def show
     @user = User.find(params[:id])
@@ -8,7 +8,8 @@ class Public::UsersController < ApplicationController
       redirect_to mypage_path
     end
   end
-
+  
+  # マイページ専用
   def mypage
     @user = current_user
   end
@@ -23,10 +24,11 @@ class Public::UsersController < ApplicationController
       redirect_to mypage, alert: "ゲストユーザは更新できません。"
     else
       user.update(user_params)
-      redirect_to mypage_path
+      redirect_to mypage_path, notice: "ユーザー情報を更新しました。"
     end
   end
-
+  
+  # 退会画面
   def unsubscribe
     @user = current_user
   end
@@ -43,6 +45,7 @@ class Public::UsersController < ApplicationController
 
   private
 
+  # ユーザページを表示
   def set_user
     @user = User.find(params[:id])
   end
