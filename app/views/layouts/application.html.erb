@@ -12,6 +12,10 @@
 
   <body>
     <header>
+      <h1>LOGO</h1>
+      <%= flash[:alert] %>
+      <%= flash[:notice] %>
+      
       <% if user_signed_in? %><!-- ユーザログイン後メニュー -->
         <li>
           <%= link_to "About", about_path %>
@@ -43,7 +47,7 @@
           <%= link_to "ログイン", new_user_session_path %>
         </li>
         <li>
-          <%= link_to "ゲストログイン", root_path %><!-- URL変更 -->
+          <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, method: :post %><!-- URL変更 -->
         </li>
       <% end %>
     </header>
