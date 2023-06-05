@@ -16,7 +16,23 @@
       <%= flash[:alert] %>
       <%= flash[:notice] %>
       
-      <% if user_signed_in? %><!-- ユーザログイン後メニュー -->
+      <% if admin_signed_in? %><!-- 管理者ログイン後メニュー -->
+        <li>
+          <%= link_to "ユーザー一覧", admin_users_path %>
+        </li>
+        <li>
+          <%= link_to "投稿一覧", root_path %><!-- URL変更 -->
+        </li>
+        <li>
+          <%= link_to "通報一覧", root_path %><!-- URL変更 -->
+        </li>
+        <li>
+          <%= link_to "タグ一覧", root_path %><!-- URL変更 -->
+        </li>
+        <li>
+          <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+        </li>
+      <% elsif user_signed_in? %><!-- ユーザログイン後メニュー -->
         <li>
           <%= link_to "About", about_path %>
         </li>
@@ -31,10 +47,6 @@
         </li>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
-      <% elsif admin_signed_in? %><!-- 管理者ログイン後メニュー -->
-        <li>
-          <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
         </li>
       <% else %>
         <li>
