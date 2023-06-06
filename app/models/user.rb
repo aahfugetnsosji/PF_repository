@@ -4,8 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # プロフィール画像を持たせる
   has_one_attached :profile_image
+  
+  # モデル間のアソシエーション
+  has_many :posts,         dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  has_many :favorites,     dependent: :destroy
 
+  # プロフィール画像
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.png')
@@ -14,6 +21,7 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_fill: [width, height]).processed
   end
   
+  # ゲストログイン
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

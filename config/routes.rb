@@ -25,11 +25,14 @@ Rails.application.routes.draw do
     get 'mypage' => "users#mypage"
     get 'mypage/edit' => "users#edit"
     get 'unsubscribe' => "users#unsubscribe"
+    # 投稿
+    resources :posts
   end
   
   # 管理者用
   namespace :admin do
     resources :users, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

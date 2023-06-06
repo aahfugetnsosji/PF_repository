@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>新規投稿</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+        <%= f.file_field :image, accept: "image/*" %>
+        <h3>
+          タイトル
+          <span>※必須</span>
+        </h3>
+        <%= f.text_field :title, placeholder: "タイトル" %>
+        
+        <h3>
+          本文
+          <span>※必須</span>
+        </h3>
+        <%= f.text_area :body, placeholder: "本文を入力" %>
+        
+        <h3>タグを選択</h3>
+        
+        
+        <h3>
+          地方区分を選択
+          <span>※必須</span>
+        </h3>
+        <%= f.select :region_id, Region.names.keys.map {|k| [I18n.t("enums.region.name.#{k}"), k]}, prompt: "--選択してください--" %>
+        
+        <h3>都道府県を選択</h3>
+        
+        
+        <%= f.submit "投稿する" %>
+      <% end %>
+    </div>
+  </div>
+</div>
