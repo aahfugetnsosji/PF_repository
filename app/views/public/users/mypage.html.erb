@@ -37,4 +37,32 @@
       </h3>
     </div>
   </div>
+  
+  <div class="row">
+    <div class="col-lg-8">
+      <% if @posts.count == 0 %>
+        <div>
+          <p>
+            投稿はありません。
+          </p>
+          <p>
+            <%= link_to "ここ", new_post_path %><!--
+         -->から投稿できます。
+          </p>
+        </div>
+      <% else %>
+        <% @posts.each do |post| %>
+          <a href="/posts/<%= post.id %>" class="card lg-3 text-dark border-0">
+            <%= image_tag post.get_image(200, 130), class: "card-img-top" %>
+            <div class="card-body">
+              <h6 class="card-title">
+                <%= post.title %>
+              </h6>
+            </div>
+          </a>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+    
 </div>

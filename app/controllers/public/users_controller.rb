@@ -12,6 +12,7 @@ class Public::UsersController < ApplicationController
   # マイページ専用
   def mypage
     @user = current_user
+    @posts = current_user.posts.all
   end
 
   def edit

@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # 新規登録時にnameの値を受け取る
-  before_action :configure_permitted_parameters, if: :devise_controller?
   # ゲストユーザアカウントの削除制限
   before_action :ensure_normal_user, only: :destroy, if: -> { controller_name == "registrations" }
   # 管理者用ページへのアクセス制限
@@ -30,11 +28,6 @@ class ApplicationController < ActionController::Base
       else
         root_path
       end
-    end
-    
-    # 新規登録時にnameの値を受け取る
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     end
 
     # ゲストユーザの削除制限
