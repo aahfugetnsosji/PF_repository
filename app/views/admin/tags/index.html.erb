@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>タグ一覧・追加</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <%= form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
+        <tbody>
+          <tr>
+            <th>タグ名</th>
+            <td>
+              <%= f.text_field :name, placeholder: "タグ名" %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th></th>
+            <td>
+              <%= f.submit "追加する" %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  
+  <div class="col">
+    <% if @tags.count == 0 %>
+      <div>
+        <p>タグは登録されていません。</p>
+      </div>
+    <% else %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>タグ一覧</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @tags.each do |tag| %>
+            <tr>
+              <td>
+                <%= tag.name %>
+              </td>
+              <td>
+                <%= link_to "編集する", edit_admin_tag_path(tag.id) %>
+              </td>
+              <td>
+                <%= link_to "削除する", admin_tag_path(tag.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

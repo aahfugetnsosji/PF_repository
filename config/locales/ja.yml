@@ -15,3 +15,8 @@ ja:
         chugoku: "中国"
         shikoku: "四国"
         kyusyu_okinawa: "九州・沖縄"
+        
+  activerecord: # エラーメッセージの日本語表記
+  errors:
+    messages:
+      record_invalid: "バリデーションに失敗しました: %{errors}"
