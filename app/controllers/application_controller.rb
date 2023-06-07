@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller? #新規登録時にnameの値を受け取る
-  before_action :ensure_normal_user, only: :destroy, if: -> { controller_name == "registrations" } #ゲストユーザの削除制限用
-  before_action :authenticate_admin!, if: :admin_url # 管理者用ページへのアクセス制限
+  # 新規登録時にnameの値を受け取る
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  # ゲストユーザアカウントの削除制限
+  before_action :ensure_normal_user, only: :destroy, if: -> { controller_name == "registrations" }
+  # 管理者用ページへのアクセス制限
+  before_action :authenticate_admin!, if: :admin_url
 
-  private
-    # 管理者用ページの定義
+  protected
+    # 管理者用ページの定義(アクセス制限用)
     def admin_url
       request.fullpath.include?("/admin")
     end
@@ -28,8 +31,7 @@ class ApplicationController < ActionController::Base
         root_path
       end
     end
-
-  protected
+    
     # 新規登録時にnameの値を受け取る
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
