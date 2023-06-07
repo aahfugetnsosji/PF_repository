@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string  :title,     null: false
       t.text    :body,      null: false
       t.integer :user_id,   null: false
-      t.integer :region_id, null: false
+      t.integer :region_id, null: false, limit: 1, default: 0
 
       t.timestamps
     end

@@ -98,9 +98,9 @@ ActiveRecord::Schema.define(version: 2023_06_06_160836) do
   end
 
   create_table "regions", force: :cascade do |t|
-    t.integer "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "name", null: false
   end
 
   create_table "reports", force: :cascade do |t|
