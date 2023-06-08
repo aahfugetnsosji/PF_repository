@@ -26,7 +26,10 @@ Rails.application.routes.draw do
     get 'mypage/edit' => "users#edit"
     get 'unsubscribe' => "users#unsubscribe"
     # 投稿
-    resources :posts
+    resources :posts, except: [:create, :update]
+    resources :regions, only: [:index, :create, :update]
+    resources :prefectures, only: [:index]
+    resources :tags, only: [:index]
   end
   
   # 管理者用

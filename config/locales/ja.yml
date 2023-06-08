@@ -3,18 +3,6 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%Y/%m/%d"
-      
-  enums:
-    region: #地方区分の日本語表記
-      name:
-        hokkaido_tohoku: "北海道・東北"
-        kanto: "関東"
-        hokuriku_koshinetsu: "北陸・甲信越"
-        tokai: "東海"
-        kansai: "関西"
-        chugoku: "中国"
-        shikoku: "四国"
-        kyusyu_okinawa: "九州・沖縄"
         
   activerecord:
     attributes:

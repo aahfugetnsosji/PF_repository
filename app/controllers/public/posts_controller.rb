@@ -4,17 +4,14 @@ class Public::PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
-  end
-  
-  def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    if @post.save
-      redirect_to post_path(@post.id)
-    else
-      render :new
-    end
+    @tags = Tag.all
+    @region = Region.new
+    @prefectures = @region.prefectures.build
+    @prefectures.post_prefectures.build
+    @posts = @region.posts.build
+    @posts.user_id = current_user.id
+    @posts.post_tags.build
+    @posts.post_prefectures.build
   end
 
   def show
@@ -22,12 +19,18 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-  end
-  
-  def update
+    @post = Post.find(params[:id])
   end
   
   def destroy
+    post = Post.find(params[:id])
+    if post.user_id == current_user.id
+      post.destroy
+      redirect_to mypage_path
+      flash[:notice] = "投稿を削除しました。"
+    else
+      render :show
+    end
   end
   
   private

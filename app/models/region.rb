@@ -3,15 +3,12 @@ class Region < ApplicationRecord
   has_many :posts
   has_many :prefectures
   
+  accepts_nested_attributes_for :posts
+  accepts_nested_attributes_for :prefectures
+  
   # 地方区分をenumで記述
-  enum name: {
-    hokkaido_tohoku: 0,
-    kanto: 1,
-    hokuriku_koshinetsu: 2,
-    tokai: 3,
-    kansai: 4,
-    chugoku: 5,
-    shikoku: 6,
-    kyusyu_okinawa: 7
+  enum region_name: {
+    北海道・東北:0, 関東:1, 北陸・甲信越:2, 東海:3,
+    関西:4, 中国:5, 四国:6, 九州・沖縄:7
   }
 end

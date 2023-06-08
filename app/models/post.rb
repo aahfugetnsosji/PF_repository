@@ -13,6 +13,9 @@ class Post < ApplicationRecord
   has_many :post_tags,        dependent: :destroy
   has_many :post_prefectures, dependent: :destroy
   
+  accepts_nested_attributes_for :post_tags
+  accepts_nested_attributes_for :post_prefectures
+  
   # 投稿画像
   def get_image(width, height)
     unless image.attached?

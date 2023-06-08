@@ -21,7 +21,7 @@
           <%= link_to "ユーザー一覧", admin_users_path %>
         </li>
         <li>
-          <%= link_to "投稿一覧", root_path %><!-- URL変更 -->
+          <%= link_to "投稿一覧", admin_posts_path %>
         </li>
         <li>
           <%= link_to "通報一覧", root_path %><!-- URL変更 -->
@@ -43,7 +43,7 @@
           <%= link_to "投稿する", new_post_path %>
         </li>
         <li>
-          <%= link_to "全国の投稿一覧", root_path %><!-- URL変更 -->
+          <%= link_to "全国の投稿一覧", posts_path %>
         </li>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

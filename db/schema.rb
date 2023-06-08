@@ -69,14 +69,14 @@ ActiveRecord::Schema.define(version: 2023_06_06_160836) do
 
   create_table "post_prefectures", force: :cascade do |t|
     t.integer "post_id", null: false
-    t.integer "prefecture_id", null: false
+    t.integer "prefecture_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "post_tags", force: :cascade do |t|
     t.integer "post_id", null: false
-    t.integer "tag_id", null: false
+    t.integer "tag_id", limit: 5
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -85,22 +85,22 @@ ActiveRecord::Schema.define(version: 2023_06_06_160836) do
     t.string "title", null: false
     t.text "body", null: false
     t.integer "user_id", null: false
-    t.integer "region_id", null: false
+    t.integer "region_id", limit: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "prefectures", force: :cascade do |t|
-    t.integer "name", null: false
+    t.integer "prefecture_name"
     t.integer "region_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "regions", force: :cascade do |t|
+    t.integer "region_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "name", null: false
   end
 
   create_table "reports", force: :cascade do |t|
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2023_06_06_160836) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
