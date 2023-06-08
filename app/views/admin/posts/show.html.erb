@@ -1,2 +1,65 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>投稿詳細</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>画像</th>
+            <td>
+              <%= image_tag @post.get_image(200, 300) %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>投稿ID</th>
+            <td>
+              <%= @post.id %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>投稿日時</th>
+            <td>
+              <%= l @post.created_at %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>投稿者</th>
+            <td>
+              <%= link_to @post.user.name, admin_user_path(@post.user_id) %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>タイトル</th>
+            <td>
+              <%= @post.title %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>本文</th>
+            <td>
+              <%= @post.body %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>コメント一覧</th>
+            <td>
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "削除する", admin_post_path(@post.id), method: :delete, "data-confirm" => "本当によろしいですか？" %>
+    </div>
+  </div>
+</div>
