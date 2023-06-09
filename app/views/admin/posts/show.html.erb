@@ -52,6 +52,27 @@
           </tr>
           
           <tr>
+            <th>タグ一覧</th>
+            <td>
+              <%#=  %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>地方区分</th>
+            <td>
+              <%= @post.region.region_name %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>都道府県</th>
+            <td>
+              <%#=  %>
+            </td>
+          </tr>
+          
+          <tr>
             <th>コメント一覧</th>
             <td>
               
@@ -59,7 +80,7 @@
           </tr>
         </tbody>
       </table>
-      <%= link_to "削除する", admin_post_path(@post.id), method: :delete, "data-confirm" => "本当によろしいですか？" %>
+      <%= link_to "削除する", admin_region_path(@post.region.id), method: :delete, "data-confirm" => "本当によろしいですか？" %>
     </div>
   </div>
 </div>
