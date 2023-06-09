@@ -1,7 +1,7 @@
 class Region < ApplicationRecord
   # モデル間のアソシエーション
-  has_many :posts
-  has_many :prefectures
+  has_many :posts,       dependent: :destroy
+  has_many :prefectures, dependent: :destroy
   
   accepts_nested_attributes_for :posts
   accepts_nested_attributes_for :prefectures

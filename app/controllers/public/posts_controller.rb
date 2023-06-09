@@ -16,10 +16,20 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @region = @post.region_id
+    @post_tags = @post.post_tags.all
+    @post_prefectures = @post.post_prefectures.all
   end
 
   def edit
     @post = Post.find(params[:id])
+    @region = @post.region_id
+    @prefectures = @region.prefectures.build
+    @prefectures.post_prefectures.build
+    @posts = @region.posts.build
+    @posts.user_id = current_user.id
+    @posts.post_tags.build
+    @posts.post_prefectures.build
   end
   
   def destroy

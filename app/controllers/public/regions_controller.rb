@@ -13,14 +13,20 @@ class Public::RegionsController < ApplicationController
   end
   
   def update
-    @post = Post.find(params[:id])
-    if @post.user_id == current_user.id
-      @post.update(region_params)
-      redirect_to post_path(@post)
+    @region = Region.find(params[:id])
+    if @region.post.user_id == current_user.id
+      @region.update(region_params)
+      redirect_to post_path(@region.post.id)
       flash[:notice] = "投稿内容を編集しました。"
     else
       render mypage_path
     end
+  end
+  
+  def destroy
+    @region = Region.find(params[:id])
+    @region.destroy
+    redirect_to mypage_path
   end
 
   private

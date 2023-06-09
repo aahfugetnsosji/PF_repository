@@ -3,13 +3,50 @@
     <div class="col">
       <h1>
         <%= @post.title %>
+        <span>
+          <%= l @post.created_at %>
+        </span>
       </h1>
     </div>
   </div>
   
   <div class="row">
     <div class="col">
+      <%= image_tag @post.get_image(700, 850) %>
       
+      <p>
+        <%= @post.body %>
+      </p>
+      
+      <div>
+        <% @post_tags.each do |post_tag| %>
+          <%= post_tag.tag.name %>
+        <% end %>
+      </div>
+      
+      <%= @post.region.region_name %>
+      <div>
+        <% @post_prefectures.each do |post_pre| %>
+          <%= post_pre.prefecture.prefecture_name %>
+        <% end %>
+      </div>
     </div>
   </div>
+  
+  <div class="row">
+    <div class="col">
+      <!--コメント表示-->
+    </div>
+  </div>
+  
+  <% if @post.user_id == current_user.id %>
+    <div class="row">
+      <div class="col">
+        <%= link_to "編集する", edit_post_path(@post.id) %>
+      </div>
+      <div class="col">
+        <%= link_to "削除する", region_path(@region), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get 'unsubscribe' => "users#unsubscribe"
     # 投稿
     resources :posts, except: [:create, :update]
-    resources :regions, only: [:index, :create, :update]
+    resources :regions, only: [:index, :create, :update, :destroy]
     resources :prefectures, only: [:index]
     resources :tags, only: [:index]
   end
@@ -35,8 +35,9 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     resources :users, only: [:index, :show, :destroy]
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show]
     resources :tags, except: [:show, :new]
+    resources :regions, only: [:destroy]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
