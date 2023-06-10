@@ -22,14 +22,6 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
-    @region = @post.region_id
-    @prefectures = @region.prefectures.build
-    @prefectures.post_prefectures.build
-    @posts = @region.posts.build
-    @posts.user_id = current_user.id
-    @posts.post_tags.build
-    @posts.post_prefectures.build
   end
   
   def destroy

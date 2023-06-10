@@ -2,6 +2,8 @@ class Prefecture < ApplicationRecord
   # モデル間のアソシエーション
   belongs_to :region
   has_many :post_prefectures, dependent: :destroy
+  
+  # 親子孫関係にあるテーブルを一度に保存する
   accepts_nested_attributes_for :post_prefectures
   
   # 都道府県をenumで記述

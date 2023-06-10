@@ -3,6 +3,7 @@ class Region < ApplicationRecord
   has_many :posts,       dependent: :destroy
   has_many :prefectures, dependent: :destroy
   
+  # 親子孫関係にあるテーブルを一度に保存する
   accepts_nested_attributes_for :posts
   accepts_nested_attributes_for :prefectures
   

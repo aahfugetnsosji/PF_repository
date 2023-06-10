@@ -13,6 +13,7 @@ class Post < ApplicationRecord
   has_many :post_tags,        dependent: :destroy
   has_many :post_prefectures, dependent: :destroy
   
+  # 親子孫関係にあるテーブルを一度に保存する
   accepts_nested_attributes_for :post_tags
   accepts_nested_attributes_for :post_prefectures
   

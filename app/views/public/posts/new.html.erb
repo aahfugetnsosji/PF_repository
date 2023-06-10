@@ -24,6 +24,8 @@
   <div class="row">
     <div class="col">
       <%= form_with model: @region, url: regions_path, method: :post do |f| %>
+      
+        <!--Postモデルに送るデータ-->
         <%= f.fields_for :posts do |po| %>
           <%= po.hidden_field :user_id, :value => current_user.id %>
           <%= po.file_field :image, accept: "image/*" %>
@@ -39,6 +41,7 @@
           </h3>
           <%= po.text_area :body, placeholder: "本文を入力" %>
           
+            <!--PostTagモデルに送るデータ-->
             <%= po.fields_for :post_tags do |pota| %>
               <h3>タグを選択</h3>
               <!--<span>5つまで選択可能　※重複不可</span><br>-->
@@ -49,20 +52,21 @@
               <%#= pota.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
             <% end %>
         <% end %>
+        
         <h3>
           地方区分を選択
           <span>※必須</span>
         </h3>
         <%= f.select :region_name, Region.region_names.keys.map, prompt: "--選択してください--" %>
         
+        <!--Prefectureモデルに送るデータ-->
         <%= f.fields_for :prefectures do |pr| %>
           <h3>都道府県を選択</h3>
-          <%= pr.hidden_field :region_id, :value => @region.id %>
+          <%= pr.select :prefecture_name, Prefecture.prefecture_names.keys.map, prompt: "--選択してください--" %>
           
+          <!--PostPrefectureモデルに送るデータ-->
           <%= pr.fields_for :post_prefectures do |popr| %>
           <% end %>
-          
-          <%= pr.select :prefecture_name, Prefecture.prefecture_names.keys.map, prompt: "--選択してください--" %>
         <% end %>
         <br>
         <%= f.submit "投稿する" %>
