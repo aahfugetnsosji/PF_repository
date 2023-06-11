@@ -54,7 +54,9 @@
           <tr>
             <th>タグ一覧</th>
             <td>
-              <%#=  %>
+              <% @post.post_tags.each do |pt| %>
+                <%= pt.tag.name %>
+              <% end %>
             </td>
           </tr>
           
@@ -68,19 +70,39 @@
           <tr>
             <th>都道府県</th>
             <td>
-              <%#=  %>
+              <% @post.post_prefectures.each do |pp| %>
+                <%= pp.prefecture.prefecture_name %>
+              <% end %>
             </td>
           </tr>
           
           <tr>
             <th>コメント一覧</th>
             <td>
-              
+              <% @post_comments.each do |post_comment| %>
+                <p>
+                  <%= post_comment.comment %>
+                </p>
+                <p>
+                  <span>
+                    <%= link_to post_comment.user.name, admin_user_path(post_comment.user_id) %>
+                  </span>
+                  <span>
+                    <%= l post_comment.created_at %>
+                  </span>
+                  <span>
+                    <%= link_to "コメントを削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
+                  </span>
+                </p>
+              <% end %>
             </td>
           </tr>
         </tbody>
       </table>
-      <%= link_to "削除する", admin_region_path(@post.region.id), method: :delete, "data-confirm" => "本当によろしいですか？" %>
+      
+      <div>
+        <%= link_to "投稿を削除する", admin_post_path(@post.id), method: :delete, "data-confirm" => "本当によろしいですか？" %>
+      </div>
     </div>
   </div>
 </div>
