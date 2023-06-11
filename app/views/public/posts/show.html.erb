@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      
       <h1>
+        <!--タイトル-->
         <%= @post.title %>
         <span>
+          <!--投稿日時-->
           <%= l @post.created_at %>
         </span>
       </h1>
@@ -12,22 +15,27 @@
   
   <div class="row">
     <div class="col">
+      <!--投稿画像-->
       <%= image_tag @post.get_image(700, 850) %>
       
+      <!--本文-->
       <p>
         <%= @post.body %>
       </p>
       
+      <!--タグ-->
       <div>
-        <% @post_tags.each do |post_tag| %>
-          <%= post_tag.tag.name %>
+        <% @post.post_tags.each do |pt| %>
+          <%= pt.tag.name %>
         <% end %>
       </div>
       
-      <%= @post.region.region_name %>
-      <div>
-        <% @post_prefectures.each do |post_pre| %>
-          <%= post_pre.prefecture.prefecture_name %>
+      <!--地方区分・都道府県-->
+      <div class="col">
+        <%= @post.region.region_name %>
+        <span> > </span>
+        <% @post.post_prefectures.each do |pp| %>
+          <%= pp.prefecture.prefecture_name %>
         <% end %>
       </div>
     </div>
@@ -35,7 +43,44 @@
   
   <div class="row">
     <div class="col">
-      <!--コメント表示-->
+      <h4>
+        <%= @post.post_comments.count %>件のコメント
+      </h4>
+        
+      <div class="col">
+        <!--コメント投稿-->
+        <%= form_with model: [@post, @post_comment] do |f| %>
+          <%= f.text_area :comment, placeholder: "コメントを入力" %>
+          <%= f.submit "コメント" %>
+        <% end %>
+      </div>
+      
+      <div class="col">
+        <% @post_comments.each do |post_comment| %>
+          <div>
+            <p>
+              <%= post_comment.comment %>
+            </p>
+            
+            <p>
+              <span>
+                <%= link_to post_comment.user.name, post_comment.user_id %>
+              </span>
+              <span>
+                <%= l post_comment.created_at, format: :short %>
+              </span>
+            </p>
+            
+            <% if post_comment.user == current_user %>
+              <p>
+                <%= link_to "コメントを削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
+              </p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+        
+      
     </div>
   </div>
   
@@ -45,7 +90,7 @@
         <%= link_to "編集する", edit_post_path(@post.id) %>
       </div>
       <div class="col">
-        <%= link_to "削除する", region_path(@region), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <%= link_to "削除する", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
       </div>
     </div>
   <% end %>

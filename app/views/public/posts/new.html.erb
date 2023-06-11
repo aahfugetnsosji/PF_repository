@@ -4,72 +4,43 @@
       <h1>新規投稿</h1>
     </div>
   </div>
-
-  <!--バリデーションエラーメッセージを表示-->
+  
   <div class="row">
     <div class="col">
-      <% if @region.errors.any? %>
-        <%= @region.errors.count %>件のエラーが発生しました。
-        <ul>
-          <% @region.errors.full_messages.each do |message| %>
-            <li>
-              <%= message %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <%= form_with model: @region, url: regions_path, method: :post do |f| %>
-      
-        <!--Postモデルに送るデータ-->
-        <%= f.fields_for :posts do |po| %>
-          <%= po.hidden_field :user_id, :value => current_user.id %>
-          <%= po.file_field :image, accept: "image/*" %>
-          <h3>
-            タイトル
-            <span>※必須</span>
-          </h3>
-          <%= po.text_field :title, placeholder: "タイトル" %>
-
-          <h3>
-            本文
-            <span>※必須</span>
-          </h3>
-          <%= po.text_area :body, placeholder: "本文を入力" %>
-          
-            <!--PostTagモデルに送るデータ-->
-            <%= po.fields_for :post_tags do |pota| %>
-              <h3>タグを選択</h3>
-              <!--<span>5つまで選択可能　※重複不可</span><br>-->
-              <%= pota.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
-              <%#= pota.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
-              <%#= pota.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
-              <%#= pota.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
-              <%#= pota.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
-            <% end %>
+      <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+        <%= f.file_field :image, accept: "image/*" %>
+        
+        <h4>
+          タイトル
+          <span>※必須</span>
+        </h4>
+        <%= f.text_field :title, placeholder: "タイトルを入力" %>
+        
+        <h4>
+          本文
+          <span>※必須</span>
+        </h4>
+        <%= f.text_area :body, placeholder: "本文を入力" %>
+        
+        <h4>タグを選択</h4>
+        <%= f.fields_for :post_tags do |pt| %>
+          <%= pt.collection_select(:tag_id, @tags, :id, :name, {prompt: "選択してください"}) %>
         <% end %>
         
-        <h3>
+        <h4>
           地方区分を選択
           <span>※必須</span>
-        </h3>
-        <%= f.select :region_name, Region.region_names.keys.map, prompt: "--選択してください--" %>
+        </h4>
+        <%= f.collection_select(:region_id, @regions, :id, :region_name, {prompt: "選択してください"}) %>
         
-        <!--Prefectureモデルに送るデータ-->
-        <%= f.fields_for :prefectures do |pr| %>
-          <h3>都道府県を選択</h3>
-          <%= pr.select :prefecture_name, Prefecture.prefecture_names.keys.map, prompt: "--選択してください--" %>
-          
-          <!--PostPrefectureモデルに送るデータ-->
-          <%= pr.fields_for :post_prefectures do |popr| %>
-          <% end %>
+        <h4>都道府県を選択</h4>
+        <%= f.fields_for :post_prefectures do |pp| %>
+          <%= pp.collection_select(:prefecture_id, @prefectures, :id, :prefecture_name, {prompt: "選択してください"}) %>
         <% end %>
-        <br>
-        <%= f.submit "投稿する" %>
+        
+        <div>
+          <%= f.submit "投稿する" %>
+        </div>
       <% end %>
     </div>
   </div>

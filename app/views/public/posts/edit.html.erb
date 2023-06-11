@@ -9,49 +9,40 @@
 
   <div class="row">
     <div class="col">
-      <%= form_with model: @region, url: region_path, method: :patch do |f| %>
-        <%= f.fields_for :posts do |po| %>
-          <%= po.hidden_field :user_id, :value => current_user.id %>
-          <%= po.file_field :image, accept: "image/*" %>
-          <h3>
-            タイトル
-            <span>※必須</span>
-          </h3>
-          <%= po.text_field :title, placeholder: "タイトル" %>
-
-          <h3>
-            本文
-            <span>※必須</span>
-          </h3>
-          <%= po.text_area :body, placeholder: "本文を入力" %>
-          
-            <%= po.fields_for :post_tags do |pota| %>
-              <h3>タグを選択</h3>
-              <!--<span>5つまで選択可能　※重複不可</span><br>-->
-              <%= pota.collection_select(:tag_id, @post.post_tags.all, :id, :name, {prompt: "--選択してください--"}) %>
-              <%#= pota.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
-              <%#= pota.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
-              <%#= pota.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
-              <%#= pota.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
-            <% end %>
-        <% end %>
-        <h3>
-          地方区分を選択
+      <%= form_with model: @post, url: post_path, method: :patch do |f| %>
+        <%= f.file_field :image, accept: "image/*" %>
+         <h4>
+          タイトル
           <span>※必須</span>
-        </h3>
-        <%= f.select :region_name, Region.region_names.keys.map, prompt: "--選択してください--" %>
-        
-        <%= f.fields_for :prefectures do |pr| %>
-          <h3>都道府県を選択</h3>
-          <%= pr.hidden_field :region_id, :value => @post.region_id %>
+        </h4>
+        <%= f.text_field :title, placeholder: "タイトル" %>
+
+        <h4>
+          本文
+          <span>※必須</span>
+        </h4>
+        <%= f.text_area :body, placeholder: "本文を入力" %>
           
-          <%= pr.fields_for :post_prefectures do |popr| %>
+          <h4>タグを選択</h4>
+          <%= f.fields_for :post_tags do |pt| %>
+            <!--<span>5つまで選択可能　※重複不可</span><br>-->
+            <%= pt.collection_select(:tag_id, @tags, :id, :name, {prompt: "--選択してください--"}) %>
           <% end %>
           
-          <%= pr.select :prefecture_name, Prefecture.prefecture_names.keys.map, prompt: "--選択してください--" %>
+        <h4>
+          地方区分を選択
+          <span>※必須</span>
+        </h4>
+        <%= f.collection_select(:region_id, @regions, :id, :region_name, {prompt: "--選択してください--"}) %>
+        
+        <h4>都道府県を選択</h4>
+        <%= f.fields_for :post_prefectures do |pp| %>
+          <%= pp.collection_select(:prefecture_id, @prefectures, :id, :prefecture_name, {prompt: "--選択してください--"}) %>
         <% end %>
-        <br>
-        <%= f.submit "変更を保存" %>
+        
+        <div>
+          <%= f.submit "変更を保存" %>
+        </div>
       <% end %>
     </div>
   </div>

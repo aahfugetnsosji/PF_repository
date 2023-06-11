@@ -25,16 +25,17 @@ Rails.application.routes.draw do
     get 'mypage' => "users#mypage"
     get 'mypage/edit' => "users#edit"
     get 'unsubscribe' => "users#unsubscribe"
-    # 投稿に関するページを表示するためのルーティング
-    resources :posts, except: [:create, :update, :destroy]
-    # 地方区分絞り込み用。なお投稿の作成・編集・削除はregions_controllerで行う
-    resources :regions, only: [:index, :create, :update, :destroy]
-    # 都道府県絞り込み機能用
+    # 地方区分絞り込み用
+    resources :regions, only: [:index]
+    # 投稿
+    resources :posts do
+      # コメント用
+      resources :post_comments, only: [:create, :destroy]
+    end
+    # 都道府県絞り込み用
     resources :prefectures, only: [:index]
     # タグ検索用
     resources :tags, only: [:index]
-    # コメント用
-    resources :post_comments, only: [:create, :destroy]
     # 通報用
     resources :reports, only: [:new, :create]
   end
@@ -43,10 +44,10 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     resources :users, only: [:index, :show, :destroy]
-    resources :posts, only: [:index, :show]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
     resources :tags, except: [:show, :new]
-    resources :regions, only: [:destroy]
-    resources :post_comments, only: [:destroy]
     resources :reports, only: [:show, :update]
   end
   
