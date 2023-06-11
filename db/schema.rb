@@ -85,20 +85,20 @@ ActiveRecord::Schema.define(version: 2023_06_06_160836) do
     t.string "title", null: false
     t.text "body", null: false
     t.integer "user_id", null: false
-    t.integer "region_id", limit: 1, null: false
+    t.integer "region_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "prefectures", force: :cascade do |t|
-    t.integer "prefecture_name"
+    t.string "prefecture_name"
     t.integer "region_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "regions", force: :cascade do |t|
-    t.integer "region_name", null: false
+    t.string "region_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
