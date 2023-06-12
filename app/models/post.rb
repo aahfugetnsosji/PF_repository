@@ -25,4 +25,10 @@ class Post < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  # キーワード検索でユーザが入力した値と部分一致するデータを取得
+  def self.search(keyword)
+    Post.where(['body like?', "%#{keyword}%"])
+  end
+    
 end

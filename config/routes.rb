@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       # コメント用
       resources :post_comments, only: [:create, :destroy]
     end
+    # キーワード検索用
+    get 'search' => "posts#search"
     # 都道府県絞り込み用
     resources :prefectures, only: [:index]
     # タグ検索用

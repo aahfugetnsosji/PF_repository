@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>
+        検索結果
+        <% if @posts.count == 0 %>
+          <span></span>
+        <% else %>
+          <span>
+            <%= @posts.count %>件がヒット
+          </span>
+        <% end %>
+      </h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <!--キーワード検索窓-->
+      <%= form_tag(search_path,:method => 'get') do %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>キーワード検索</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <%= text_field_tag :keyword %>
+              <%= submit_tag '検索', :body => nil %>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+    
+    <div class="col">
+      <% @posts.each do |post| %>
+        <a href="/posts/<%= post.id %>" class="card lg-3 text-dark border-0">
+          <%= image_tag post.get_image(200, 130), class: "card-img-top" %>
+        
+          <div class="card-body">
+            <h6 class="card-title">
+              <%= post.title %>
+            </h6>
+            <h6 class="card-title">
+              <%= post.body %>
+            </h6>
+            <h6 class="card-title">
+              <%= link_to post.user.name, user_path(post.user_id) %>
+            </h6>
+            <h6 class="card-title">
+              <%= l post.created_at, format: :short %>
+            </h6>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+  
+  <% if @posts.count == 0 %>
+    <div class"row">
+      <div class="col">
+        <p>検索結果がありませんでした。</p>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -64,7 +64,7 @@
             
             <p>
               <span>
-                <%= link_to post_comment.user.name, post_comment.user_id %>
+                <%= link_to post_comment.user.name, user_path(post_comment.user_id) %>
               </span>
               <span>
                 <%= l post_comment.created_at, format: :short %>

@@ -56,6 +56,10 @@ class Public::PostsController < ApplicationController
     end
   end
   
+  def search
+    @posts = Post.search(params[:keyword]).order(created_at: :desc)
+  end
+  
   private
   
   def post_params
