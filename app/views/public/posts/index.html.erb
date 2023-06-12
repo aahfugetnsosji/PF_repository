@@ -20,8 +20,10 @@
           </thead>
           <tbody>
             <tr>
-              <%= text_field_tag :keyword %>
-              <%= submit_tag '検索', :body => nil %>
+              <td>
+                <%= text_field_tag :keyword %>
+                <%= submit_tag '検索', :body => nil %>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -42,7 +44,7 @@
       <% else %>
         <% @posts.each do |post| %>
           <a href="/posts/<%= post.id %>" class="card lg-3 text-dark border-0">
-            <%= image_tag post.get_image(200, 130), class: "card-img-top" %>
+            <%= image_tag post.get_image(80, 100), class: "card-img-top" %>
             <div class="card-body">
               <h6 class="card-title">
                 <%= post.title %>
