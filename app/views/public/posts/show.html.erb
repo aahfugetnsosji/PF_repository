@@ -6,6 +6,10 @@
         <!--タイトル-->
         <%= @post.title %>
         <span>
+          <!--投稿者-->
+          <%= link_to @post.user.name, user_path(@post.user_id) %>
+        </span>
+        <span>
           <!--投稿日時-->
           <%= l @post.created_at %>
         </span>
@@ -20,7 +24,7 @@
       
       <!--本文-->
       <p>
-        <%= @post.body %>
+        <%= safe_join(@post.body.split("\n"),tag(:br)) %>
       </p>
       
       <!--タグ-->
@@ -51,7 +55,7 @@
         <!--コメント投稿-->
         <%= form_with model: [@post, @post_comment] do |f| %>
           <%= f.text_area :comment, placeholder: "コメントを入力" %>
-          <%= f.submit "コメント" %>
+          <%= f.submit "送信" %>
         <% end %>
       </div>
       
@@ -59,7 +63,7 @@
         <% @post_comments.each do |post_comment| %>
           <div>
             <p>
-              <%= post_comment.comment %>
+              <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
             </p>
             
             <p>

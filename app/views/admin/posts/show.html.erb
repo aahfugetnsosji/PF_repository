@@ -47,7 +47,7 @@
           <tr>
             <th>本文</th>
             <td>
-              <%= @post.body %>
+              <%= safe_join(@post.body.split("\n"),tag(:br)) %>
             </td>
           </tr>
           
@@ -81,7 +81,7 @@
             <td>
               <% @post_comments.each do |post_comment| %>
                 <p>
-                  <%= post_comment.comment %>
+                  <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
                 </p>
                 <p>
                   <span>
