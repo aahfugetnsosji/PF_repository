@@ -27,39 +27,39 @@
         <% end %>
       </table>
     </div>
-  </div>
   
-  <div class="col">
-    <% if @tags.count == 0 %>
-      <div>
-        <p>タグは登録されていません。</p>
-      </div>
-    <% else %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>タグ一覧</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        
-        <tbody>
-          <% @tags.each do |tag| %>
+    <div class="col">
+      <% if @tags.count == 0 %>
+        <div>
+          <p>タグは登録されていません。</p>
+        </div>
+      <% else %>
+        <table class="table">
+          <thead>
             <tr>
-              <td>
-                <%= tag.name %>
-              </td>
-              <td>
-                <%= link_to "編集する", edit_admin_tag_path(tag.id) %>
-              </td>
-              <td>
-                <%= link_to "削除する", admin_tag_path(tag.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-              </td>
+              <th>タグ一覧</th>
+              <th></th>
+              <th></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
+          </thead>
+        
+          <tbody>
+            <% @tags.each do |tag| %>
+              <tr>
+                <td>
+                  <%= tag.name %>
+                </td>
+                <td>
+                  <%= link_to "編集する", edit_admin_tag_path(tag.id) %>
+                </td>
+                <td>
+                  <%= link_to "削除する", admin_tag_path(tag.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
   </div>
 </div>

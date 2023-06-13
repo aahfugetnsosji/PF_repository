@@ -4,10 +4,10 @@ class Public::PostsController < ApplicationController
   end
   
   def new
+    @post = Post.new
     @tags = Tag.all
     @regions = Region.all
     @prefectures = Prefecture.all
-    @post = Post.new
     @post.user_id = current_user.id
     @post.post_tags.build
     @post.post_prefectures.build
@@ -20,11 +20,11 @@ class Public::PostsController < ApplicationController
   end
   
   def create
-    post = Post.new(post_params)
-    post.user_id = current_user.id
-    if post.valid?
-      post.save!
-      redirect_to post_path(post.id)
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if @post.valid?
+      @post.save!
+      redirect_to post_path(@post.id)
       flash[:notice] = "投稿しました。"
     else
       render :new
@@ -65,8 +65,8 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(
       :title, :body, :image, :region_id, :user_id,
-      post_prefectures_attributes: [:post_id, :prefecture_id],
-      post_tags_attributes: [:post_id, :tag_id]
-    )
+      post_tags_attributes: { tag_ids: [] },
+      post_prefectures_attributes: { prefecture_ids: [] }
+    ).merge(user_id: current_user.id)
   end
 end
