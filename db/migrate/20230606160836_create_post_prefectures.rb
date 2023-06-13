@@ -7,5 +7,7 @@ class CreatePostPrefectures < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    
+    add_index :post_prefectures, [:post_id, :prefecture_id], unique: true
   end
 end

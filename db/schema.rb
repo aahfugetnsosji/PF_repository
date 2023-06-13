@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2023_06_06_160836) do
     t.integer "prefecture_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "prefecture_id"], name: "index_post_prefectures_on_post_id_and_prefecture_id", unique: true
   end
 
   create_table "post_tags", force: :cascade do |t|
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 2023_06_06_160836) do
     t.integer "tag_id", limit: 5
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "tag_id"], name: "index_post_tags_on_post_id_and_tag_id", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
