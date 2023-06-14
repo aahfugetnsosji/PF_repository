@@ -27,7 +27,7 @@ class Post < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/NoImage.jpg')
       image.attach(io: File.open(file_path), filename: 'NoImage.jpg', content_type: 'image/jpeg')
     end
-    image.variant(resize_to_limit: [width, height]).processed
+    image.variant(resize_to_fill: [width, height]).processed
   end
   
   # キーワード検索でユーザが入力した値と部分一致するデータを取得

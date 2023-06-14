@@ -7,17 +7,16 @@
     <%= csp_meta_tag %>
     
     <!--複数のタグ選択ができるようselect2を導入-->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <!--FontAwesomeの読み込み-->
-    <script src="https://kit.fontawesome.com/04b8ef8016.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
+    
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <h1>LOGO</h1>
+      <nav class="nav">
+        <h1>LOGO</h1>
       <%= flash[:alert] %>
       <%= flash[:notice] %>
       
@@ -67,6 +66,7 @@
           <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, method: :post %><!-- URL変更 -->
         </li>
       <% end %>
+      </nav>
     </header>
 
     <main>
@@ -76,5 +76,13 @@
     <footer>
 
     </footer>
+    
+    <!--FontAwesomeの読み込み-->
+    <script src="https://kit.fontawesome.com/04b8ef8016.js" crossorigin="anonymous"></script>
+    <!--複数のタグ選択ができるようselect2を導入-->
+    <!-- jquery & iScroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Select2本体 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
   </body>
 </html>
