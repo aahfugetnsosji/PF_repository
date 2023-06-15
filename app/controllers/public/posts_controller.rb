@@ -2,15 +2,12 @@ class Public::PostsController < ApplicationController
   def index
     @posts = Post.all
   end
-  
+
   def new
     @post = Post.new
     @tags = Tag.all
     @regions = Region.all
     @prefectures = Prefecture.all
-    @post.user_id = current_user.id
-    @post.post_tags.build
-    @post.post_prefectures.build
   end
 
   def show
@@ -18,13 +15,23 @@ class Public::PostsController < ApplicationController
     @post_comment = PostComment.new
     @post_comments = @post.post_comments.all
   end
-  
+
   def create
     @post = Post.new(post_params)
+    tag_ids = post_tags_params[:tag_ids]
+    tag_ids.delete("")
+    prefecture_ids = prefectures_params[:prefecture_ids]
+    prefecture_ids.delete("")
     if @post.valid?
       @post.save!
-      redirect_to post_path(@post.id)
+      tag_ids.each do |tag_id|
+        PostTag.create(post_id:@post.id,tag_id:tag_id)
+      end
+      prefecture_ids.each do |prefecture_id|
+        PostPrefecture.create(post_id:@post.id,prefecture_id:prefecture_id)
+      end
       flash[:notice] = "投稿しました。"
+      redirect_to post_path(@post.id)
     else
       render :new
     end
@@ -36,14 +43,14 @@ class Public::PostsController < ApplicationController
     @regions = Region.all
     @prefectures = Prefecture.all
   end
-  
+
   def update
     post = Post.find(params[:id])
     post.user_id = current_user.id
     post.update(post_params)
     redirect_to post_path(post.id)
   end
-  
+
   def destroy
     post = Post.find(params[:id])
     if post.user_id == current_user.id
@@ -54,18 +61,23 @@ class Public::PostsController < ApplicationController
       render :show
     end
   end
-  
+
   def search
     @posts = Post.search(params[:keyword]).order(created_at: :desc)
   end
-  
+
   private
-  
+
   def post_params
-    params.require(:post).permit(
-      :title, :body, :image, :region_id, :user_id,
+    params.require(:post).permit(:title, :body, :image, :region_id, :user_id,
       post_tags_attributes: { tag_ids: [] },
       post_prefectures_attributes: { prefecture_ids: [] }
     ).merge(user_id: current_user.id)
+  end
+  def post_tags_params
+    params.require(:post).permit(tag_ids:[])
+  end
+  def prefectures_params
+    params.require(:post).permit(prefecture_ids:[])
   end
 end

@@ -10,8 +10,8 @@ class Post < ApplicationRecord
   has_many :reports # 通報は履歴として残す
   has_many :post_comments,    dependent: :destroy
   has_many :favorites,        dependent: :destroy
-  has_many :post_tags,        dependent: :destroy
-  has_many :post_prefectures, dependent: :destroy
+  has_many :post_tags,        dependent: :destroy, foreign_key: 'post_id'
+  has_many :post_prefectures, dependent: :destroy, foreign_key: 'post_id'
   
   # 投稿は複数のタグと都道府県を持つ。それぞれpost_tagsとpost_prefecturesを通じて参照可能
   has_many :tags,        through: :post_tags
