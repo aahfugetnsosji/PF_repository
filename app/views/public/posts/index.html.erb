@@ -13,7 +13,7 @@
       <!--キーワード検索窓-->
       <div class="row">
         <%= form_tag search_path, method: :get do %>
-          <table class="table">
+          <table class="table table-bordered">
             <thead>
               <tr>
                 <th>キーワード検索</th>
@@ -22,9 +22,7 @@
             <tbody>
               <tr>
                 <td>
-                  <%= text_field_tag :keyword %>
-                </td>
-                <td>
+                  <%= text_field_tag :keyword %><br>
                   <%= submit_tag '検索', :body => nil %>
                 </td>
               </tr>
@@ -36,7 +34,7 @@
       <!--タグ検索窓-->
       <div class="row">
         <%= form_tag posts_path, method: :get do %>
-          <table class="table">
+          <table class="table table-bordered">
             <thead>
               <tr>
                 <th>タグ検索</th>
@@ -45,9 +43,7 @@
             <tbody>
               <tr>
                 <td>
-                  <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]) %>
-                </td>
-                <td>
+                  <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]), { prompt: "--選択してください--" } %><br>
                   <%= submit_tag '検索' %>
                 </td>
               </tr>
@@ -65,10 +61,6 @@
         <div>
           <p>
             投稿はありません。
-          </p>
-          <p>
-            <%= link_to "ここ", new_post_path %><!--
-         -->から投稿できます。
           </p>
         </div>
       <% else %>
