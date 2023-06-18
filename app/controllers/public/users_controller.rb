@@ -44,6 +44,11 @@ class Public::UsersController < ApplicationController
       redirect_to mypage_path
     end
   end
+  
+  # ブックマーク一覧
+  def favorite
+    @favorites = current_user.favorites.all
+  end
 
   private
 

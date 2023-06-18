@@ -25,12 +25,15 @@ Rails.application.routes.draw do
     get 'mypage' => "users#mypage"
     get 'mypage/edit' => "users#edit"
     get 'unsubscribe' => "users#unsubscribe"
+    get 'mypage/favorites' => "users#favorite"
     # 地方区分絞り込み用
     resources :regions, only: [:index]
     # 投稿
     resources :posts do
       # コメント用
       resources :post_comments, only: [:create, :destroy]
+      # ブックマーク用
+      resource :favorites, only: [:create, :destroy]
     end
     # キーワード検索用
     get 'search' => "posts#search"

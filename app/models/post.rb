@@ -34,5 +34,8 @@ class Post < ApplicationRecord
   def self.search(keyword)
     Post.where(['body like?', "%#{keyword}%"])
   end
-    
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 end
