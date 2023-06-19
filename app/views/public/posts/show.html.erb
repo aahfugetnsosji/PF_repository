@@ -112,6 +112,17 @@
       </div>
       <div class="col">
         <%= link_to "削除する", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <p>
+          ※投稿を削除すると、投稿についたコメントも削除されます。
+        </p>
+      </div>
+    </div>
+  <% elsif @post.user_id != current_user.id %>
+    <div class="row">
+      <div class="col">
+        <p>
+          <%= link_to "不適切な投稿を通報する >>", new_post_reports_path(@post.id) %>
+        </p>
       </div>
     </div>
   <% end %>
