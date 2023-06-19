@@ -3,8 +3,21 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%Y/%m/%d"
+      
+  enums:
+    report: #通報理由
+      reason:
+        illegal: "違法行為"
+        offensive_content: "攻撃的なコンテンツ"
+        promote_discrimination: "差別を助長するようなコンテンツ"
+        spam: "スパム行為"
+        impersonation: "なりすまし"
+        copyright: "著作権に関する問題"
+        personal_information: "個人情報に関する問題"
+        other_violations_of_the_terms: "その他利用規約違反"
+        other_inappropriate_content: "その他不適切なコンテンツ"
         
-  activerecord:
+  activerecord: #バリデーション・エラーメッセージ
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
