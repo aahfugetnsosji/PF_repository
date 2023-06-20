@@ -1,2 +1,67 @@
-<h1>Admin::Reports#show</h1>
-<p>Find me in app/views/admin/reports/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>通報詳細</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>通報ID</th>
+            <td>
+              <%= @report.id %>
+            </td>
+          </tr>
+
+          <tr>
+            <th>通報日時</th>
+            <td>
+              <%= l @report.created_at %>
+            </td>
+          </tr>
+
+          <tr>
+            <th>該当の投稿タイトル</th>
+            <td>
+              <%= link_to @report.post.title, admin_post_path(@report.post_id) %>
+            </td>
+          </tr>
+
+          <tr>
+            <th>通報理由</th>
+            <td>
+              <%= @report.reason_i18n %>
+            </td>
+          </tr>
+
+          <tr>
+            <th>通報理由詳細</th>
+            <td>
+              <%= safe_join(@report.body.split("\n"),tag(:br)) %>
+            </td>
+          </tr>
+
+          <tr>
+            <th>対応確認</th>
+            <td>
+              <%= form_with model: @report, url: admin_report_path, method: :patch do |f| %>
+                <span class="text-danger">
+                  <%= f.radio_button :is_handled, false %>
+                  <%= f.label :is_handled, "未対処" %>
+                </span>
+                <span class="text-dark">
+                  <%= f.radio_button :is_handled, true %>
+                  <%= f.label :is_handled, "対処済み", class: "text-dark" %>
+                </span>
+                <%= f.submit "変更を保存" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

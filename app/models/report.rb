@@ -14,4 +14,5 @@ class Report < ApplicationRecord
     other_violations_of_the_terms: 7, #その他利用規約違反
     other_inappropriate_content: 8    #その他不適切なコンテンツ
   }
+  
 end

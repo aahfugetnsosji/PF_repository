@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>通報一覧</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>通報ID</th>
+            <th>通報日時</th>
+            <th>通報理由</th>
+            <th>対応確認</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+        <% @reports.each do |report| %>
+          <tr>
+            <td>
+              <%= report.id %>
+            </td>
+            <td>
+              <a href="reports/<%= report.id %>">
+                <%= l report.created_at %>
+              </a>
+            </td>
+            <td>
+              <%= report.reason_i18n %>
+            </td>
+            <td>
+              <% if report.is_handled == false %>
+                <p class="text-danger">未対処</p>
+              <% else %>
+                <p class="taxt-dark">対処済み</p>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
