@@ -24,7 +24,7 @@
         <%= f.text_area :body, placeholder: "本文を入力" %>
           
         <h4>タグを選択</h4>
-        <%= f.collection_select(:tag_ids, @tags, :id, :name, {prompt: "--選択してください--"}) %>
+        <%= f.collection_select(:tag_ids, @tags, :id, :name, {prompt: "--選択してください--"}, {multiple: true}) %>
           
         <h4>
           地方区分を選択
@@ -33,7 +33,7 @@
         <%= f.collection_select(:region_id, @regions, :id, :region_name, {prompt: "--選択してください--"}) %>
         
         <h4>都道府県を選択</h4>
-        <%= f.collection_select(:prefecture_ids, @prefectures, :id, :prefecture_name, {prompt: "--選択してください--"}) %>
+        <%= f.collection_select(:prefecture_ids, @prefectures, :id, :prefecture_name, {prompt: "--選択してください--"}, {multiple: true}) %>
           
         <div>
           <%= f.submit "変更を保存" %>

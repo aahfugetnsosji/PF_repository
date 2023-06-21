@@ -46,10 +46,27 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    post.user_id = current_user.id
-    post.update(post_params)
-    redirect_to post_path(post.id)
+    @post = Post.find(params[:id])
+    tag_ids = post_tags_params[:tag_ids]
+    tag_ids.delete("")
+    prefecture_ids = prefectures_params[:prefecture_ids]
+    prefecture_ids.delete("")
+    @post.user_id = current_user.id
+    if @post.update(post_params)
+      tag_ids.each do |tag_id|
+        PostTag.update(post_id:@post.id, tag_id:tag_id)
+      end
+      prefecture_ids.each do |prefecture_id|
+        PostPrefecture.update(post_id:@post.id, prefecture_id:prefecture_id)
+      end
+      flash[:notice] = "投稿を更新しました。"
+      redirect_to post_path(@post.id)
+    else
+      @tags = Tag.all
+      @regions = Region.all
+      @prefectures = Prefecture.all
+      render :edit
+    end
   end
 
   def destroy
