@@ -57,7 +57,11 @@ class Public::PostsController < ApplicationController
         PostTag.update(post_id:@post.id, tag_id:tag_id)
       end
       prefecture_ids.each do |prefecture_id|
-        PostPrefecture.update(post_id:@post.id, prefecture_id:prefecture_id)
+        if prefecture_id == @post.post_prefectures.find_by(prefecture_id: :prefecture_id)
+          prefecture_id.destroy
+        else
+          PostPrefecture.update(post_id:@post.id, prefecture_id:prefecture_id)
+        end
       end
       flash[:notice] = "投稿を更新しました。"
       redirect_to post_path(@post.id)
@@ -92,9 +96,11 @@ class Public::PostsController < ApplicationController
       post_prefectures_attributes: { prefecture_ids: [] }
     ).merge(user_id: current_user.id)
   end
+  
   def post_tags_params
     params.require(:post).permit(tag_ids:[])
   end
+  
   def prefectures_params
     params.require(:post).permit(prefecture_ids:[])
   end
