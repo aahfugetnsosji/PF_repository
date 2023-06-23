@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>うつしよ裏怪道</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <!--FontAwesomeの読み込み-->
     <script src="https://kit.fontawesome.com/04b8ef8016.js" crossorigin="anonymous"></script>
@@ -15,7 +15,9 @@
   <body>
     <header>
       <nav class="nav">
-        <h1>LOGO</h1>
+        <h1>
+          <%= link_to "LOGO", root_path %>
+        </h1>
       <%= flash[:alert] %>
       <%= flash[:notice] %>
 
@@ -78,7 +80,7 @@
     
     <!--Jmap読み込み-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="./jmap.js"></script>
+    <script type="text/javascript" src=""></script>
     <script type = "text/javascript">
         $(document).ready(function() {
             $('#jmap').jmap();
