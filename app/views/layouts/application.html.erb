@@ -8,6 +8,7 @@
     
     <!--FontAwesomeの読み込み-->
     <script src="https://kit.fontawesome.com/04b8ef8016.js" crossorigin="anonymous"></script>
+    
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -81,9 +82,13 @@
     <!--Jmap読み込み-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script type="text/javascript" src=""></script>
-    <script type = "text/javascript">
-        $(document).ready(function() {
-            $('#jmap').jmap();
+    <script>
+        $(function(){
+            $("#map-container").japanMap({
+                onSelect : function(data){
+                    alert(data.name);
+                }
+            });
         });
     </script>
 
