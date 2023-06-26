@@ -1,35 +1,42 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col">
       <h1>ブックマーク一覧</h1>
     </div>
   </div>
   
   <div class="row">
-    <div class="col-md-12">
+    <div class="col">
       <% if @favorites.count == 0 %>
         <h6>
           ブックマークに登録した投稿はありません。
         </h6>
       <% else %>
-        <div class="card-deck">
-        <% @favorites.each do |favorite| %>
-          <a href="/posts/<%= favorite.post_id %>" class="card text-dark border-dark" style="width: 20%;">
-            <%= image_tag favorite.post.get_image(200, 200), class: "card-img-top" %>
-            <div class="card-body">
-              <h6 class="card-title">
-                <%= favorite.post.title %>
-              </h6>
-              <p class="card-text">
-                <%= safe_join(favorite.post.body.split("\n"),tag(:br)) %>
-              </p>
-              <p class="card-text">
-                <%= favorite.post.user.name %>
-              </p>
+        <div class="row">
+          <% @favorites.each do |fav| %>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-7">
+                  <a href="/posts/<%= fav.post_id %>">
+                    <%= image_tag fav.post.get_image(200, 150), class: "card-img-top" %>
+                  </a>
+                </div>
+                
+                <div class="col-md-5">
+                  <h6>
+                    <%= fav.post.title %>
+                  </h6>
+                  <p>
+                    <%= safe_join(fav.post.body.split("\n"),tag(:br)) %>
+                  </p>
+                  <p>
+                    <%= link_to fav.post.user.name, user_path(fav.user_id) %>
+                    <%= link_to "ブックマークを解除", post_favorites_path(fav.post_id), method: :delete, "data-confirm" => "ブックマークを解除しますか？" %>
+                  </p>
+                </div>
+              </div>
             </div>
-          </a>
-          <%= link_to "ブックマークを削除", post_favorites_path(favorite.post_id), method: :delete do %>
-        <% end %>
+          <% end %>
         </div>
       <% end %>
     </div>

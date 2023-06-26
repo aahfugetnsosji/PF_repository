@@ -7,9 +7,9 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :region
   
-  has_many :reports # 通報は履歴として残す
-  has_many :post_comments,    dependent: :destroy
-  has_many :favorites,        dependent: :destroy
+  has_many :reports, foreign_key: 'post_id' # 通報は履歴として残す
+  has_many :post_comments,    dependent: :destroy, foreign_key: 'post_id'
+  has_many :favorites,        dependent: :destroy, foreign_key: 'post_id'
   has_many :post_tags,        dependent: :destroy, foreign_key: 'post_id'
   has_many :post_prefectures, dependent: :destroy, foreign_key: 'post_id'
   

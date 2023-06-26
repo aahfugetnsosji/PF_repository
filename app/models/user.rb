@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   
   # モデル間のアソシエーション
-  has_many :posts,         dependent: :destroy
-  has_many :post_comments, dependent: :destroy
-  has_many :favorites,     dependent: :destroy
+  has_many :posts,         dependent: :destroy, foreign_key: 'user_id'
+  has_many :post_comments, dependent: :destroy, foreign_key: 'user_id'
+  has_many :favorites,     dependent: :destroy, foreign_key: 'user_id'
 
   # プロフィール画像
   def get_profile_image(width, height)
