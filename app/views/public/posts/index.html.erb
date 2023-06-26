@@ -7,7 +7,7 @@
       </span>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-3">
       <!--キーワード検索窓-->
@@ -30,7 +30,7 @@
           </table>
         <% end %>
       </div>
-      
+
       <!--タグ検索窓-->
       <div class="row">
         <%= form_tag posts_path, method: :get do %>
@@ -51,11 +51,50 @@
           </table>
         <% end %>
       </div>
+
       <!--地方区分検索窓-->
+      <div class="row">
+        <%= form_tag regions_path, method: :get do %>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>地方区分で絞り込み</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= select_tag :region_id, options_from_collection_for_select(@regions, :id, :region_name, params[:region_id]), { prompt: "--選択してください--" } %><br>
+                  <%= submit_tag '検索' %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+
       <!--都道府県検索窓-->
-      
+      <div class="row">
+        <%= form_tag prefectures_path, method: :get do %>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>都道府県で絞り込み</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= select_tag :prefecture_id, options_from_collection_for_select(@prefectures, :id, :prefecture_name, params[:prefecture_id]), { prompt: "--選択してください--" } %><br>
+                  <%= submit_tag '検索' %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
     </div>
-    
+
     <div class="col-md-8">
       <% if @posts.count == 0 %>
         <div>
