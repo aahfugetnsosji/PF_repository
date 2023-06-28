@@ -11,7 +11,8 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import '../stylesheets/mystyle.css';
+import "../stylesheets/mystyle.css";
+import "../stylesheets/select2-min.css";
 
 
 Rails.start()

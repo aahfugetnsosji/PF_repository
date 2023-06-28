@@ -11,8 +11,13 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <!--select2のjsファイル読み込み-->
+    <%= javascript_pack_tag 'select2-min', 'data-turbolinks-track': 'reload' %>
+    
     <!--Jmapの読み込み-->
     <%= javascript_pack_tag 'jquery-japan-map-min', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
@@ -81,6 +86,13 @@
 
     </footer>
 
+    <!--select2本体読み込み-->
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+    
     <!--Jmap本体読み込み-->
     <script>
         $(function(){
@@ -91,14 +103,5 @@
             });
         });
     </script>
-
-    <!--複数のタグ選択ができるようselect2を導入-->
-    <!--<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />-->
-    <!--        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" type="text/javascript"></script>-->
-    <!--        <script type="text/javascript">-->
-    <!--            $(document).ready(function() {-->
-    <!--            $('.js-example-basic-multiple').select2();-->
-    <!--            });-->
-    <!--        </script>-->
   </body>
 </html>
