@@ -10,7 +10,10 @@
     <script src="https://kit.fontawesome.com/04b8ef8016.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--select2のcssファイル読み込み-->
+    <%= stylesheet_pack_tag 'select2-min', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'mystyle', 'data-turbolinks-track': 'reload' %>
     
     <!--select2のjsファイル読み込み-->
     <%= javascript_pack_tag 'select2-min', 'data-turbolinks-track': 'reload' %>
@@ -88,8 +91,8 @@
 
     <!--select2本体読み込み-->
     <script>
-        $(document).ready(function() {
-            $('.js-example-basic-multiple').select2();
+        $(document).ready(function () {
+            $('.select').select2();
         });
     </script>
     
