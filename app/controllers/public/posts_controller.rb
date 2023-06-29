@@ -53,14 +53,9 @@ class Public::PostsController < ApplicationController
     tag_ids.delete("")
     prefecture_ids = prefectures_params[:prefecture_ids]
     prefecture_ids.delete("")
-    @post.user_id = current_user.id
     if @post.update(post_params)
-      tag_ids.each do |tag_id|
-        PostTag.update(post_id:@post.id, tag_id:tag_id)
-      end
-      prefecture_ids.each do |prefecture_id|
-        PostPrefecture.update(post_id:@post.id, prefecture_id:prefecture_id)
-      end
+      @post.update_tag(post_tags_params)
+      @post.update_prefecture(prefectures_params)
       flash[:notice] = "投稿を更新しました。"
       redirect_to post_path(@post.id)
     else
@@ -94,11 +89,11 @@ class Public::PostsController < ApplicationController
       post_prefectures_attributes: { prefecture_ids: [] }
     ).merge(user_id: current_user.id)
   end
-  
+
   def post_tags_params
     params.require(:post).permit(tag_ids:[])
   end
-  
+
   def prefectures_params
     params.require(:post).permit(prefecture_ids:[])
   end
