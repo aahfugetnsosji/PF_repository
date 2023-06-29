@@ -17,7 +17,7 @@ class Post < ApplicationRecord
   has_many :tags,        through: :post_tags
   has_many :prefectures, through: :post_prefectures
   
-  # 親子孫関係にあるテーブルを一度に保存する
+  # 親子孫関係にあるテーブルを一度に保存する(無くても可)
   accepts_nested_attributes_for :post_tags
   accepts_nested_attributes_for :post_prefectures
   

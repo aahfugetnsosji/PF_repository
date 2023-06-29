@@ -10,17 +10,12 @@
     <script src="https://kit.fontawesome.com/04b8ef8016.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <!--select2のcssファイル読み込み-->
-    <%= stylesheet_pack_tag 'select2-min', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'mystyle', 'data-turbolinks-track': 'reload' %>
     
-    <!--select2のjsファイル読み込み-->
-    <%= javascript_pack_tag 'select2-min', 'data-turbolinks-track': 'reload' %>
-    
-    <!--Jmapの読み込み-->
-    <%= javascript_pack_tag 'jquery-japan-map-min', 'data-turbolinks-track': 'reload' %>
-    
+    <!-- Select2.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
+    <!-- Select2本体 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
   </head>
 
   <body>
@@ -89,14 +84,14 @@
 
     </footer>
 
-    <!--select2本体読み込み-->
+    <!--select2読み込み-->
     <script>
         $(document).ready(function () {
             $('.select').select2();
         });
     </script>
-    
-    <!--Jmap本体読み込み-->
+
+    <!--Jmap読み込み-->
     <script>
         $(function(){
             $("#map-container").japanMap({

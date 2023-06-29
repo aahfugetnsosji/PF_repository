@@ -59,11 +59,7 @@ class Public::PostsController < ApplicationController
         PostTag.update(post_id:@post.id, tag_id:tag_id)
       end
       prefecture_ids.each do |prefecture_id|
-        if prefecture_id == @post.post_prefectures.find_by(prefecture_id: :prefecture_id)
-          prefecture_id.destroy
-        else
-          PostPrefecture.update(post_id:@post.id, prefecture_id:prefecture_id)
-        end
+        PostPrefecture.update(post_id:@post.id, prefecture_id:prefecture_id)
       end
       flash[:notice] = "投稿を更新しました。"
       redirect_to post_path(@post.id)

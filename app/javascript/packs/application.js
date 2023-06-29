@@ -12,8 +12,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import "../stylesheets/mystyle.css";
-import "../stylesheets/select2-min.css";
-
+import "./jquery-japan-map-min"; //japanMapの読み込み
 
 Rails.start()
 Turbolinks.start()
