@@ -38,36 +38,72 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+  
+  # タグ編集メソッド(destroy_allを使うタイプ)
+  def save_tag(post_tags_params)
+    # 送信されたタグが空でない場合、その投稿の既存のタグをすべて削除
+    unless post_tags_params.empty?
+      self.post_tags.destroy_all
 
-  def update_tag(tag_ids)
-    registered_tags = self.post_tags.pluck(:tag_id) unless self.tags.nil?
-    destroy_tags = registered_tags - tag_ids
-    new_tags = tag_ids - registered_tags
+      post_tags_params.each do |new|
+        # 送信された各タグについて、PostTagモデルから既存のタグを検索し、存在しない場合は新しく作成
+        new_post_tag = PostTag.find_or_create_by(tag_id: new)
 
-    new_tags.each do |tag|
-      new_tag = PostTag.find_or_create_by(tag_id: tag)
-      tags << new_tag
+        #同じタグを登録するとエラーになるので、include?　で回避
+        unless self.post_tags.include?(new_post_tag)
+          # 左オペランドにあるオブジェクトに右オペランドにあるオブジェクトを追加
+          self.post_tags << new_post_tag
+        end
+      end
     end
+  end
+  
+  # 都道府県編集メソッド
+  def save_prefecture(prefectures_params)
+    unless prefectures_params.empty?
+      self.post_prefectures.destroy_all
 
-    destroy_tags.each do |tag|
-      destroy_tag = PostTag.find_by(tag_id: tag, post_id: id)
-      destroy_tag.destroy
+      prefectures_params.each do |new|
+        new_post_prefecture = PostPrefecture.find_or_create_by(prefecture_id: new)
+
+        #同じタグを登録するとエラーになるので、include?　で回避
+        unless self.post_prefectures.include?(new_post_prefecture)
+          self.post_prefectures << new_post_prefecture
+        end
+      end
     end
   end
 
-  def update_prefectures(prefctures_ids)
-    registered_prefectures = post_prefectures.pluck(:prefecture_id)
-    new_prefectures = prefectures_ids - registered_prefectures
-    destroy_prefectures = registered_prefectures - prefecture_ids
+  # タグ編集メソッド(差分ごとに処理をするタイプ)
+  # def update_tag(tag_ids)
+  #   registered_tags = tag_ids.pluck(:tag_id)
+  #   destroy_tags = registered_tags - tag_ids
+  #   new_tags = tag_ids - registered_tags
 
-    new_prefectures.each do |prefecture|
-      new_prefecture = PostPrefecture.find_or_create_by(prefecture_id: prefecture)
-      prefectures << new_prefectures
-    end
+  #   new_tags.each do |tag|
+  #     new_tag = PostTag.find_or_create_by(tag_id: tag)
+  #     tags << new_tag
+  #   end
 
-    destroy_prefectures.each do |prefecture|
-      destroy_prefecture = PostPrefecture.find_by(prefecture_id: prefecture, post_id: id)
-      destroy_prefecture.destroy
-    end
-  end
+  #   destroy_tags.each do |tag|
+  #     destroy_tag = PostTag.find_by(tag_id: tag, post_id: id)
+  #     destroy_tag.destroy
+  #   end
+  # end
+
+  # def update_prefectures(prefctures_ids)
+  #   registered_prefectures = post_prefectures.pluck(:prefecture_id)
+  #   new_prefectures = prefectures_ids - registered_prefectures
+  #   destroy_prefectures = registered_prefectures - prefecture_ids
+
+  #   new_prefectures.each do |prefecture|
+  #     new_prefecture = PostPrefecture.find_or_create_by(prefecture_id: prefecture)
+  #     prefectures << new_prefectures
+  #   end
+
+  #   destroy_prefectures.each do |prefecture|
+  #     destroy_prefecture = PostPrefecture.find_by(prefecture_id: prefecture, post_id: id)
+  #     destroy_prefecture.destroy
+  #   end
+  # end
 end

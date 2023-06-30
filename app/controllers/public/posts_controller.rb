@@ -54,8 +54,8 @@ class Public::PostsController < ApplicationController
     prefecture_ids = prefectures_params[:prefecture_ids]
     prefecture_ids.delete("")
     if @post.update(post_params)
-      @post.update_tag(post_tags_params)
-      @post.update_prefecture(prefectures_params)
+      @post.save_tag(post_tags_params)
+      @post.save_prefecture(prefectures_params)
       flash[:notice] = "投稿を更新しました。"
       redirect_to post_path(@post.id)
     else
