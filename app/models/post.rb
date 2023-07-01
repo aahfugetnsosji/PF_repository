@@ -59,7 +59,7 @@ class Post < ApplicationRecord
     end
   end
   
-  # 都道府県編集メソッド
+  # 都道府県編集メソッド(タグと同様)
   def save_prefecture(prefectures_params)
     unless prefectures_params.empty?
       self.post_prefectures.destroy_all
