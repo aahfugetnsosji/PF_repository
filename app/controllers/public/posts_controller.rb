@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  # before_actionを設定
+  
   def index
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
     @tags = Tag.all
@@ -50,14 +52,13 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     tag_ids = post_tags_params[:tag_ids]
-    # byebug
     tag_ids.delete("")
     prefecture_ids = prefectures_params[:prefecture_ids]
     prefecture_ids.delete("")
     if @post.update(post_params)
-      # save_tagはモデルに記述
+      # save_tagはモデルに記述、53行目で空のパラメータを削除した後の値を引数に指定
       @post.save_tag(tag_ids)
-      # save_prefectureはモデルに記述
+      # save_prefectureはモデルに記述、55行目で空のパラメータを削除した後の値を引数に指定
       @post.save_prefecture(prefecture_ids)
       flash[:notice] = "投稿を更新しました。"
       redirect_to post_path(@post.id)

@@ -26,7 +26,11 @@
           <tr>
             <th>該当の投稿タイトル</th>
             <td>
-              <%= link_to @report.post.title, admin_post_path(@report.post_id) %>
+              <% if @report.post.present? %>
+                <%= link_to @report.post.title, admin_post_path(@report.post_id) %>
+              <% else %>
+                投稿ID:<%= @report.post_id %> / 削除済みの投稿
+              <% end %>
             </td>
           </tr>
 

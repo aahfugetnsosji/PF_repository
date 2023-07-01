@@ -35,6 +35,7 @@ class Post < ApplicationRecord
     Post.where(['body like?', "%#{keyword}%"])
   end
 
+  # 同じユーザが同じ投稿に複数お気に入りできないよう、user_idがFaboritesテーブルに存在するかどうか
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
@@ -49,7 +50,7 @@ class Post < ApplicationRecord
         # 送信された各タグについて、PostTagモデルから既存のタグを検索し、存在しない場合は新しく作成
         new_post_tag = PostTag.find_or_create_by(tag_id: new)
 
-        #同じタグを登録するとエラーになるので、include?で回避 ※この記述は必要？
+        #同じタグを登録するとエラーになるので、include?で回避
         unless self.post_tags.include?(new_post_tag)
           # 左オペランドにあるオブジェクトに右オペランドにあるオブジェクトを追加
           self.post_tags << new_post_tag
@@ -66,7 +67,7 @@ class Post < ApplicationRecord
       prefectures_params.each do |new|
         new_post_prefecture = PostPrefecture.find_or_create_by(prefecture_id: new)
 
-        #同じ都道府県を登録するとエラーになるので、include?で回避 ※この記述は必要？
+        #同じ都道府県を登録するとエラーになるので、include?で回避
         unless self.post_prefectures.include?(new_post_prefecture)
           self.post_prefectures << new_post_prefecture
         end
@@ -74,36 +75,4 @@ class Post < ApplicationRecord
     end
   end
 
-  # タグ編集メソッド(差分ごとに処理をするタイプ)
-  # def update_tag(tag_ids)
-  #   registered_tags = tag_ids.pluck(:tag_id)
-  #   destroy_tags = registered_tags - tag_ids
-  #   new_tags = tag_ids - registered_tags
-
-  #   new_tags.each do |tag|
-  #     new_tag = PostTag.find_or_create_by(tag_id: tag)
-  #     tags << new_tag
-  #   end
-
-  #   destroy_tags.each do |tag|
-  #     destroy_tag = PostTag.find_by(tag_id: tag, post_id: id)
-  #     destroy_tag.destroy
-  #   end
-  # end
-
-  # def update_prefectures(prefctures_ids)
-  #   registered_prefectures = post_prefectures.pluck(:prefecture_id)
-  #   new_prefectures = prefectures_ids - registered_prefectures
-  #   destroy_prefectures = registered_prefectures - prefecture_ids
-
-  #   new_prefectures.each do |prefecture|
-  #     new_prefecture = PostPrefecture.find_or_create_by(prefecture_id: prefecture)
-  #     prefectures << new_prefectures
-  #   end
-
-  #   destroy_prefectures.each do |prefecture|
-  #     destroy_prefecture = PostPrefecture.find_by(prefecture_id: prefecture, post_id: id)
-  #     destroy_prefecture.destroy
-  #   end
-  # end
 end

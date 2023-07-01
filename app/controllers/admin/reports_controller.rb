@@ -10,9 +10,14 @@ class Admin::ReportsController < ApplicationController
 
   def update
     report = Report.find(params[:id])
-    report.update(report_params)
-    flash[:notice] = "対応ステータスを更新しました。"
-    redirect_to admin_reports_path
+    if report.update(report_params)
+      flash[:notice] = "対応ステータスを更新しました。"
+      redirect_to admin_reports_path
+    else
+      @report = Report.find(params[:id])
+      flash[:alert] = "ステータスの更新に失敗しました。"
+      render :show
+    end
   end
 
   private
