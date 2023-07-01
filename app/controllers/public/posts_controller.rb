@@ -50,12 +50,15 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     tag_ids = post_tags_params[:tag_ids]
+    # byebug
     tag_ids.delete("")
     prefecture_ids = prefectures_params[:prefecture_ids]
     prefecture_ids.delete("")
     if @post.update(post_params)
-      @post.save_tag(post_tags_params)
-      @post.save_prefecture(prefectures_params)
+      # save_tagはモデルに記述
+      @post.save_tag(tag_ids)
+      # save_prefectureはモデルに記述
+      @post.save_prefecture(prefecture_ids)
       flash[:notice] = "投稿を更新しました。"
       redirect_to post_path(@post.id)
     else

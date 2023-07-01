@@ -49,7 +49,7 @@ class Post < ApplicationRecord
         # 送信された各タグについて、PostTagモデルから既存のタグを検索し、存在しない場合は新しく作成
         new_post_tag = PostTag.find_or_create_by(tag_id: new)
 
-        #同じタグを登録するとエラーになるので、include?　で回避
+        #同じタグを登録するとエラーになるので、include?で回避 ※この記述は必要？
         unless self.post_tags.include?(new_post_tag)
           # 左オペランドにあるオブジェクトに右オペランドにあるオブジェクトを追加
           self.post_tags << new_post_tag
@@ -66,7 +66,7 @@ class Post < ApplicationRecord
       prefectures_params.each do |new|
         new_post_prefecture = PostPrefecture.find_or_create_by(prefecture_id: new)
 
-        #同じタグを登録するとエラーになるので、include?　で回避
+        #同じ都道府県を登録するとエラーになるので、include?で回避 ※この記述は必要？
         unless self.post_prefectures.include?(new_post_prefecture)
           self.post_prefectures << new_post_prefecture
         end
