@@ -6,13 +6,95 @@
   </div>
 
   <div class="row">
-    <div class="col">
-      
+    <div class="col-md-4">
+      <!--キーワード検索窓-->
+      <div class="row">
+        <%= form_tag search_path, method: :get do %>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>キーワード検索</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= text_field_tag :keyword %><br>
+                  <%= submit_tag '検索', :body => nil %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+
+      <!--タグ検索窓-->
+      <div class="row">
+        <%= form_tag posts_path, method: :get do %>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>タグ検索</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :name, params[:tag_id]), { prompt: "--選択してください--" } %><br>
+                  <%= submit_tag '検索' %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+
+      <!--地方区分検索窓-->
+      <div class="row">
+        <%= form_tag regions_path, method: :get do %>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>地方区分で絞り込み</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= select_tag :region_id, options_from_collection_for_select(@regions, :id, :region_name, params[:region_id]), { prompt: "--選択してください--" } %><br>
+                  <%= submit_tag '検索' %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+
+      <!--都道府県検索窓-->
+      <div class="row">
+        <%= form_tag prefectures_path, method: :get do %>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>都道府県で絞り込み</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= select_tag :prefecture_id, options_from_collection_for_select(@prefectures, :id, :prefecture_name, params[:prefecture_id]), { prompt: "--選択してください--" } %><br>
+                  <%= submit_tag '検索' %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
     </div>
 
-    <div class="col">
+    <div class="col-md-8">
       <!--Jmap表示-->
-      <div id="map-container"></div>
+      <div id="map"></div>
     </div>
   </div>
 </div>
