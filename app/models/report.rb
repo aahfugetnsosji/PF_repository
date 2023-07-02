@@ -1,5 +1,6 @@
 class Report < ApplicationRecord
   # モデル間のアソシエーション
+  # 外部キーのnilを許可する
   belongs_to :post, optional: true
 
   # 通報理由
