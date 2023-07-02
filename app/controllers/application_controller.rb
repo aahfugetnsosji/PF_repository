@@ -12,8 +12,10 @@ class ApplicationController < ActionController::Base
     
     # ログイン後の遷移先
     def after_sign_in_path_for(resource_or_scope)
-      if resource_or_scope.is_a?(Admin)
-        root_path #あとで通報一覧ページに変更
+      if resource_or_scope == :admin
+        admin_reports_path
+      elsif resource_or_scope == :public
+        root_path
       else
         root_path
       end

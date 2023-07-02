@@ -1,7 +1,7 @@
 class Report < ApplicationRecord
   # モデル間のアソシエーション
-  belongs_to :post
-  
+  belongs_to :post, optional: true
+
   # 通報理由
   enum reason: {
     illegal: 0,                       #違法行為
