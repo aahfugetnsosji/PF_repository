@@ -56,7 +56,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:destroy]
     end
     resources :tags, except: [:show, :new]
-    resources :reports, only: [:index, :show, :update]
+    resources :reports, only: [:show, :update]
   end
   
 end
