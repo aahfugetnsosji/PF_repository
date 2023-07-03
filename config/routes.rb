@@ -42,8 +42,6 @@ Rails.application.routes.draw do
     get 'search' => "posts#search"
     # 都道府県絞り込み用
     resources :prefectures, only: [:index]
-    # タグ検索用
-    resources :tags, only: [:index]
     # 通報用
     resources :reports, only: [:new, :create]
   end
