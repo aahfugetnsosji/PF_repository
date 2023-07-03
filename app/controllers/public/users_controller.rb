@@ -1,6 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:mypage, :edit, :update, :unsubscribe] #未ログインユーザのアクセス制限
-  before_action :set_user, only: [:show] #ユーザページの表示はログイン不要
+  before_action :authenticate_user! #未ログインユーザのアクセス制限
 
   def show
     @user = User.find(params[:id])
@@ -9,7 +8,7 @@ class Public::UsersController < ApplicationController
       redirect_to mypage_path
     end
   end
-  
+
   # マイページ専用
   def mypage
     @user = current_user
@@ -23,13 +22,13 @@ class Public::UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if user.email == "guest@example.com"
-      redirect_to mypage, alert: "ゲストユーザは更新できません。"
+      redirect_to mypage_path, alert: "ゲストユーザは更新できません。"
     else
       user.update(user_params)
       redirect_to mypage_path, notice: "ユーザー情報を更新しました。"
     end
   end
-  
+
   # 退会画面
   def unsubscribe
     @user = current_user
@@ -44,18 +43,13 @@ class Public::UsersController < ApplicationController
       redirect_to mypage_path
     end
   end
-  
+
   # ブックマーク一覧
   def favorite
     @favorites = current_user.favorites.all
   end
 
   private
-
-  # ユーザページを表示
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   def user_params
     params.require(:user).permit(:name, :email, :profile, :profile_image)

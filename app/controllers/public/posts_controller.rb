@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  # before_actionを設定
+  before_action :authenticate_user!
   
   def index
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
