@@ -19,7 +19,7 @@
   </head>
 
   <body>
-    <header>
+    <header class="bg-dark">
       <nav class="nav">
         <h1>
           <%= link_to "LOGO", root_path %>
@@ -76,12 +76,12 @@
       </nav>
     </header>
 
-    <main>
+    <main class="my-5">
       <%= yield %>
     </main>
 
     <footer>
-
+      <div class="bg-dark" style="height: 100px;"></div>
     </footer>
 
     <!--select2読み込み-->
