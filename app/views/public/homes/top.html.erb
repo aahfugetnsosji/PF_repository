@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container center-block">
   <div class="row">
     <div class="col">
       <h1>Top page</h1>
@@ -97,24 +97,36 @@
       <div id="jmap"></div>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-12">
       <h3>全国の新着投稿</h3>
     </div>
   </div>
-  
+
   <div class="row">
     <dv class="col">
       <%= link_to "投稿をもっと見る　→", posts_path %>
     </dv>
   </div>
+
   
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        
-      </table>
+  <div class="row d-block">
+    <div class="col-lg-12">
+      <div class="card-group">
+        <% @latest_posts.each do |post| %>
+          <div class="m-3">
+            <a href="/posts/<%= post.id %>" class="card text-dark border-dark">
+              <%= image_tag post.get_image(150, 150), class: "card-img-top border-bottom border-dark" %>
+              <div class="card-body">
+                <h6 class="card-title col-3 text-truncate">
+                  <%= post.title %>
+                </h6>
+              </div>
+            </a>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

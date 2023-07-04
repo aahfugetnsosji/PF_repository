@@ -8,11 +8,10 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery";
+import "./jmap"; // japanMapの読み込み
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import "../stylesheets/mystyle";
-import "./jmap"; // japanMapの読み込み
 
 
 Rails.start()

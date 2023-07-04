@@ -280,13 +280,9 @@
             showTextNoneSkewed: true,
             areas: [],
             onSelect: function(e, data) {},
-            onHover: function(e, data) {
-                
-            },
+            onHover: function(e, data) {},
             onMouseout: function(e, data) {},
-            onLoad: function(e, data) {
-                
-            },
+            onLoad: function(e, data) {},
             onSelectHeatMapLabel: function(e, data) {},
             onHoverHeatMapLabel: function(e, data) {},
             onLoadHeatMapLabel: function(e, data) {}
