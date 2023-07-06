@@ -1,0 +1,19 @@
+<div class="row">
+  <%= form_tag posts_path, method: :get do %>
+    <table class="table table-bordered border-dark">
+      <thead>
+        <tr>
+          <th>タグ検索</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-center">
+            <%= select_tag :tag_id, options_from_collection_for_select(tag, :id, :name, params[:tag_id]), { prompt: "選択してください", class: "select", style: "width: 100%" } %><br>
+            <%= submit_tag '検索', class: "btn btn-option text-center mt-2" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>

@@ -1,0 +1,19 @@
+<div class="row">
+  <%= form_tag regions_path, method: :get do %>
+    <table class="table table-bordered border-dark">
+      <thead>
+        <tr>
+          <th>地方区分で絞り込み</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-center">
+            <%= select_tag :region_id, options_from_collection_for_select(region, :id, :region_name, params[:region_id]), { prompt: "選択してください", class: "select", style: "width: 100%" } %><br>
+            <%= submit_tag '検索', class: "btn btn-option mt-2" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>

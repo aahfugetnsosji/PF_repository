@@ -1,133 +1,59 @@
+<div class="row">
+  <div class="col">
+  </div>
+</div>
 
-  <div class="row">
-    <div class="col">
-      <h1>テスト</h1>
-    </div>
+<div class="row mx-auto">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-7">
+    <!--Jmap表示-->
+    <div id="jmap"></div>
   </div>
 
-  <div class="row mx-auto">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-2">
-      <!--キーワード検索窓-->
-      <div class="row">
-        <%= form_tag search_path, method: :get do %>
-          <table class="table table-bordered border-dark">
-            <thead>
-              <tr>
-                <th>キーワード検索</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <%= text_field_tag :keyword %><br>
-                  <%= submit_tag '検索', :body => nil, class: "btn btn-option" %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-      </div>
-
-      <!--タグ検索窓-->
-      <div class="row">
-        <%= form_tag posts_path, method: :get do %>
-          <table class="table table-bordered border-dark">
-            <thead>
-              <tr>
-                <th>タグ検索</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <%= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :name, params[:tag_id]), { prompt: "選択してください", class: "select", style: "width: 100%" } %><br>
-                  <%= submit_tag '検索', class: "btn btn-option text-center" %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-      </div>
-
-      <!--地方区分検索窓-->
-      <div class="row">
-        <%= form_tag regions_path, method: :get do %>
-          <table class="table table-bordered border-dark">
-            <thead>
-              <tr>
-                <th>地方区分で絞り込み</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <%= select_tag :region_id, options_from_collection_for_select(@regions, :id, :region_name, params[:region_id]), { prompt: "選択してください", class: "select", style: "width: 100%" } %><br>
-                  <%= submit_tag '検索', class: "btn btn-option" %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-      </div>
-
-      <!--都道府県検索窓-->
-      <div class="row">
-        <%= form_tag prefectures_path, method: :get do %>
-          <table class="table table-bordered border-dark">
-            <thead>
-              <tr>
-                <th>都道府県で絞り込み</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <%= select_tag :prefecture_id, options_from_collection_for_select(@prefectures, :id, :prefecture_name, params[:prefecture_id]), { prompt: "選択してください", class: "select", style: "width: 100%" } %><br>
-                  <%= submit_tag '検索', class: "btn btn-option" %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-7">
-      <!--Jmap表示-->
-      <div id="jmap"></div>
-    </div>
+  <div class="col-lg-1"></div>
+  <div class="col-lg-2">
+    <!--キーワード検索窓-->
+    <%= render partial: 'public/partials/search_keyword' %>
+    <!--タグ検索窓-->
+    <%= render partial: 'public/partials/search_tag', locals: { tag: @tags} %>
+    <!--地方区分検索窓-->
+    <%= render partial: 'public/partials/search_region', locals: { region: @regions} %>
+    <!--都道府県検索窓-->
+    <%= render partial: 'public/partials/search_prefecture', locals: { prefecture: @prefectures} %>
   </div>
 
-  <div class="row">
-    <div class="col-lg-12">
-      <h3 class="header-option">全国の新着投稿</h3>
+  
+
+</div>
+
+<div class="row mt-5">
+  <div class="col-lg-12">
+    <h2 class="header-option">全国の新着投稿</h2>
+  </div>
+</div>
+
+<div class="row my-3">
+  <div class="option-right">
+    <%= link_to "投稿をもっと見る", posts_path, class: "btn btn-option" %>
+  </div>
+</div>
+
+
+<div class="row d-block">
+  <div class="col-lg-12">
+    <div class="card-group">
+      <% @latest_posts.each do |post| %>
+        <div class="m-3">
+          <a href="/posts/<%= post.id %>" class="card text-dark border-dark">
+            <%= image_tag post.get_image(150, 150), class: "card-img-top border-bottom border-dark" %>
+            <div class="card-body">
+              <h6 class="card-title col-3 text-truncate">
+                <%= post.title %>
+              </h6>
+            </div>
+          </a>
+        </div>
+      <% end %>
     </div>
   </div>
-
-  <div class="row my-3">
-    <dic class="col-lg-10"></dic>
-    <dv class="col-lg-2">
-      <%= link_to "投稿をもっと見る", posts_path, class: "btn btn-option" %>
-    </dv>
-  </div>
-
-
-  <div class="row d-block">
-    <div class="col-lg-12">
-      <div class="card-group">
-        <% @latest_posts.each do |post| %>
-          <div class="m-3">
-            <a href="/posts/<%= post.id %>" class="card text-dark border-dark">
-              <%= image_tag post.get_image(150, 150), class: "card-img-top border-bottom border-dark" %>
-              <div class="card-body">
-                <h6 class="card-title col-3 text-truncate">
-                  <%= post.title %>
-                </h6>
-              </div>
-            </a>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+</div>

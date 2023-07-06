@@ -14,6 +14,10 @@
 
 @import "variables";
 
+html {
+  scroll-behavior: smooth;
+}
+
 main {
   background-color: $thema-color1;
 }
@@ -43,10 +47,14 @@ p {
   font-family: "header";
 }
 
-.table > thead th {
-  background-color: $thema-color2 !important;
+.table thead th {
+  background-color: $thema-color2;
   color: #fff;
   font-family: "text";
+}
+
+.table tbody td {
+  background-color: $thema-color4;
 }
 
 .btn-option {
@@ -62,10 +70,30 @@ p {
   color: #fff;
 }
 
+.option-right {
+  text-align: right;
+}
+
 input#keyword {
   width: 100%;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
   font-family: "text";
+}
+
+input.btn-option {
+  margin: 0 auto;
+}
+
+.pagetop {
+  font-family: "text";
+  font-size: 14px;
+  color: $thema-color2;
+  text-decoration: none;
+  transition: 0.3s0;
+}
+
+.pagetop:hover {
+  color: $thema-color3;
 }
