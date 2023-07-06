@@ -20,8 +20,7 @@
   </head>
 
   <body>
-    <header>
-      <div id="page_top"></div>
+    <header id="header">
       <nav class="nav">
         <h1>
           <%= link_to "LOGO", root_path %>
@@ -79,20 +78,16 @@
     </header>
 
     <main>
-      <div class="container center-block py-5">
-        
+      <div id="page_top"></div>
+      <div class="container center-block">
         <%= yield %>
-        
-        <div class="row mt-5">
-          <div class="option-right">
-            <a href="#page_top" class="pagetop">頁の先頭へ ↑</a>
-          </div>
-        </div>
       </div>
     </main>
 
     <footer>
-      <div style="height: 100px;"></div>
+      <div class="option-right">
+        <a href="#page_top" class="pagetop">頁の先頭へ ↑</a>
+      </div>
     </footer>
 
     <!--select2読み込み-->

@@ -1,37 +1,17 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-5 mb-3">
-      <h3>管理者ログイン</h3>
-    </div>
+<div class="row">
+  <div class="col-lg-12 mb-5">
+    <h1 class="header-option">管理者ログイン</h1>
   </div>
-  
-  <div class="row">
-    <div class="col-lg-6 mx-auto">
-      <%= form_with model: @admin, url: session_path(resource_name) do |f| %>
-      <table class="table table-borderless">
-        <tr>
-          <th>
-            <%= f.label :email, "メールアドレス" %>
-          </th>
-          <td>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", size: "30%" %>
-          </td>
-        </tr>
-        
-        <tr>
-          <th>
-            <%= f.label :password, "パスワード" %>
-          </th>
-          <td>
-            <%= f.password_field :password, autocomplete: "current-password", size: "30%" %>
-          </td>
-        </tr>
-      </table>
-  
-      <div class="actions text-center">
-        <%= f.submit "ログイン", class: "btn btn-primary" %>
-      </div>
-      <% end %>
+</div>
+
+<div class="row">
+  <div class="login-option">
+    <%= form_with model: @admin, url: session_path(resource_name) do |f| %>
+    <div class="option-center">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "input-form" %>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "input-form" %>
+      <%= f.submit "ログイン", class: "btn btn-option mt-4" %>
     </div>
+    <% end %>
   </div>
 </div>

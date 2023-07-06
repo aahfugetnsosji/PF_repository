@@ -20,17 +20,55 @@ html {
 
 main {
   background-color: $thema-color1;
+  min-height: 750px;
 }
 
 header {
   background-color: $thema-color2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 40px;
 }
+
+#header.scroll {
+  padding: 10px 40px;
+  opacity: 0.9;
+}
+
 
 footer {
   background-color: $thema-color2;
+  height: 100px;
+  width: 100%;
+}
+
+.container {
+  padding-top: 130px;
 }
 
 h1 {
+  font-family: "header";
+}
+
+h2 {
+  font-family: "header";
+}
+
+h3 {
+  font-family: "header";
+}
+
+h4 {
+  font-family: "header";
+}
+
+h5 {
+  font-family: "header";
+}
+
+h6 {
   font-family: "header";
 }
 
@@ -38,13 +76,22 @@ p {
   font-family: "text";
 }
 
+.text-option {
+  font-family: "text";
+  font-weight: bold;
+  border-bottom: 1px dashed $thema-color2;
+}
+
+.text-normal {
+  font-size: 18px;
+}
+
 .header-option {
-  border-bottom: 2px solid #0f0001;
-  border-left: 7px solid #0f0001;
+  border-bottom: 2px solid $thema-color2;
+  border-left: 7px solid $thema-color2;
   padding-bottom: 15px;
   padding-left: 15px;
   padding-top: 10px;
-  font-family: "header";
 }
 
 .table thead th {
@@ -55,6 +102,11 @@ p {
 
 .table tbody td {
   background-color: $thema-color4;
+}
+
+.font-bold {
+  font-weight: bold;
+  color: $thema-color3;
 }
 
 .btn-option {
@@ -70,8 +122,52 @@ p {
   color: #fff;
 }
 
+.danger-btn {
+  font-size: 15px;
+  background: $thema-color3;
+  font-family: "text";
+  color: #fff;
+  transition: .3s;
+}
+
+.danger-btn:hover {
+  background: $thema-color2;
+  color: #fff;
+}
+
+.link-option {
+  font-family: "text";
+  font-size: 14px;
+  color: $thema-color2;
+  text-decoration: none;
+}
+
+.link-option:hover {
+  color: $thema-color3;
+}
+
+a.link-option {
+  font-family: "text";
+  font-size: 16px;
+  color: $thema-color2;
+  text-decoration: underline;
+}
+
+a.link-option:hover {
+  color: $thema-color3;
+}
+
 .option-right {
   text-align: right;
+  padding-right: 40px;
+}
+
+.option-center {
+  text-align: center;
+}
+
+span.option-left {
+  text-align: left;
 }
 
 input#keyword {
@@ -80,20 +176,61 @@ input#keyword {
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
   font-family: "text";
+  font-size: 15px;
 }
 
 input.btn-option {
   margin: 0 auto;
 }
 
+.input-form {
+  font-family: "text";
+  font-size: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid $thema-color2;
+}
+
+.input-file-form {
+  font-family: "text";
+  font-size: 15px;
+  width: 50%;
+  margin-bottom: 10px;
+  border: 1px solid $thema-color2;
+}
+
 .pagetop {
   font-family: "text";
   font-size: 14px;
-  color: $thema-color2;
+  color: #fff;
+  line-height: 100px;
+  padding-right: 30px;
   text-decoration: none;
   transition: 0.3s0;
 }
 
 .pagetop:hover {
-  color: $thema-color3;
+  text-decoration: underline;
+}
+
+.login-option {
+  width: 100%;
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 80px;
+  border: 2px solid $thema-color2;
+}
+
+.login-text {
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 1px solid $thema-color2;
+}
+
+.icon-border {
+  border: 2px solid $thema-color2;
+}
+
+.unsubscribe {
+  margin-top: 150px;
 }

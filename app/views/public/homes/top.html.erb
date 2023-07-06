@@ -1,5 +1,6 @@
-<div class="row">
+<div class="row mt-5">
   <div class="col">
+    <!--画像表示-->
   </div>
 </div>
 
@@ -21,9 +22,6 @@
     <!--都道府県検索窓-->
     <%= render partial: 'public/partials/search_prefecture', locals: { prefecture: @prefectures} %>
   </div>
-
-  
-
 </div>
 
 <div class="row mt-5">
@@ -32,10 +30,8 @@
   </div>
 </div>
 
-<div class="row my-3">
-  <div class="option-right">
-    <%= link_to "投稿をもっと見る", posts_path, class: "btn btn-option" %>
-  </div>
+<div class="option-right my-3">
+  <%= link_to "投稿をもっと見る", posts_path, class: "btn btn-option" %>
 </div>
 
 

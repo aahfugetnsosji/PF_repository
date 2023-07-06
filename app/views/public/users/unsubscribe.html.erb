@@ -1,19 +1,19 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h3>本当に退会しますか？</h3>
-      <p>
-        退会すると、今までの投稿・コメントが全て削除されます。<br>
-        また、新規投稿や、他の人の投稿へコメントすることができなくなります。<br>
-        それでも良い場合は下の退会ボタンを押してください。
-      </p>
-      <p>ご利用ありがとうございました。</p>
-      <%= link_to "退会する", user_registration_path, method: :delete, "data-confirm" => "本当によろしいですか？" %>
+<div class="row unsubscribe">
+  <div class="col-lg-6 mx-auto">
+    <h3 class="mb-5">本当に退会しますか？</h3>
+    <p>
+      退会すると、今までの投稿・コメントが全て削除されます。<br>
+      また、新規投稿や、他の人の投稿へコメントすることができなくなります。<br>
+      それでも良い場合は下の退会ボタンを押してください。
+    </p>
+    <p>ご利用ありがとうございました。</p>
+    
+    <div class="option-center mt-5">
+      <%= link_to "退会する", user_registration_path, method: :delete, "data-confirm" => "本当によろしいですか？", class: "btn danger-btn" %>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <%= link_to "退会しない", mypage_path %>
+    
+    <div class="option-right mt-5">
+      <%= link_to "退会しない", mypage_path, class: "link-option" %>
     </div>
   </div>
 </div>
