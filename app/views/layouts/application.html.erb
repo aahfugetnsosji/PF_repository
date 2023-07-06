@@ -9,9 +9,9 @@
     <!--FontAwesomeの読み込み-->
     <script src="https://kit.fontawesome.com/04b8ef8016.js" crossorigin="anonymous"></script>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application' %>
 
     <!-- Select2.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <heade>
+    <header>
       <nav class="nav">
         <h1>
           <%= link_to "LOGO", root_path %>

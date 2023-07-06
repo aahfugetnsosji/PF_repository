@@ -10,22 +10,22 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
-// *= require_tree .
-// *= require_self
+//  require_tree .
+//  require_self
  */
 
- @import "public/*";
+@import "variables";
 
 main{
-  background-color: #f0ead5;
+  background-color: $thema-color1;
 }
 
 .nav{
-  background-color: #0f0001;
+  background-color: $thema-color2;
 }
 
 footer{
-  background-color: #0f0001;
+  background-color: $thema-color2;
 }
 
 @font-face {
@@ -46,14 +46,6 @@ h1{
   font-family: "header";
 }
 
-a.btn-option {
-  font-size: 15px;
-  background: #0f0001;
-  color: white;
-  transition: .3s;
-}
-
-a.btn-option:hover{
-  background: #990000;
-  color: white;
+.tabel > thead{
+  background-color: $thema-color2 !important;
 }
