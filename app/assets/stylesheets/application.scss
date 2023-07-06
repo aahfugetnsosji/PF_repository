@@ -10,34 +10,31 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
-//  require_tree .
-//  require_self
  */
 
 @import "variables";
 
-main{
+main {
   background-color: $thema-color1;
 }
 
-.nav{
+header {
   background-color: $thema-color2;
 }
 
-footer{
+footer {
   background-color: $thema-color2;
 }
 
-@font-face {
-  font-family: "header";
-  src: url("./font/OradanoGSRR.ttf") format("truetype")
-}
-
-h1{
+h1 {
   font-family: "header";
 }
 
-.header-option{
+p {
+  font-family: "text";
+}
+
+.header-option {
   border-bottom: 2px solid #0f0001;
   border-left: 7px solid #0f0001;
   padding-bottom: 15px;
@@ -46,6 +43,29 @@ h1{
   font-family: "header";
 }
 
-.tabel > thead{
+.table > thead th {
   background-color: $thema-color2 !important;
+  color: #fff;
+  font-family: "text";
+}
+
+.btn-option {
+  font-size: 15px;
+  background: $thema-color2;
+  font-family: "text";
+  color: #fff;
+  transition: .3s;
+}
+
+.btn-option:hover {
+  background: $thema-color3;
+  color: #fff;
+}
+
+input#keyword {
+  width: 100%;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  font-family: "text";
 }

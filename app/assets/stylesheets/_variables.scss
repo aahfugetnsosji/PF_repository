@@ -1,3 +1,13 @@
 $thema-color1: #f0ead5; // 全体背景色(ベージュ)
 $thema-color2: #0f0001; // 黒
-$thema-color3: #990000; // 
+$thema-color3: #990000; // 赤
+
+@font-face {
+  font-family: "header";
+  src: asset_url("OradanoGSRR.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "text";
+  src: asset_url("HinaMincho-Regular.ttf") format("truetype");
+}
