@@ -20,7 +20,7 @@ html {
 
 main {
   background-color: $thema-color1;
-  min-height: 750px;
+  min-height: 800px;
 }
 
 header {
@@ -48,30 +48,6 @@ footer {
   padding-top: 130px;
 }
 
-h1 {
-  font-family: "header";
-}
-
-h2 {
-  font-family: "header";
-}
-
-h3 {
-  font-family: "header";
-}
-
-h4 {
-  font-family: "header";
-}
-
-h5 {
-  font-family: "header";
-}
-
-h6 {
-  font-family: "header";
-}
-
 p {
   font-family: "text";
 }
@@ -86,12 +62,28 @@ p {
   font-size: 18px;
 }
 
+.pub-header {
+  font-family: "public-header";
+}
+
+.adm-header {
+  font-family: "admin-header";
+}
+
 .header-option {
   border-bottom: 2px solid $thema-color2;
   border-left: 7px solid $thema-color2;
   padding-bottom: 15px;
   padding-left: 15px;
   padding-top: 10px;
+}
+
+.table {
+  border: 1px solid $thema-color2;
+}
+
+.table tbody {
+  border-bottom: 1px solid $thema-color2;
 }
 
 .table thead th {
@@ -102,6 +94,15 @@ p {
 
 .table tbody td {
   background-color: $thema-color4;
+  font-family: "text";
+  font-size: 17px;
+}
+
+.table th {
+  background-color: $thema-color2;
+  color: #fff;
+  font-family: "text";
+  width: 37%;
 }
 
 .font-bold {
@@ -231,6 +232,14 @@ input.btn-option {
   border: 2px solid $thema-color2;
 }
 
+.adm-icon-border {
+  border: 1px solid $thema-color2;
+}
+
 .unsubscribe {
   margin-top: 150px;
+}
+
+.font-20 {
+  font-size: 20px;
 }
