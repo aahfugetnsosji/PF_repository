@@ -1,43 +1,43 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>新規投稿</h1>
-    </div>
+<div class="row">
+  <div class="col-lg-9 mx-auto mb-3">
+    <h2 class="header-option pub-header">新規投稿</h2>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-        <%= f.file_field :image, accept: "image/*" %>
-        
-        <h4>
-          タイトル
-          <span>※必須</span>
-        </h4>
-        <%= f.text_field :title, placeholder: "タイトルを入力" %>
-        
-        <h4>
-          本文
-          <span>※必須</span>
-        </h4>
-        <%= f.text_area :body, placeholder: "本文を入力" %>
-        
-        <h4>タグを選択</h4>
-        <%= f.collection_select(:tag_ids, @tags, :id, :name, {prompt: "選択してください"}, {class: "select", multiple: true}) %>
-        
-        <h4>
-          地方区分を選択
-          <span>※必須</span>
-        </h4>
-        <%= f.collection_select(:region_id, @regions, :id, :region_name, {prompt: "選択してください"}) %>
-        
-        <h4>都道府県を選択</h4>
-          <%= f.collection_select(:prefecture_ids, @prefectures, :id, :prefecture_name, {prompt: "選択してください"}, {class: "select", multiple: true}) %>
-        
-        <div>
-          <%= f.submit "投稿する" %>
-        </div>
-      <% end %>
-    </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-lg-6 mx-auto">
+    <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+
+      <h5 class="header-option pub-header mb-3">投稿画像</h5>
+      <%= f.file_field :image, accept: "image/*", class: "form-control input-file-form" %>
+
+      <h5 class="header-option pub-header mt-4 mb-3">
+        タイトル
+        <span class="text-annotation">※必須</span>
+      </h5>
+      <%= f.text_field :title, placeholder: "タイトルを入力", class: "form-control input-form" %>
+
+      <h5 class="header-option pub-header mt-4 mb-3">
+        本文
+        <span class="text-annotation">※必須</span>
+      </h5>
+      <%= f.text_area :body, placeholder: "本文を入力", class: "form-control input-form", id: "textarea" %>
+
+      <h5 class="header-option pub-header mt-4 mb-3">タグを選択</h5>
+      <%= f.collection_select(:tag_ids, @tags, :id, :name, {prompt: "選択してください"}, {class: "select form-control input-form", multiple: true}) %>
+
+      <h5 class="header-option pub-header mt-4 mb-3">
+        地方区分を選択
+        <span class="text-annotation">※必須</span>
+      </h5>
+      <%= f.collection_select(:region_id, @regions, :id, :region_name, {prompt: "選択してください"}, {class: "select form-control input-form"}) %>
+
+      <h5 class="header-option pub-header mt-4 mb-3">都道府県を選択</h5>
+        <%= f.collection_select(:prefecture_ids, @prefectures, :id, :prefecture_name, {prompt: "選択してください"}, {class: "select form-control input-form", multiple: true}) %>
+
+      <div class="text-center mt-5">
+        <%= f.submit "投稿する", class: "btn btn-option mb-5" %>
+      </div>
+    <% end %>
   </div>
 </div>

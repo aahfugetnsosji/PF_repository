@@ -21,11 +21,12 @@ html {
 main {
   background-color: $thema-color1;
   min-height: 800px;
+  height: 100%;
 }
 
 header {
   background-color: $thema-color2;
-  position: fixed;
+  // position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -45,7 +46,7 @@ footer {
 }
 
 .container {
-  padding-top: 130px;
+  padding: 50px 0;
 }
 
 p {
@@ -55,11 +56,28 @@ p {
 .text-option {
   font-family: "text";
   font-weight: bold;
-  border-bottom: 1px dashed $thema-color2;
+  // border-bottom: 1px dashed $thema-color2;
 }
 
 .text-normal {
+  font-family: "text";
   font-size: 18px;
+}
+
+.font-20 {
+  font-family: "text";
+  font-size: 20px;
+}
+
+.text-annotation {
+  font-family: "text";
+  font-size: 13px;
+  color: $thema-color3;
+}
+
+.font-bold {
+  font-weight: bold;
+  color: $thema-color3;
 }
 
 .pub-header {
@@ -76,6 +94,11 @@ p {
   padding-bottom: 15px;
   padding-left: 15px;
   padding-top: 10px;
+}
+
+.transparent-option {
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 5px;
 }
 
 .table {
@@ -105,9 +128,42 @@ p {
   width: 37%;
 }
 
-.font-bold {
-  font-weight: bold;
+.index-table {
+
+
+}
+
+.table th .index-th {
+  width: 30%;
+}
+
+.table td .index-td {
+  width: 50%;
+  position: relative;
+}
+
+.index-name {
+  font-family: "text";
+  font-size: 14px;
+  color: $thema-color2;
+}
+
+.index-name-link-option {
+  font-family: "text";
+  font-size: 14px;
+  color: $thema-color2;
+  text-decoration: underline;
+}
+
+.index-name-link-option:hover {
   color: $thema-color3;
+}
+
+.table td .index-data {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
 }
 
 .btn-option {
@@ -158,8 +214,18 @@ a.link-option:hover {
   color: $thema-color3;
 }
 
+.index-link-option {
+  font-family: "text";
+  font-size: 16px;
+  color: $thema-color2;
+  text-decoration: none;
+}
+
 .option-right {
   text-align: right;
+}
+
+.option-right-padding {
   padding-right: 40px;
 }
 
@@ -175,9 +241,26 @@ input#keyword {
   width: 100%;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__rendered {
+.select2-container {
   font-family: "text";
   font-size: 15px;
+  border-color: $thema-color2;
+  width: 100% !important;
+}
+
+.select2-container--default .select2-selection__choice {
+  color: #fff;
+  background-color: $thema-color2 !important;
+  border-color: $thema-color2 !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: #fff !important;
+  margin-right: 3px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+  color: $thema-color4 !important;
 }
 
 input.btn-option {
@@ -186,7 +269,7 @@ input.btn-option {
 
 .input-form {
   font-family: "text";
-  font-size: 20px;
+  font-size: 17px;
   width: 100%;
   margin-bottom: 10px;
   border: 1px solid $thema-color2;
@@ -194,10 +277,14 @@ input.btn-option {
 
 .input-file-form {
   font-family: "text";
-  font-size: 15px;
-  width: 50%;
+  font-size: 13px;
+  width: 100%;
   margin-bottom: 10px;
   border: 1px solid $thema-color2;
+}
+
+#textarea {
+  min-height: 150px;
 }
 
 .pagetop {
@@ -228,8 +315,9 @@ input.btn-option {
   border-bottom: 1px solid $thema-color2;
 }
 
-.icon-border {
+.icon-option {
   border: 2px solid $thema-color2;
+  background-color: rgba(255,255,255,0.7);
 }
 
 .adm-icon-border {
@@ -238,8 +326,4 @@ input.btn-option {
 
 .unsubscribe {
   margin-top: 150px;
-}
-
-.font-20 {
-  font-size: 20px;
 }
