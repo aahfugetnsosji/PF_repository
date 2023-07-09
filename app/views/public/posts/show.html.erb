@@ -1,130 +1,150 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      
-      <h1>
-        <!--タイトル-->
-        <%= @post.title %>
-        <span>
-          <!--投稿者-->
-          <%= link_to @post.user.name, user_path(@post.user_id) %>
-        </span>
-        <span>
-          <!--投稿日時-->
-          <%= l @post.created_at %>
-        </span>
-      </h1>
-    </div>
+<div class="row">
+  <!--地方区分・都道府県-->
+  <div class="text-bold color-black">
+    <%= @post.region.region_name %>
+    <span> > </span>
+    <% @post.post_prefectures.each do |pp| %>
+      <%= pp.prefecture.prefecture_name %>
+    <% end %>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <!--投稿画像-->
-      <%= image_tag @post.get_image(700, 600) %>
-      
-      <!--本文-->
-      <div class="row">
-        <%= safe_join(@post.body.split("\n"),tag(:br)) %>
+
+  <div class="col-lg-10 mx-auto my-3">
+    <div class="row header-option">
+      <div class="col-lg-8">
+        <h2 class="pub-header">
+          <%= @post.title %>
+        </h2>
       </div>
-      
-      <!--タグ-->
-      <div class="row">
-        <div class="col">
-          <% @post.post_tags.each do |pt| %>
-            <%= pt.tag.name %>
-          <% end %>
-        </div>
-        
-        <div class="col">
-          <% if @post.favorited_by?(current_user) %>
-            <p>
-              <%= link_to post_favorites_path(@post), method: :delete do %>
-                ★<%= @post.favorites.count %>ブックマーク
-              <% end %>
-            </p>
-          <% else %>
-            <p>
-              <%= link_to post_favorites_path(@post), method: :post do %>
-                ☆<%= @post.favorites.count %>ブックマーク
-              <% end %>
-            </p>
-          <% end %>
-        </div>
+      <div class="col-lg-4 basic-font option-right option-right-padding pos-absolute">
+        <span>投稿者：</span>
+        <%= link_to @post.user.name, user_path(@post.user_id), class: "show-link-option" %>
       </div>
-      
-      <!--地方区分・都道府県-->
-      <div class="col">
-        <%= @post.region.region_name %>
-        <span> > </span>
-        <% @post.post_prefectures.each do |pp| %>
-          <%= pp.prefecture.prefecture_name %>
+    </div>
+
+    <div class="option-right basic-font mt-3">
+      <!--投稿日時-->
+      <%= l @post.created_at %>
+
+      <!--ブックマーク-->
+      <% if @post.user_id != current_user.id %>
+        <% if @post.favorited_by?(current_user) %>
+          <!--ブックマーク登録済み-->
+          <sppn>
+            <%= link_to post_favorites_path(@post), method: :delete do %>
+              <i class="fa-solid fa-bookmark color-black favorite-icon-option"></i>
+            <% end %>
+          </span>
+        <% else %>
+          <!--ブックマーク未登録-->
+          <span>
+            <%= link_to post_favorites_path(@post), method: :post do %>
+              <i class="fa-regular fa-bookmark color-black favorite-icon-option"></i>
+            <% end %>
+          </span>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <h4>
-        <%= @post.post_comments.count %>件のコメント
-      </h4>
-        
-      <div class="col">
+</div>
+
+<div class="row mx-auto mt-3">
+  <div class="col-lg-2"></div>
+
+  <div class="col-lg-8">
+    <!--投稿画像-->
+    <div class="show-img-resize text-center">
+      <%= image_tag @post.get_image %>
+    </div>
+
+    <div class="my-4"></div>
+
+    <!--本文-->
+    <div class="show-transparent-option basic-font">
+      <%= safe_join(@post.body.split("\n"),tag(:br)) %>
+    </div>
+
+    <div class="my-4"></div>
+
+    <!--タグ-->
+    <% @post.post_tags.each do |pt| %>
+      <span class="basic-font">
+        <span class="tag-option">
+          <i class="fa-sharp fa-solid fa-tag"></i>
+          <%= pt.tag.name %>
+        </span>
+      </span>
+    <% end %>
+
+    <div class="show-border"></div>
+
+    <h5 class="text-bold">
+      コメント
+      <span class="font-small">
+        <%= @post.post_comments.count %>件
+      </span>
+    </h5>
+
+    <div class="show-dashed-border"></div>
+
+    <div class="row">
+      <div class="col-lg-5">
         <!--コメント投稿-->
         <%= form_with model: [@post, @post_comment] do |f| %>
-          <%= f.text_area :comment, placeholder: "コメントを入力" %>
-          <%= f.submit "送信" %>
-        <% end %>
-      </div>
-      
-      <div class="col">
-        <% @post_comments.each do |post_comment| %>
-          <div>
-            <p>
-              <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
-            </p>
-            
-            <p>
-              <span>
-                <%= link_to post_comment.user.name, user_path(post_comment.user_id) %>
-              </span>
-              <span>
-                <%= l post_comment.created_at, format: :short %>
-              </span>
-            </p>
-            
-            <% if post_comment.user == current_user %>
-              <p>
-                <%= link_to "コメントを削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
-              </p>
-            <% end %>
+          <%= f.text_area :comment, placeholder: "コメントを入力", class: "comment-form" %>
+          <div class="text-center mb-5">
+            <%= f.submit "送信", class: "btn btn-option" %>
           </div>
         <% end %>
       </div>
-        
-      
+
+      <div class="col-lg-7">
+        <% unless @post_comments.present? %>
+          <p class="basic-font ml-3">コメントはありません。</p>
+        <% end %>
+        <% @post_comments.each do |post_comment| %>
+          <div class="comment-option">
+            <div class="comment-body">
+              <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
+            </div>
+
+            <div class="comment-name-date">
+              <%= link_to post_comment.user.name, user_path(post_comment.user_id), class: "comment-name" %>
+              <span class="comment-data">
+                <%= l post_comment.created_at, format: :short %>
+              </span>
+            </div>
+          </div>
+          <% if post_comment.user == current_user %>
+            <div class="option-right">
+              <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "comment-delete" %>
+            </div>
+          <% end %>
+          <div class="comment-border"></div>
+        <% end %>
+      </div>
     </div>
   </div>
-  
-  <% if @post.user_id == current_user.id %>
-    <div class="row">
-      <div class="col">
-        <%= link_to "編集する", edit_post_path(@post.id) %>
-      </div>
-      <div class="col">
-        <%= link_to "削除する", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-        <p>
-          ※投稿を削除すると、投稿についたコメントも削除されます。
-        </p>
+
+  <div class="col-lg-2"></div>
+</div>
+
+<div class="row mt-5">
+<% if @post.user_id == current_user.id %>
+    <div class="option-center">
+      <div>
+        <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-option" %>
       </div>
     </div>
-  <% elsif @post.user_id != current_user.id %>
-    <div class="row">
-      <div class="col">
-        <p>
-          <%= link_to "不適切な投稿を通報する >>", new_post_reports_path(@post.id) %>
-        </p>
-      </div>
+
+    <div class="mt-5 option-left">
+      <%= link_to "投稿を削除する", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn danger-btn" %>
+      <p class="text-annotation mt-1">
+        ※投稿を削除すると、投稿についたコメントも削除されます。
+      </p>
     </div>
-  <% end %>
+<% elsif @post.user_id != current_user.id %>
+  <div class="mt-5 option-right">
+    <%= link_to "不適切な投稿を通報する >>", new_post_reports_path(@post.id), class: "btn danger-btn" %>
+  </div>
+<% end %>
 </div>

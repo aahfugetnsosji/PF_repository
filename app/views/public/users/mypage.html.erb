@@ -19,12 +19,12 @@
 
   <div class="col-lg-6">
     <h5 class="header-option pub-header">ユーザーネーム</h5>
-    <h3 class="text-option transparent-option pb-2">
+    <h3 class="font-big transparent-option pb-2">
       <%= @user.name %>
     </h3>
 
     <h5 class="header-option pub-header mt-5">メールアドレス</h5>
-    <h3 class="text-option transparent-option pb-2">
+    <h3 class="font-big transparent-option pb-2">
       <%= @user.email %>
     </h3>
 
@@ -71,21 +71,21 @@
       </div>
     <% else %>
       <div class="row d-block">
-        <div class="col-lg-12">
-          <div class="card-group">
-            <% @posts.each do |post| %>
-              <div class="m-3">
-                <a href="/posts/<%= post.id %>" class="card text-dark border-dark">
-                  <%= image_tag post.get_image(150, 150), class: "card-img-top border-bottom border-dark" %>
-                  <div class="card-body">
-                    <h6 class="card-title col-3 text-truncate">
-                      <%= post.title %>
-                    </h6>
-                  </div>
-                </a>
-              </div>
-            <% end %>
-          </div>
+        <div class="card-group">
+          <% @posts.each do |post| %>
+            <div class="m-2">
+              <a href="/posts/<%= post.id %>" class="card card-option">
+                <div class="card-img-top top-img-resize card-img-border">
+                  <%= image_tag post.get_image %>
+                </div>
+                <div class="card-body">
+                  <h6 class="card-title pub-header">
+                    <%= post.title %>
+                  </h6>
+                </div>
+              </a>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>

@@ -1,53 +1,59 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>
-        <%= @user.name %>さんのプロフィール
-      </h1>
-    </div>
+<div class="row">
+  <div class="col">
+    <h1>
+      <%= @user.name %>さんのプロフィール
+    </h1>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <%= image_tag @user.get_profile_image(100, 100) %>
-    </div>
-    <div class="col">
-      <h4>ユーザーネーム</h4>
-      <%= @user.name %>
-      
-      <h4>プロフィール</h4>
-      <%= @user.profile %>
-    </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= image_tag @user.get_profile_image(100, 100) %>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <h2>
-        <%= @user.name %>さんの投稿
-      </h2>
-    </div>
+  <div class="col">
+    <h4>ユーザーネーム</h4>
+    <%= @user.name %>
+
+    <h4>プロフィール</h4>
+    <%= @user.profile %>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <% if @posts.count == 0 %>
-        <div>
-          <p>
-            投稿はありません。
-          </p>
-        </div>
-      <% else %>
-        <% @posts.each do |post| %>
-          <a href="/posts/<%= post.id %>" class="card lg-3 text-dark border-0">
-            <%= image_tag post.get_image(200, 130), class: "card-img-top" %>
-            <div class="card-body">
-              <h6 class="card-title">
-                <%= post.title %>
-              </h6>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h2>
+      <%= @user.name %>さんの投稿
+    </h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <% if @posts.count == 0 %>
+      <div>
+        <p>
+          投稿はありません。
+        </p>
+      </div>
+    <% else %>
+      <div class="row d-block">
+        <div class="card-group">
+          <% @posts.each do |post| %>
+            <div class="m-2">
+              <a href="/posts/<%= post.id %>" class="card card-option">
+                <div class="card-img-top top-img-resize card-img-border">
+                  <%= image_tag post.get_image %>
+                </div>
+                <div class="card-body">
+                  <h6 class="card-title pub-header">
+                    <%= post.title %>
+                  </h6>
+                </div>
+              </a>
             </div>
-          </a>
-        <% end %>
-      <% end %>
-    </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

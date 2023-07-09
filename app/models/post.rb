@@ -22,12 +22,12 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :post_prefectures
 
   # 投稿画像
-  def get_image(width, height)
+  def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/NoImage.jpg')
       image.attach(io: File.open(file_path), filename: 'NoImage.jpg', content_type: 'image/jpeg')
     end
-    image.variant(resize_to_fill: [width, height]).processed
+    image
   end
 
   # キーワード検索でユーザが入力した値と部分一致するデータを取得
@@ -39,7 +39,7 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-  
+
   # タグ編集メソッド(destroy_allを使うタイプ)
   def save_tag(post_tags_params)
     # 送信されたタグが空でない場合、その投稿の既存のタグをすべて削除
@@ -58,7 +58,7 @@ class Post < ApplicationRecord
       end
     end
   end
-  
+
   # 都道府県編集メソッド(タグと同様)
   def save_prefecture(prefectures_params)
     unless prefectures_params.empty?
