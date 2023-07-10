@@ -1,108 +1,106 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>投稿詳細</h1>
-    </div>
+<div class="row mb-5">
+  <div class="col-lg-12">
+    <h1 class="header-option adm-header">投稿詳細</h1>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>画像</th>
-            <td>
-              <%= image_tag @post.get_image(200, 300) %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th>投稿ID</th>
-            <td>
-              <%= @post.id %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th>投稿日時</th>
-            <td>
-              <%= l @post.created_at %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th>投稿者</th>
-            <td>
-              <%= link_to @post.user.name, admin_user_path(@post.user_id) %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th>タイトル</th>
-            <td>
-              <%= @post.title %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th>本文</th>
-            <td>
-              <%= safe_join(@post.body.split("\n"),tag(:br)) %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th>タグ一覧</th>
-            <td>
-              <% @post.post_tags.each do |pt| %>
-                <%= pt.tag.name %>
-              <% end %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th>地方区分</th>
-            <td>
-              <%= @post.region.region_name %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th>都道府県</th>
-            <td>
-              <% @post.post_prefectures.each do |pp| %>
-                <%= pp.prefecture.prefecture_name %>
-              <% end %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th>コメント一覧</th>
-            <td>
-              <% @post_comments.each do |post_comment| %>
-                <p>
-                  <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
-                </p>
-                <p>
-                  <span>
-                    <%= link_to post_comment.user.name, admin_user_path(post_comment.user_id) %>
-                  </span>
-                  <span>
-                    <%= l post_comment.created_at %>
-                  </span>
-                  <span>
-                    <%= link_to "コメントを削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
-                  </span>
-                </p>
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div>
-        <%= link_to "投稿を削除する", admin_post_path(@post.id), method: :delete, "data-confirm" => "本当によろしいですか？" %>
-      </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-10 mx-auto">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th class="border-bottom border-white">画像</th>
+          <td class="admin-post-img">
+            <%= image_tag @post.get_image %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="border-bottom border-white">投稿ID</th>
+          <td>
+            <%= @post.id %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="border-bottom border-white">投稿日時</th>
+          <td>
+            <%= l @post.created_at %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="border-bottom border-white">投稿者</th>
+          <td>
+            <%= link_to @post.user.name, admin_user_path(@post.user_id) %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="border-bottom border-white">タイトル</th>
+          <td>
+            <%= @post.title %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="border-bottom border-white">本文</th>
+          <td>
+            <%= safe_join(@post.body.split("\n"),tag(:br)) %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="border-bottom border-white">タグ一覧</th>
+          <td>
+            <% @post.post_tags.each do |pt| %>
+              <%= pt.tag.name %>
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="border-bottom border-white">地方区分</th>
+          <td>
+            <%= @post.region.region_name %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="border-bottom border-white">都道府県</th>
+          <td>
+            <% @post.post_prefectures.each do |pp| %>
+              <%= pp.prefecture.prefecture_name %>
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>コメント一覧</th>
+          <td>
+            <% @post_comments.each do |post_comment| %>
+              <p>
+                <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
+              </p>
+              <p>
+                <span>
+                  <%= link_to post_comment.user.name, admin_user_path(post_comment.user_id) %>
+                </span>
+                <span>
+                  <%= l post_comment.created_at %>
+                </span>
+                <span>
+                  <%= link_to "コメントを削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？" %>
+                </span>
+              </p>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <%= link_to "投稿を削除する", admin_post_path(@post.id), method: :delete, "data-confirm" => "本当によろしいですか？" %>
     </div>
   </div>
 </div>

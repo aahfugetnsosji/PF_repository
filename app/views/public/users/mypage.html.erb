@@ -19,24 +19,19 @@
 
   <div class="col-lg-6">
     <h5 class="header-option pub-header">ユーザーネーム</h5>
-    <h3 class="font-big transparent-option pb-2">
+    <h4 class="basic-font transparent-option p-2">
       <%= @user.name %>
-    </h3>
+    </h4>
 
     <h5 class="header-option pub-header mt-5">メールアドレス</h5>
-    <h3 class="font-big transparent-option pb-2">
+    <h4 class="basic-font transparent-option p-2">
       <%= @user.email %>
-    </h3>
+    </h4>
 
     <h5 class="header-option pub-header mt-5">プロフィール</h5>
-    <h3 class="text-option transparent-option pb-2">
+    <h4 class="basic-font transparent-option-profile p-2">
       <%= @user.profile %>
-      <% unless @user.profile.nil? %>
-        <span class="text-normal pt-3">
-          プロフィールは未記入です。
-        </span>
-      <% end %>
-    </h3>
+    </h4>
 
     <div class="row my-5">
       <div class="text-center">

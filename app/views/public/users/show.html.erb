@@ -1,29 +1,43 @@
-<div class="row">
-  <div class="col">
-    <h1>
+<div class="row mb-5">
+  <div class="col-lg-12">
+    <h1 class="header-option pub-header">
       <%= @user.name %>さんのプロフィール
     </h1>
   </div>
 </div>
 
 <div class="row">
-  <div class="col">
-    <%= image_tag @user.get_profile_image(100, 100) %>
-  </div>
-  <div class="col">
-    <h4>ユーザーネーム</h4>
-    <%= @user.name %>
+  <div class="col-lg-2"></div>
 
-    <h4>プロフィール</h4>
-    <%= @user.profile %>
+  <div class="col-lg-2 text-center mb-5">
+    <%= image_tag @user.get_profile_image(150, 150), class: "icon-option" %>
   </div>
+
+  <div class="col-lg-6">
+    <h5 class="header-option pub-header">ユーザーネーム</h5>
+    <h4 class="basic-font transparent-option p-2">
+      <%= @user.name %>
+    </h4>
+
+    <h5 class="header-option pub-header mt-5">メールアドレス</h5>
+    <h4 class="basic-font transparent-option p-2">
+      <%= @user.email %>
+    </h4>
+
+    <h5 class="header-option pub-header mt-5">プロフィール</h5>
+    <h4 class="basic-font transparent-option-profile p-2">
+      <%= @user.profile %>
+    </h4>
+  </div>
+
+  <div class="col-lg-2"></div>
 </div>
 
-<div class="row">
-  <div class="col">
-    <h2>
+<div class="row mt-5">
+  <div class="col-lg-12 mx-auto">
+    <h3 class="header-option pub-header">
       <%= @user.name %>さんの投稿
-    </h2>
+    </h3>
   </div>
 </div>
 

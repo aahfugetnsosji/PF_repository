@@ -71,6 +71,7 @@ footer {
   font-size: 2rem;
 }
 
+// 小さめ
 .font-small {
   font-size: 0.9rem;
 }
@@ -135,6 +136,12 @@ footer {
   background-color: rgba(255,255,255,0.7);
   border-radius: 5px;
   padding: 10px;
+}
+
+.transparent-option-profile {
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 5px;
+  min-height: 100px;
 }
 
 .card-group-option {
@@ -262,6 +269,11 @@ footer {
   height: auto;
   object-fit: contain;
   border: 1px solid $thema-color2;
+}
+
+// 管理者：投稿詳細ページの画像サイズ
+.admin-post-img img {
+  
 }
 
 // 投稿詳細ページのボーダー
