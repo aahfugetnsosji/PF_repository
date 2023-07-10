@@ -25,6 +25,11 @@ main {
   height: 100%;
 }
 
+body {
+  overflow-wrap: break-word;
+　word-wrap: break-word;
+}
+
 header {
   background-color: $thema-color2;
   // position: fixed;
@@ -65,6 +70,12 @@ footer {
   font-size: 1.5rem;
 }
 
+.adm-gray-font {
+  font-family: "text";
+  font-size: 1.2rem;
+  color: $thema-color4;
+}
+
 // テキスト大きめ
 .font-big {
   font-family: "text";
@@ -92,6 +103,12 @@ footer {
 .bold-red {
   font-weight: bold;
   color: $thema-color3;
+}
+
+// 管理者投稿詳細ページ位置情報テキスト
+.area-font {
+  font-family: "text";
+  font-size: 1.2rem;
 }
 
 // ユーザ側ヘッダー
@@ -129,12 +146,12 @@ footer {
 // 文字透明背景
 .transparent-option {
   background-color: rgba(255,255,255,0.7);
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .show-transparent-option {
   background-color: rgba(255,255,255,0.7);
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 10px;
 }
 
@@ -273,7 +290,9 @@ footer {
 
 // 管理者：投稿詳細ページの画像サイズ
 .admin-post-img img {
-  
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 // 投稿詳細ページのボーダー
@@ -327,7 +346,7 @@ footer {
 
 .comment-name {
   color: $thema-color2;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .comment-name:hover {
@@ -414,6 +433,16 @@ a.link-option:hover {
 }
 
 .show-link-option:hover {
+  color: $thema-color3;
+}
+
+.adm-show-link-option {
+  font-family: "text";
+  font-size: 1.5rem;
+  color: $thema-color2;
+}
+
+.adm-show-link-option:hover {
   color: $thema-color3;
 }
 
@@ -542,6 +571,11 @@ input.btn-option {
 // 管理者側アイコンオプション
 .adm-icon-border {
   border: 1px solid $thema-color2;
+}
+
+.adm-show-border {
+  border-bottom: 2px solid $thema-color2;
+  padding-bottom: 10px;
 }
 
 // 退会ページ

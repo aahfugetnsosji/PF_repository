@@ -17,46 +17,37 @@
     </div>
 
     <div class="col-lg-6">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th class="border-bottom border-white">会員ID</th>
-            <td>
-              <%= @user.id %>
-            </td>
-          </tr>
+      <div class="row mb-5">
+        <div class="col-lg-6">
+          <h5 class="header-option adm-header">会員ID</h5>
+          <h4 class="basic-font transparent-option p-2">
+            <%= @user.id %>
+          </h4>
+        </div>
 
-          <tr>
-            <th class="border-bottom border-white">登録日時</th>
-            <td>
-              <%= l @user.created_at %>
-            </td>
-          </tr>
+        <div class="col-lg-6">
+          <h5 class="header-option adm-header">登録日時</h5>
+          <h5 class="basic-font transparent-option p-2">
+            <%= l @user.created_at %>
+          </h5>
+        </div>
+      </div>
 
-          <tr>
-            <th class="border-bottom border-white">会員登録名</th>
-            <td>
-              <%= @user.name %>
-            </td>
-          </tr>
+      <h5 class="header-option adm-header">ユーザーネーム</h5>
+      <h4 class="basic-font transparent-option p-2">
+        <%= @user.name %>
+      </h4>
 
-          <tr>
-            <th class="border-bottom border-white">メールアドレス</th>
-            <td>
-              <%= @user.email %>
-            </td>
-          </tr>
+      <h5 class="header-option adm-header mt-5">メールアドレス</h5>
+      <h4 class="basic-font transparent-option p-2">
+        <%= @user.email %>
+      </h4>
 
-          <tr>
-            <th>プロフィール</th>
-            <td>
-              <%= @user.profile %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <h5 class="header-option adm-header mt-5">プロフィール</h5>
+      <h4 class="basic-font transparent-option-profile p-2">
+        <%= @user.profile %>
+      </h4>
     </div>
-
     <div class="col-lg-2"></div>
   </div>
 
