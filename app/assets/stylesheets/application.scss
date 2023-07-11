@@ -145,18 +145,18 @@ footer {
 
 // 文字透明背景
 .transparent-option {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(184,184,184,0.5);
   border-radius: 2px;
 }
 
 .show-transparent-option {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(184,184,184,0.5);
   border-radius: 2px;
   padding: 10px;
 }
 
 .transparent-option-profile {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(184,184,184,0.5);
   border-radius: 5px;
   min-height: 100px;
 }
@@ -167,13 +167,14 @@ footer {
 }
 
 .card-option {
-  background-color: $thema-color2;
-  color: #fff;
-  border: 1px solid $thema-color2;
+  background-color: $thema-color1;
+  border-top: 1px solid $thema-color2;
+  border-right: 1px solid $thema-color2;
+  border-bottom: 1px solid $thema-color1;
+  border-left: 1px solid $thema-color1;
   border-radius: 2px;
   text-decoration: none;
-  width: 137px;
-  margin: 5px;
+  padding: 3px;
 }
 
 .card-option:hover {
@@ -252,7 +253,7 @@ footer {
   font-family: "text";
   font-size: 0.9remx;
   color: $thema-color2;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .index-name-link-option:hover {
@@ -278,6 +279,7 @@ footer {
   width: 130px;
   height: 130px;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 // 投稿詳細ページの画像サイズ

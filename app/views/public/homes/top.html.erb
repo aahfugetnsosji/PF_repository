@@ -5,14 +5,14 @@
 </div>
 
 <div class="row mx-auto">
-  <div class="col-lg-1"></div>
-  <div class="col-lg-7">
+  <div class="col-md-1"></div>
+  <div class="col-md-7">
     <!--Jmap表示-->
     <div class="mb-5" id="jmap"></div>
   </div>
 
-  <div class="col-lg-1"></div>
-  <div class="col-lg-2">
+  <div class="col-md-1"></div>
+  <div class="col-md-2">
     <!--キーワード検索窓-->
     <%= render partial: 'public/partials/search_keyword' %>
     <!--タグ検索窓-->
@@ -25,7 +25,7 @@
 </div>
 
 <div class="row mt-5">
-  <div class="col-lg-12">
+  <div class="col-md-12">
     <h2 class="header-option pub-header">全国の新着投稿</h2>
   </div>
 </div>
@@ -36,24 +36,63 @@
 
 
 <div class="row">
-  <div class="col-lg-12">
-    <div class="row d-block">
-      <div class="card-group">
+  <div class="col-md-12">
+    <% if @latest_posts.count == 0 %>
+      <p class="text-normal">
+        投稿はありません。
+      </p>
+    <% else %>
+      <div class="row">
         <% @latest_posts.each do |post| %>
-          <div class="m-1">
-            <a href="/posts/<%= post.id %>" class="card card-option">
-              <div class="card-img-top top-img-resize card-img-border">
+          <div class="col-md-4">
+            <div class="card card-option flex-lg-row mb-4 h-md-300">
+              <a href="/posts/<%= post.id %>" class="card-img-left flex-auto d-none d-lg-block index-img-resize">
                 <%= image_tag post.get_image %>
+              </a>
+
+              <div class="card-body d-flex flex-column align-items-start">
+                <a href="/posts/<%= post.id %>" class="index-link-option">
+                  <h5 class="pub-header mb-0">
+                    <%= post.title %>
+                  </h5>
+                </a>
+
+                <div class="mb-0">
+                  <a href="/users/<%= post.user_id %>" class="index-name-link-option">
+                    <%= image_tag post.user.get_profile_image(14, 14) %>
+                    <%= post.user.name %>
+                  </a>
+                </div>
+
+                <div class="card-text mb-auto">
+                  <i class="fa-sharp fa-solid fa-tags"></i>
+                  <% post.post_tags.each do |pt| %>
+                    <span class="mb-0 basic-font">
+                      <%= pt.tag.name %>
+                    </span>
+                  <% end %>
+                </div>
+
+                <div class="card-text mb-auto">
+                  <i class="fa-sharp fa-solid fa-map"></i>
+                  <span class="mb-0 basic-font">
+                    <%= post.region.region_name %>
+                  </span>
+                </div>
+
+                <div class="card-text mb-auto">
+                  <i class="fa-sharp fa-solid fa-map-location-dot"></i>
+                  <% post.post_prefectures.each do |pp| %>
+                    <span class="mr-2 mb-0 basic-font">
+                      <%= pp.prefecture.prefecture_name %>
+                    </span>
+                  <% end %>
+                </div>
               </div>
-              <div class="card-body">
-                <h6 class="card-title pub-header">
-                  <%= post.title %>
-                </h6>
-              </div>
-            </a>
+            </div>
           </div>
         <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
