@@ -3,8 +3,8 @@
     <h1 class="header-option pub-header">
       全国の投稿一覧
       <span class="header-annotation">
-      全<%= @posts.count %>件
-    </span>
+        全<%= @posts.count %>件
+      </span>
     </h1>
   </div>
 </div>
@@ -21,20 +21,17 @@
     <% else %>
       <div class="row">
       <% @posts.each do |post| %>
-        <div class="col-lg-4">
-          <table class="table">
-            <tr>
-              <th class="index-th">
-                <a href="/posts/<%= post.id %>" class="bd-placeholder-img index-img-resize">
+        <div class="col-lg-6">
+          <div class="row flex-lg-row mb-4 h-lg-250">
+                <a href="/posts/<%= post.id %>" class="card-img-left flex-auto d-none d-lg-block index-img-resize">
                   <%= image_tag post.get_image %>
                 </a>
-              </th>
-              <td class="index-hd">
+              <div class="card-body d-flex flex-column align-items-start">
                 <a href="/posts/<%= post.id %>" class="index-link-option">
-                  <h6 class="pub-header">
+                  <h6 class="pub-header mb-0">
                     <%= post.title %>
                   </h6>
-                  <p class="index-body">
+                  <p class="card-text mb-auto">
                     <%= safe_join(post.body.split("\n"),tag(:br)) %>
                   </p>
                 </a>
@@ -46,9 +43,8 @@
                     <%= l post.created_at, format: :short %>
                   </span>
                 </p>
-              </td>
-            </tr>
-          </table>
+              </div>
+          </div>
         </div>
       <% end %>
       </div>
