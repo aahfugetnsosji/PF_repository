@@ -1,65 +1,63 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>タグ一覧・追加</h1>
-    </div>
+<div class="row mb-5">
+  <div class="col-md-12">
+    <h1 class="header-option adm-header">タグ一覧・追加</h1>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <%= form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
-        <tbody>
-          <tr>
-            <th>タグ名</th>
-            <td>
-              <%= f.text_field :name, placeholder: "タグ名" %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th></th>
-            <td>
-              <%= f.submit "追加する" %>
-            </td>
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
-    </div>
-  
-    <div class="col">
-      <% if @tags.count == 0 %>
-        <div>
-          <p>タグは登録されていません。</p>
+</div>
+
+<div class="row">
+  <div class="col-md-4 mb-5">
+    <%= form_with model: @tag, url: admin_tags_path, method: :post do |f| %>
+      <h4 class="header-option adm-header">
+        タグ追加
+      </h4>
+      <div class="card card-border-bottom-option option-center mt-4">
+        <h4 class="card-title basic-font">
+          <%= f.label :name, "タグ名" %>
+          <%= f.text_field :name, placeholder: "ここに入力", class: "tag-input-form mt-3" %>
+        </h4>
+
+        <div class="card-body pb-5">
+          <%= f.submit "追加する", class: "btn btn-option" %>
         </div>
-      <% else %>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>タグ一覧</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-        
-          <tbody>
-            <% @tags.each do |tag| %>
-              <tr>
-                <td>
-                  <%= tag.name %>
-                </td>
-                <td>
-                  <%= link_to "編集する", edit_admin_tag_path(tag.id) %>
-                </td>
-                <td>
-                  <%= link_to "削除する", admin_tag_path(tag.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-8">
+    <% if @tags.count == 0 %>
+      <p class="basic-font">
+        タグは登録されていません。
+      </p>
+    <% else %>
+      <h4 class="header-option adm-header">
+        タグ一覧
+      </h4>
+      <div class="row mt-4">
+        <% @tags.each do |tag| %>
+          <div class="col-lg-4">
+            <div class="card tag-card-option mb-3">
+              <div class="card-header area-font card-header-option">
+                <i class="fa-sharp fa-solid fa-tag"></i>
+                <%= tag.name %>
+              </div>
+              <div class="card-body">
+                <span class="border-all-option-edit">
+                  <%= link_to edit_admin_tag_path(tag.id), class: "link-option-bl-gr", method: :get do %>
+                    <i class="fa-sharp fa-solid fa-pen-to-square"></i><!--
+                 --><span class="font-small">編集</span>
+                  <% end %>
+                </span>
+
+                <span class="border-all-option-delete">
+                  <%= link_to admin_tag_path(tag.id), class: "link-option-rd-gr", "data-confirm" => "本当に削除しますか？", method: :delete do %>
+                    <i class="fa-sharp fa-solid fa-trash-can"></i><!--
+                 --><span class="font-small">削除</span>
+                  <% end %>
+                </span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    <% end %>
   </div>
 </div>

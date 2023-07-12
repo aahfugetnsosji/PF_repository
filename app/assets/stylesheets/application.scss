@@ -182,6 +182,19 @@ footer {
   color: $thema-color2;
 }
 
+.tag-card-option {
+  background-color: $thema-color1;
+  border: 1px solid $thema-color2;
+  border-radius: 2px;
+  text-decoration: none;
+  padding: 3px;
+}
+
+.card-header-option {
+  background-color: $thema-color1;
+  border-bottom: 1px dotted $thema-color2;
+}
+
 .card-img-border {
   border-bottom: 1px solid $thema-color2;
 }
@@ -448,6 +461,26 @@ a.link-option:hover {
   color: $thema-color3;
 }
 
+.link-option-bl-gr {
+  font-family: "text";
+  color: $thema-color2;
+  text-decoration: none;
+}
+
+.link-option-bl-gr:hover {
+  color: $thema-color4;
+}
+
+.link-option-rd-gr {
+  font-family: "text";
+  color: $thema-color3;
+  text-decoration: none;
+}
+
+.link-option-rd-gr:hover {
+  color: $thema-color4;
+}
+
 // テキスト右寄せ
 .option-right {
   text-align: right;
@@ -510,6 +543,15 @@ input.btn-option {
   width: 100%;
   margin-bottom: 10px;
   border: 1px solid $thema-color2;
+}
+
+.tag-input-form {
+  font-family: "text";
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  border: 1px solid $thema-color2;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .comment-form {
@@ -583,4 +625,34 @@ input.btn-option {
 // 退会ページ
 .unsubscribe {
   margin-top: 150px;
+}
+
+.card-border-bottom-option {
+  background-color: $thema-color1;
+  border-top: 1px solid $thema-color1;
+  border-bottom: 1px solid $thema-color2;
+  border-right: 1px solid $thema-color1;
+  border-left: 1px solid $thema-color1;
+  border-radius: 0;
+}
+
+.border-all-option-edit {
+  border: 1px solid $thema-color2;
+  padding: 5px 0 5px 9px;
+  border-radius: 2px;
+  margin-right: 10px;
+}
+
+.border-all-option-edit:hover {
+  background-color: $thema-color2;
+}
+
+.border-all-option-delete {
+  border: 1px solid $thema-color2;
+  padding: 5px 9px 5px 9px;
+  border-radius: 2px;
+}
+
+.border-all-option-delete:hover {
+  background-color: $thema-color2;
 }

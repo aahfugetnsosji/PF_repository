@@ -1,31 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>タグ編集</h1>
-    </div>
+<div class="row mb-5">
+  <div class="col-md-12 mx-auto">
+    <h1 class="header-option adm-header">タグ編集</h1>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <%= form_with model: @tag, url: admin_tag_path, method: :patch do |f| %>
-        <tbody>
-          <tr>
-            <th></th>
-            <td>
-              <%= f.text_field :name, autofocus: true %>
-            </td>
-          </tr>
-          
-          <tr>
-            <th></th>
-            <td>
-              <%= f.submit "変更を保存" %>
-            </td>
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
-    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-5 mx-auto mt-5">
+    <%= form_with model: @tag, url: admin_tag_path, method: :patch do |f| %>
+      <div class="card card-border-bottom-option option-center mt-4">
+        <h4 class="card-title basic-font">
+          <%= f.label :name, "タグ名" %>
+          <%= f.text_field :name, placeholder: "ここに入力", class: "tag-input-form mt-3" %>
+        </h4>
+
+        <div class="card-body pb-5">
+          <%= f.submit "変更する", class: "btn btn-option" %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
