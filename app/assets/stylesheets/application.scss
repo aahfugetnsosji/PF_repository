@@ -656,3 +656,9 @@ input.btn-option {
 .border-all-option-delete:hover {
   background-color: $thema-color2;
 }
+
+// Jmapマウスホバー時の設定
+.jmap-pref:hover {
+  background-color: $thema-color3 !important;
+  opacity: 100% !important;
+}

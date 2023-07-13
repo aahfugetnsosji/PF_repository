@@ -9,7 +9,6 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery";
 import "./smoothscroll-min"; // スクロールボタンをIEとSafariに対応させるためのファイル
-import "./jmap"; // japanMapの読み込み
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";

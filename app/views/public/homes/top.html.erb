@@ -1,17 +1,18 @@
 <div class="row">
-  <div class="col-md-12 mb-4">
+  <div class="col-md-12 mb-5">
     <h1 class="header-option pub-header">裏怪道分布図</h1>
   </div>
 </div>
 
-<div class="row mb-5 comment-border">
+<div class="row mb-4 comment-border">
   <div class="col-md-9 mx-auto">
     <!--Jmap表示-->
     <div class="mb-5" id="jmap"></div>
+    </div>
   </div>
 </div>
 
-<div class="row">
+<div class="row px-5">
     <!--キーワード検索窓-->
     <%= render partial: 'public/partials/search_keyword' %>
     <!--タグ検索窓-->
@@ -22,25 +23,25 @@
     <%= render partial: 'public/partials/search_prefecture', locals: { prefecture: @prefectures} %>
   </div>
 
-<div class="row mt-5">
+<div class="row mt-5 px-5">
   <div class="col-md-12">
     <h2 class="header-option pub-header">全国の新着投稿</h2>
   </div>
 </div>
 
-<div class="option-right my-3">
+<div class="option-right mt-3 mb-4 px-5">
   <%= link_to "投稿をもっと見る", posts_path, class: "btn btn-option" %>
 </div>
 
 
-<div class="row">
+<div class="row px-5 pb-5">
   <div class="col-md-12">
     <% if @latest_posts.count == 0 %>
       <p class="text-normal">
         投稿はありません。
       </p>
     <% else %>
-      <div class="row">
+      <div class="row px-5">
         <% @latest_posts.each do |post| %>
           <div class="col-md-4">
             <div class="card card-option flex-lg-row mb-4 h-md-300">
