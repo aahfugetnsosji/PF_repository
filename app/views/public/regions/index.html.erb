@@ -1,128 +1,72 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>地方区分絞り込み結果一覧</h1>
-      <span>
+<div class="row">
+  <div class="col-lg-12 mb-3">
+    <h1 class="header-option pub-header">
+      地方区分絞り込み結果一覧
+      <span class="header-annotation">
         全<%= @posts.count %>件
       </span>
-    </div>
+    </h1>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-md-3">
-      <!--キーワード検索窓-->
+<div class="row mx-auto mt-3">
+  <div class="col-lg-12">
+    <% if @posts.count == 0 %>
+      <p class="text-normal">
+        投稿はありません。
+      </p>
+    <% else %>
       <div class="row">
-        <%= form_tag search_path, method: :get do %>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>キーワード検索</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <%= text_field_tag :keyword %><br>
-                  <%= submit_tag '検索', :body => nil %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-      </div>
+      <% @posts.each do |post| %>
+        <div class="col-md-4">
+          <div class="card card-option flex-lg-row mb-4 h-md-300">
+            <a href="/posts/<%= post.id %>" class="card-img-left flex-auto d-none d-lg-block index-img-resize">
+              <%= image_tag post.get_image %>
+            </a>
 
-      <!--タグ検索窓-->
-      <div class="row">
-        <%= form_tag posts_path, method: :get do %>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>タグ検索</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <%= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :name, params[:tag_id]), { prompt: "--選択してください--" } %><br>
-                  <%= submit_tag '検索' %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-      </div>
+            <div class="card-body d-flex flex-column align-items-start">
+              <a href="/posts/<%= post.id %>" class="index-link-option">
+                <h5 class="pub-header mb-0">
+                  <%= post.title %>
+                </h5>
+              </a>
 
-      <!--地方区分検索窓-->
-      <div class="row">
-        <%= form_tag regions_path, method: :get do %>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>地方区分で絞り込み</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <%= select_tag :region_id, options_from_collection_for_select(@regions, :id, :region_name, params[:region_id]), { prompt: "--選択してください--" } %><br>
-                  <%= submit_tag '検索' %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-      </div>
+              <div class="mb-0">
+                <a href="/users/<%= post.user_id %>" class="index-name-link-option">
+                  <%= image_tag post.user.get_profile_image(14, 14) %>
+                  <%= post.user.name %>
+                </a>
+              </div>
 
-      <!--都道府県検索窓-->
-      <div class="row">
-        <%= form_tag prefectures_path, method: :get do %>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>都道府県で絞り込み</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <%= select_tag :prefecture_id, options_from_collection_for_select(@prefectures, :id, :prefecture_name, params[:prefecture_id]), { prompt: "--選択してください--" } %><br>
-                  <%= submit_tag '検索' %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
-      </div>
-    </div>
+              <div class="card-text mb-auto">
+                <i class="fa-sharp fa-solid fa-tags"></i>
+                <% post.post_tags.each do |pt| %>
+                  <span class="mb-0 basic-font">
+                    <%= pt.tag.name %>
+                  </span>
+                <% end %>
+              </div>
 
-    <div class="col-md-8">
-      <% if @posts.count == 0 %>
-        <div>
-          <p>
-            投稿はありません。
-          </p>
-        </div>
-      <% else %>
-        <div class="card-deck">
-        <% @posts.each do |post| %>
-          <a href="/posts/<%= post.id %>" class="card text-dark border-dark" style="width: 20%;">
-            <%= image_tag post.get_image(200, 200), class: "card-img-top" %>
-            <div class="card-body">
-              <h6 class="card-title">
-                <%= post.title %>
-              </h6>
-              <p class="card-text">
-                <%= safe_join(post.body.split("\n"),tag(:br)) %>
-              </p>
-              <p class="card-text">
-                <%= post.user.name %>
-                <%= l post.created_at, format: :short %>
-              </p>
+              <div class="card-text mb-auto">
+                <i class="fa-sharp fa-solid fa-map"></i>
+                <span class="mb-0 basic-font">
+                  <%= post.region.region_name %>
+                </span>
+              </div>
+
+              <div class="card-text mb-auto">
+                <i class="fa-sharp fa-solid fa-map-location-dot"></i>
+                <% post.post_prefectures.each do |pp| %>
+                  <span class="mr-2 mb-0 basic-font">
+                    <%= pp.prefecture.prefecture_name %>
+                  </span>
+                <% end %>
+              </div>
             </div>
-          </a>
-        <% end %>
+          </div>
         </div>
       <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

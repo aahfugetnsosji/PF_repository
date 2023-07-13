@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_user!
-  
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
     @tags = Tag.all
