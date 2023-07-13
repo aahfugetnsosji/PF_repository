@@ -87,6 +87,10 @@ footer {
   font-size: 0.9rem;
 }
 
+.font-very-small {
+  font-size: 0.5rem;
+}
+
 // 注釈テキスト用
 .text-annotation {
   font-family: "text";
@@ -105,8 +109,18 @@ footer {
   color: $thema-color3;
 }
 
+.bold-bl {
+  font-weight: bold;
+  color: $thema-color2;
+}
+
 // 管理者投稿詳細ページ位置情報テキスト
 .area-font {
+  font-family: "text";
+  font-size: 1.2rem;
+}
+
+.font-md {
   font-family: "text";
   font-size: 1.2rem;
 }
@@ -397,6 +411,20 @@ footer {
   color: #fff;
 }
 
+.btn-option-sm {
+  font-size: 0.5rem;
+  background: $thema-color2;
+  font-family: "text";
+  color: #fff;
+  padding: 3px 6px;
+  transition: .3s;
+}
+
+.btn-option-sm:hover {
+  background: $thema-color3;
+  color: #fff;
+}
+
 .danger-btn {
   font-size: 1rem;
   background: $thema-color3;
@@ -481,6 +509,16 @@ a.link-option:hover {
   color: $thema-color4;
 }
 
+.link-option-rd-wh {
+  font-family: "text";
+  color: $thema-color3;
+  text-decoration: none;
+}
+
+.link-option-rd-wh:hover {
+  color: #fff;
+}
+
 // テキスト右寄せ
 .option-right {
   text-align: right;
@@ -542,7 +580,7 @@ input.btn-option {
   font-size: 1.1rem;
   width: 100%;
   margin-bottom: 10px;
-  border: 1px solid $thema-color2;
+  border: 1px solid $thema-color5;
 }
 
 .tag-input-form {
@@ -560,7 +598,7 @@ input.btn-option {
   width: 100%;
   min-height: 100px;
   margin-bottom: 10px;
-  border: 1px solid $thema-color2;
+  border: 1px solid $thema-color5;
 }
 
 // 画像選択フォーム
@@ -569,7 +607,7 @@ input.btn-option {
   font-size: 13px;
   width: 100%;
   margin-bottom: 10px;
-  border: 1px solid $thema-color2;
+  border: 1px solid $thema-color5;
 }
 
 #textarea {
@@ -623,7 +661,7 @@ input.btn-option {
 }
 
 // 退会ページ
-.unsubscribe {
+.margin-t-150 {
   margin-top: 150px;
 }
 
@@ -661,4 +699,20 @@ input.btn-option {
 .jmap-pref:hover {
   background-color: $thema-color3 !important;
   opacity: 100% !important;
+}
+
+.relative-option {
+  position: relative;
+}
+
+.absolute-option-top {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.absolute-option-bottom {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
 }

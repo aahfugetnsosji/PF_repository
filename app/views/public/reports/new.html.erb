@@ -1,30 +1,32 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>通報ページ</h1>
-    </div>
+<div class="row">
+  <div class="col-md-9 mx-auto mb-3">
+    <h2 class="header-option pub-header">通報ページ</h2>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <%= form_with model: @report, url: post_reports_path, method: :post do |f| %>
-        <h6>通報対象の投稿</h6>
-        <p>
-          <%= @post.title %>
-        </p>
-        
-        <h6>通報理由</h6>
-        <p>
-          <%= f.select :reason, Report.reasons.keys.map {|k| [I18n.t("enums.report.reason.#{k}"), k]} %>
-        </p>
-        
-        <h6>通報理由詳細</h6>
-        <p>
-          <%= f.text_area :body %>
-        </p>
-        
-        <%= f.submit "通報する" %>
-      <% end %>
-    </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-md-6 mx-auto">
+    <%= form_with model: @report, url: post_reports_path, method: :post do |f| %>
+      <h5 class="header-option pub-header mb-3">通報する投稿</h5>
+      <p class="basic-font show-transparent-option">
+        <%= @post.title %>
+      </p>
+
+      <h5 class="header-option pub-header mb-3">
+        通報理由
+        <span class="text-annotation">※必須</span>
+      </h5>
+      <%= f.select :reason, Report.reasons.keys.map {|k| [I18n.t("enums.report.reason.#{k}"), k]}, {prompt: "選択してください"}, {class: "select form-control input-form"} %>
+
+      <h5 class="header-option pub-header mt-4 mb-3">
+        通報理由詳細
+        <span class="text-annotation">※必須</span>
+      </h5>
+      <%= f.text_area :body, placeholder: "本文を入力", class: "form-control input-form", id: "textarea" %>
+
+      <div class="text-center mt-5">
+        <%= f.submit "通報する", class: "btn btn-option mb-5" %>
+      </div>
+    <% end %>
   </div>
 </div>

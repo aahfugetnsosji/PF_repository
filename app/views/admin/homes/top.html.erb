@@ -1,30 +1,29 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>通報一覧</h1>
-    </div>
+<div class="row mb-5">
+  <div class="col-md-12">
+    <h1 class="header-option adm-header">通報一覧</h1>
   </div>
-  
-  <div class="row">
-    <div class="col">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>通報ID</th>
-            <th>通報日時</th>
-            <th>通報理由</th>
-            <th>対応確認</th>
-          </tr>
-        </thead>
-        
+</div>
+
+<div class="row">
+  <div class="col-md-10 mx-auto">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th style="width: 15%">通報ID</th>
+          <th style="width: 20%">通報日時</th>
+          <th style="width: 40%">通報理由</th>
+          <th style="width: 20%">対応確認</th>
+        </tr>
+      </thead>
+
+      <% @reports.each do |report| %>
         <tbody>
-        <% @reports.each do |report| %>
           <tr>
             <td>
               <%= report.id %>
             </td>
             <td>
-              <a href="reports/<%= report.id %>">
+              <a href="admin/reports/<%= report.id %>" class="link-option">
                 <%= l report.created_at %>
               </a>
             </td>
@@ -33,15 +32,14 @@
             </td>
             <td>
               <% if report.is_handled == false %>
-                <p class="text-danger">未対処</p>
+                <span class="bold-red">未対処</span>
               <% else %>
-                <p class="taxt-dark">対処済み</p>
+                <span class="bold-bl">対処済み</span>
               <% end %>
             </td>
           </tr>
-        <% end %>
         </tbody>
-      </table>
-    </div>
+      <% end %>
+    </table>
   </div>
 </div>
