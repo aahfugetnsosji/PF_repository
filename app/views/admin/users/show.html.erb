@@ -1,5 +1,5 @@
 <div class="row mb-5">
-  <div class="col-lg-12">
+  <div class="col-md-12">
     <h1 class="header-option adm-header">会員詳細</h1>
   </div>
 
@@ -9,22 +9,22 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-2"></div>
+  <div class="col-md-1"></div>
 
-  <div class="col-lg-2 text-center mb-5">
+  <div class="col-md-3 text-center mb-5">
     <%= image_tag @user.get_profile_image(150, 150), class: "adm-icon-border" %>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <div class="row mb-5">
-      <div class="col-lg-6">
+      <div class="col-md-6">
         <h5 class="header-option adm-header">会員ID</h5>
         <h4 class="basic-font transparent-option p-2">
           <%= @user.id %>
         </h4>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-md-6">
         <h5 class="header-option adm-header">登録日時</h5>
         <h5 class="basic-font transparent-option p-2">
           <%= l @user.created_at %>
@@ -47,11 +47,11 @@
       <%= @user.profile %>
     </h4>
   </div>
-  <div class="col-lg-2"></div>
+  <div class="col-md-2"></div>
 </div>
 
 <div class="row my-5">
-  <div class="col-lg-11 mx-auto">
+  <div class="col-md-11 mx-auto">
     <h3 class="header-option adm-header">
       <%= @user.name %>さんの投稿一覧
     </h3>
@@ -59,7 +59,7 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-9 mx-auto mb-5">
+  <div class="col-md-9 mx-auto mb-5">
     <table class="table text-center">
       <thead>
         <tr>

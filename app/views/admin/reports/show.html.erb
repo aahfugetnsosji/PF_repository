@@ -1,71 +1,61 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>通報詳細</h1>
-    </div>
+<div class="row mb-5">
+  <div class="col-md-12">
+    <h1 class="header-option adm-header">通報詳細</h1>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>通報ID</th>
-            <td>
-              <%= @report.id %>
-            </td>
-          </tr>
+<div class="row mx-auto">
+  <div class="col-md-8 mx-auto">
+    <div class="row">
+      <div class="col-md-4 mb-5">
+        <h6 class="header-option adm-header">
+          通報ID ：
+          <%= @report.id %>
+        </h6>
+      </div>
 
-          <tr>
-            <th>通報日時</th>
-            <td>
-              <%= l @report.created_at %>
-            </td>
-          </tr>
-
-          <tr>
-            <th>該当の投稿タイトル</th>
-            <td>
-              <% if @report.post.present? %>
-                <%= link_to @report.post.title, admin_post_path(@report.post_id) %>
-              <% else %>
-                投稿ID:<%= @report.post_id %> / 削除済みの投稿
-              <% end %>
-            </td>
-          </tr>
-
-          <tr>
-            <th>通報理由</th>
-            <td>
-              <%= @report.reason_i18n %>
-            </td>
-          </tr>
-
-          <tr>
-            <th>通報理由詳細</th>
-            <td>
-              <%= safe_join(@report.body.split("\n"),tag(:br)) %>
-            </td>
-          </tr>
-
-          <tr>
-            <th>対応確認</th>
-            <td>
-              <%= form_with model: @report, url: admin_report_path, method: :patch do |f| %>
-                <span class="text-danger">
-                  <%= f.radio_button :is_handled, false %>
-                  <%= f.label :is_handled, "未対処" %>
-                </span>
-                <span class="text-dark">
-                  <%= f.radio_button :is_handled, true %>
-                  <%= f.label :is_handled, "対処済み", class: "text-dark" %>
-                </span>
-                <%= f.submit "変更を保存" %>
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="col-md-8 mb-5">
+        <h6 class="header-option adm-header">
+          通報日時 ：
+          <%= l @report.created_at %>
+        </h6>
+      </div>
     </div>
+
+    <h4 class="header-option adm-header">該当投稿タイトル</h4>
+    <div class="transparent-option-pd text-12rem">
+      <% if @report.post.present? %>
+        <%= link_to @report.post.title, admin_post_path(@report.post_id), class: "link-option" %>
+      <% else %>
+        投稿ID:<%= @report.post_id %> / 削除済みの投稿
+      <% end %>
+    </div>
+
+    <h4 class="header-option adm-header mt-5">通報理由</h4>
+    <div class="transparent-option-pd text-12rem">
+      <%= @report.reason_i18n %>
+    </div>
+
+    <h4 class="header-option adm-header mt-5">通報理由詳細</h4>
+    <div class="transparent-option-pd text-15rem">
+      <%= safe_join(@report.body.split("\n"),tag(:br)) %>
+    </div>
+
+    <h4 class="header-option adm-header mt-5">対応確認</h4>
+    <%= form_with model: @report, url: admin_report_path, method: :patch do |f| %>
+      <div class="text-12rem mt-3 mb-5 px-3">
+        <span class="bold-red">
+          <%= f.radio_button :is_handled, false %>
+          <%= f.label :is_handled, "未対処" %>
+        </span>
+        <span>　</span>
+        <span class="bold-bl">
+          <%= f.radio_button :is_handled, true %>
+          <%= f.label :is_handled, "対処済み" %>
+        </span>
+        <span>　　</span>
+        <%= f.submit "変更を保存", class: "btn btn-option" %>
+      </div>
+    <% end %>
   </div>
 </div>

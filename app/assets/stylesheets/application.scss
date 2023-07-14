@@ -14,6 +14,7 @@
 
 @import "variables";
 
+// 共通オプション
 html {
   scroll-behavior: smooth;
   font-size: 15px;
@@ -39,11 +40,6 @@ header {
   padding: 10px 40px;
 }
 
-#header.scroll {
-  padding: 10px 40px;
-  opacity: 0.9;
-}
-
 footer {
   background-color: $thema-color2;
   height: 100px;
@@ -54,75 +50,22 @@ footer {
   padding: 50px 0;
 }
 
-.basic-font {
+.table {
+  border: 1px solid $thema-color2;
+}
+
+.table thead th {
+  background-color: $thema-color2;
+  color: #fff;
   font-family: "text";
 }
 
-// 太字オプション
-.text-bold {
+.table tbody td {
+  background-color: $thema-color4;
   font-family: "text";
-  font-weight: bold;
-}
-
-// テキスト基本サイズ
-.text-normal {
-  font-family: "text";
-  font-size: 1.5rem;
-}
-
-.adm-gray-font {
-  font-family: "text";
-  font-size: 1.2rem;
-  color: $thema-color4;
-}
-
-// テキスト大きめ
-.font-big {
-  font-family: "text";
-  font-size: 2rem;
-}
-
-// 小さめ
-.font-small {
-  font-size: 0.9rem;
-}
-
-.font-very-small {
-  font-size: 0.5rem;
-}
-
-// 注釈テキスト用
-.text-annotation {
-  font-family: "text";
-  font-size: 0.8rem;
-  color: $thema-color3;
-}
-
-// 投稿件数用
-.header-annotation {
-  font-size: 1.5rem;
-}
-
-// 太字・赤字
-.bold-red {
-  font-weight: bold;
-  color: $thema-color3;
-}
-
-.bold-bl {
-  font-weight: bold;
-  color: $thema-color2;
-}
-
-// 管理者投稿詳細ページ位置情報テキスト
-.area-font {
-  font-family: "text";
-  font-size: 1.2rem;
-}
-
-.font-md {
-  font-family: "text";
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  white-space: wrap;
+	overflow: hidden;
 }
 
 // ユーザ側ヘッダー
@@ -133,6 +76,76 @@ footer {
 // 管理者側ヘッダー
 .adm-header {
   font-family: "admin-header";
+}
+
+// 見出しオプション
+.header-option {
+  border-bottom: 1px solid $thema-color2;
+  border-left: 4px solid $thema-color2;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  position: relative;
+}
+
+#header.scroll {
+  padding: 10px 40px;
+  opacity: 0.9;
+}
+
+// テキストオプション
+.basic-font {
+  font-family: "text";
+}
+
+// テキスト-サイズ
+.text-15rem {
+  font-family: "text";
+  font-size: 1.5rem;
+}
+
+.text-12rem {
+  font-family: "text";
+  font-size: 1.2rem;
+}
+
+.font-md {
+  font-family: "text";
+  font-size: 1.2rem;
+}
+
+.font-big {
+  font-family: "text";
+  font-size: 2rem;
+}
+
+.font-small {
+  font-size: 0.9rem;
+}
+
+.font-very-small {
+  font-size: 0.5rem;
+}
+
+// テキスト-太字
+.text-bold {
+  font-family: "text";
+  font-weight: bold;
+}
+
+.bold-bl {
+  font-weight: bold;
+  color: $thema-color2;
+}
+
+.bold-red {
+  font-weight: bold;
+  color: $thema-color3;
+}
+
+// テキスト-カラー
+.text-white {
+  color: #fff;
 }
 
 .color-black {
@@ -147,23 +160,25 @@ footer {
   color: $thema-color4;
 }
 
-// ヘッダー装飾
-.header-option {
-  border-bottom: 2px solid $thema-color2;
-  border-left: 7px solid $thema-color2;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  padding-top: 10px;
-  position: relative;
+// テキスト-注釈オプション
+.text-annotation {
+  font-family: "text";
+  font-size: 0.8rem;
+  color: $thema-color3;
 }
 
-// 文字透明背景
+// テキスト-投稿件数用
+.header-annotation {
+  font-size: 1.5rem;
+}
+
+// 透明背景
 .transparent-option {
   background-color: rgba(184,184,184,0.5);
   border-radius: 2px;
 }
 
-.show-transparent-option {
+.transparent-option-pd {
   background-color: rgba(184,184,184,0.5);
   border-radius: 2px;
   padding: 10px;
@@ -213,58 +228,6 @@ footer {
   border-bottom: 1px solid $thema-color2;
 }
 
-.table {
-  border: 1px solid $thema-color2;
-  position: relative;
-}
-
-.table tbody {
-  border-bottom: 1px solid $thema-color2;
-}
-
-.table thead th {
-  background-color: $thema-color2;
-  color: #fff;
-  font-family: "text";
-}
-
-.table tbody td {
-  background-color: $thema-color4;
-  font-family: "text";
-  font-size: 1.1rem;
-  white-space: wrap;
-	overflow: hidden;
-}
-
-.table th {
-  background-color: $thema-color2;
-  color: #fff;
-  font-family: "text";
-  width: 37%;
-}
-
-// 投稿一覧ページ用
-.index-th {
-  width: 120px !important;
-  height: 120px !important;
-  padding: 0 !important;
-}
-
-.index-td {
-  max-width: 200px;
-}
-
-.table tr td .index-td {
-  width: 100% !important;
-  padding: 0 !important;
-  margin: 0.3;
-}
-
-.index-body {
-  min-height: 70px;
-  margin: 0 !important;
-}
-
 .index-name {
   font-family: "text";
   font-size: 0.9rem;
@@ -287,12 +250,6 @@ footer {
   color: $thema-color3;
 }
 
-.table tr td .index-data {
-  position: absolute !important;
-  right: 0 !important;
-  bottom: 0 !important;
-}
-
 // トップページの画像サイズ
 .top-img-resize img {
   width: 135px;
@@ -310,18 +267,12 @@ footer {
 }
 
 // 投稿詳細ページの画像サイズ
-.show-img-resize img {
+.img-resize-show img {
   max-width: 100%;
   height: auto;
   object-fit: contain;
   border: 1px solid $thema-color2;
-}
-
-// 管理者：投稿詳細ページの画像サイズ
-.admin-post-img img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
+  background-color: rgba(184,184,184,0.5)
 }
 
 // 投稿詳細ページのボーダー
@@ -479,14 +430,16 @@ a.link-option:hover {
   color: $thema-color3;
 }
 
-.adm-show-link-option {
+.link-option-15rem-red {
   font-family: "text";
   font-size: 1.5rem;
-  color: $thema-color2;
+  color: $thema-color3;
+  text-decoration: none;
 }
 
-.adm-show-link-option:hover {
+.link-option-15rem-red:hover {
   color: $thema-color3;
+  text-decoration: underline;
 }
 
 .link-option-bl-gr {
@@ -655,8 +608,8 @@ input.btn-option {
   border: 1px solid $thema-color2;
 }
 
-.adm-show-border {
-  border-bottom: 2px solid $thema-color2;
+.border-b-1-bl {
+  border-bottom: 1px solid $thema-color2;
   padding-bottom: 10px;
 }
 
