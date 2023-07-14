@@ -34,9 +34,9 @@
       </h4>
       <div class="row mt-4">
         <% @tags.each do |tag| %>
-          <div class="col-lg-4">
+          <div class="col-md-4">
             <div class="card tag-card-option mb-3">
-              <div class="card-header area-font card-header-option">
+              <div class="card-header text-12rem card-header-option">
                 <i class="fa-sharp fa-solid fa-tag"></i>
                 <%= tag.name %>
               </div>
@@ -49,7 +49,7 @@
                 </span>
 
                 <span class="border-all-option-delete">
-                  <%= link_to admin_tag_path(tag.id), class: "link-option-rd-gr", "data-confirm" => "本当に削除しますか？", method: :delete do %>
+                  <%= link_to admin_tag_path(tag.id), class: "link-option-rd-gr", "data-confirm" => "削除してよろしいですか？", method: :delete do %>
                     <i class="fa-sharp fa-solid fa-trash-can"></i><!--
                  --><span class="font-small">削除</span>
                   <% end %>
