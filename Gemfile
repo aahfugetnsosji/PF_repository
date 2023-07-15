@@ -62,3 +62,5 @@ gem 'pry-rails'
 gem 'enum_help'
 
 gem 'seed-fu'
+
+gem 'kaminari','~> 1.2.1'
