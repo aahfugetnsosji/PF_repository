@@ -36,28 +36,30 @@
         <% @tags.each do |tag| %>
           <div class="col-md-4">
             <div class="card tag-card-option mb-3">
-              <div class="card-header text-12rem card-header-option">
+              <div class="card-header text-12rem text-bold card-header-option">
                 <i class="fa-sharp fa-solid fa-tag"></i>
                 <%= tag.name %>
               </div>
               <div class="card-body">
                 <span class="border-all-option-edit">
-                  <%= link_to edit_admin_tag_path(tag.id), class: "link-option-bl-gr", method: :get do %>
-                    <i class="fa-sharp fa-solid fa-pen-to-square"></i><!--
-                 --><span class="font-small">編集</span>
+                  <%= link_to edit_admin_tag_path(tag.id), class: "text-black", method: :get do %>
+                    <i class="fa-sharp fa-solid fa-pen-to-square"></i>
                   <% end %>
                 </span>
 
                 <span class="border-all-option-delete">
-                  <%= link_to admin_tag_path(tag.id), class: "link-option-rd-gr", "data-confirm" => "削除してよろしいですか？", method: :delete do %>
-                    <i class="fa-sharp fa-solid fa-trash-can"></i><!--
-                 --><span class="font-small">削除</span>
+                  <%= link_to admin_tag_path(tag.id), class: "text-red", "data-confirm" => "削除してよろしいですか？", method: :delete do %>
+                    <i class="fa-sharp fa-solid fa-trash-can"></i>
                   <% end %>
                 </span>
               </div>
             </div>
           </div>
         <% end %>
+
+        <div class="mt-5">
+          <%= paginate @tags %>
+        </div>
     <% end %>
   </div>
 </div>

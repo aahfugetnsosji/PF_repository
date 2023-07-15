@@ -1,13 +1,13 @@
 class Admin::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(20)
   end
 
   def show
     @post = Post.find(params[:id])
     @post_comments = @post.post_comments.all
   end
-  
+
   def destroy
     post = Post.find(params[:id])
     if post.destroy

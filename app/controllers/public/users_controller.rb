@@ -1,9 +1,9 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user! #未ログインユーザのアクセス制限
+  before_action :authenticate_user!, except: [:show] #未ログインユーザのアクセス制限
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all
+    @posts = @user.posts.page(params[:page]).per(15)
     if @user == current_user
       redirect_to mypage_path
     end
@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
   # マイページ専用
   def mypage
     @user = current_user
-    @posts = current_user.posts.all
+    @posts = current_user.posts.page(params[:page]).per(15)
   end
 
   def edit
@@ -46,7 +46,7 @@ class Public::UsersController < ApplicationController
 
   # ブックマーク一覧
   def favorite
-    @favorites = current_user.favorites.all
+    @favorites = current_user.favorites.page(params[:page])
   end
 
   private

@@ -40,18 +40,23 @@ header {
   padding: 10px 40px;
 }
 
+.navbar-dark {
+  background-color: $thema-color2;
+}
+
 footer {
   background-color: $thema-color2;
   height: 100px;
   width: 100%;
 }
 
-.container {
+main .container {
   padding: 50px 0;
 }
 
 .table {
   border: 1px solid $thema-color2;
+  word-break: break-word;
 }
 
 .table thead th {
@@ -64,8 +69,6 @@ footer {
   background-color: $thema-color4;
   font-family: "text";
   font-size: 1.1rem;
-  white-space: wrap;
-	overflow: hidden;
 }
 
 // ユーザ側ヘッダー
@@ -109,21 +112,18 @@ footer {
   font-size: 1.2rem;
 }
 
-.font-md {
-  font-family: "text";
-  font-size: 1.2rem;
-}
-
 .font-big {
   font-family: "text";
   font-size: 2rem;
 }
 
 .font-small {
+  font-family: "text";
   font-size: 0.9rem;
 }
 
 .font-very-small {
+  font-family: "text";
   font-size: 0.5rem;
 }
 
@@ -134,30 +134,39 @@ footer {
 }
 
 .bold-bl {
+  font-family: "text";
   font-weight: bold;
   color: $thema-color2;
 }
 
 .bold-red {
+  font-family: "text";
   font-weight: bold;
   color: $thema-color3;
 }
 
 // テキスト-カラー
 .text-white {
+  font-family: "text";
   color: #fff;
 }
 
-.color-black {
+.text-black {
+  font-family: "text";
   color: $thema-color2;
+  text-decoration: none;
 }
 
-.color-red {
+.text-red {
+  font-family: "text";
   color: $thema-color3;
+  text-decoration: none;
 }
 
-.color-gray {
+.text-gray {
+  font-family: "text";
   color: $thema-color4;
+  text-decoration: none;
 }
 
 // テキスト-注釈オプション
@@ -170,6 +179,23 @@ footer {
 // テキスト-投稿件数用
 .header-annotation {
   font-size: 1.5rem;
+}
+
+// テキスト省略
+.text-omit {
+  max-width: 130px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 425px) {
+  .text-omit {
+  max-width: 255px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 }
 
 // 透明背景
@@ -190,9 +216,39 @@ footer {
   min-height: 100px;
 }
 
-.card-group-option {
+// kaminariのカスタマイズ
+.pagination {
+  justify-content: center;
   display: flex;
-  flex-wrap: wrap;
+  font-family: "text";
+
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  background: $thema-color1;
+  color: $thema-color2;
+  border: none;
+  border-radius: 5px;
+  margin: 0 2px;
+  padding: 1px 8px;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: $thema-color3;
+  color: #fff;
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  background: $thema-color2;
+  color: #fff;
+}
+
+.disabled >.page-link {
+  background: $thema-color1;
+  color: $thema-color2;
 }
 
 .card-option {
@@ -212,7 +268,7 @@ footer {
 }
 
 .tag-card-option {
-  background-color: $thema-color1;
+  background-color: rgba(184,184,184,0.5);
   border: 1px solid $thema-color2;
   border-radius: 2px;
   text-decoration: none;
@@ -220,7 +276,6 @@ footer {
 }
 
 .card-header-option {
-  background-color: $thema-color1;
   border-bottom: 1px dotted $thema-color2;
 }
 
@@ -300,11 +355,12 @@ footer {
   border: 1px solid $thema-color2;
   border-radius: 5px;
   width: 100%;
-  margin: 0 10px;
+  margin: 10px;
 }
 
 // ブックマークアイコンオプション
 .favorite-icon-option {
+  color: $thema-color2;
   padding: 0 20px;
   font-size: 1.6rem;
 }
@@ -601,6 +657,7 @@ input.btn-option {
 .icon-option {
   border: 2px solid $thema-color2;
   background-color: rgba(255,255,255,0.7);
+  border-radius: 100%;
 }
 
 // 管理者側アイコンオプション
@@ -628,6 +685,7 @@ input.btn-option {
 }
 
 .border-all-option-edit {
+  background-color: rgba(250,250,250,0.8);
   border: 1px solid $thema-color2;
   padding: 5px 0 5px 9px;
   border-radius: 2px;
@@ -635,17 +693,18 @@ input.btn-option {
 }
 
 .border-all-option-edit:hover {
-  background-color: $thema-color2;
+  background-color: rgba(250,250,250,0.5);
 }
 
 .border-all-option-delete {
+  background-color: rgba(250,250,250,0.8);
   border: 1px solid $thema-color2;
   padding: 5px 9px 5px 9px;
   border-radius: 2px;
 }
 
 .border-all-option-delete:hover {
-  background-color: $thema-color2;
+  background-color: rgba(250,250,250,0.5);
 }
 
 // Jmapマウスホバー時の設定

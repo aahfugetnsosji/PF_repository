@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   # プロフィール画像を持たせる
   has_one_attached :profile_image
-  
+
   # モデル間のアソシエーション
   has_many :posts,         dependent: :destroy, foreign_key: 'user_id'
   has_many :post_comments, dependent: :destroy, foreign_key: 'user_id'
@@ -20,7 +20,7 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_fill: [width, height]).processed
   end
-  
+
   # ゲストログイン
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|

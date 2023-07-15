@@ -2,7 +2,8 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+    @posts = Post.page(params[:page])
+    @all_posts = Post.all
     @tags = Tag.all
     @regions = Region.all
     @prefectures = Prefecture.all
@@ -82,7 +83,8 @@ class Public::PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:keyword]).order(created_at: :desc)
+    @posts = Post.search(params[:keyword]).page(params[:page])
+    @all_posts = Post.search(params[:keyword]).order(created_at: :desc)
   end
 
   private

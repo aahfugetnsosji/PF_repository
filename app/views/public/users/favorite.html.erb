@@ -26,7 +26,7 @@
                 </h5>
               </a>
 
-              <div class="mb-0">
+              <div class="mb-0 text-omit">
                 <a href="/users/<%= fav.post.user_id %>" class="index-name-link-option">
                   <%= image_tag fav.post.user.get_profile_image(14, 14) %>
                   <%= fav.post.user.name %>
@@ -69,5 +69,9 @@
       <% end %>
       </div>
     <% end %>
+  </div>
+  
+  <div class="mt-5">
+    <%= paginate @favorites, window: 1 %>
   </div>
 </div>

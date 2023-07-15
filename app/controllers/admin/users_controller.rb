@@ -1,13 +1,13 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(20)
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all
+    @posts = @user.posts.page(params[:page]).per(10)
   end
-  
+
   def destroy
     @user = User.find(params[:id])
     if @user.email == "guest@example.com"

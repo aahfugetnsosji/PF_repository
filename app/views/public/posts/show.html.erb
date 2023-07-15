@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="option-right basic-font mt-3">
+    <div class="option-right mt-3">
       <!--投稿日時-->
       <%= l @post.created_at %>
 
@@ -31,14 +31,14 @@
           <!--ブックマーク登録済み-->
           <sppn>
             <%= link_to post_favorites_path(@post), method: :delete do %>
-              <i class="fa-solid fa-bookmark color-black favorite-icon-option"></i>
+              <i class="fa-solid fa-bookmark favorite-icon-option"></i>
             <% end %>
           </span>
         <% else %>
           <!--ブックマーク未登録-->
           <span>
             <%= link_to post_favorites_path(@post), method: :post do %>
-              <i class="fa-regular fa-bookmark color-black favorite-icon-option"></i>
+              <i class="fa-regular fa-bookmark favorite-icon-option"></i>
             <% end %>
           </span>
         <% end %>
@@ -52,7 +52,7 @@
 
   <div class="col-lg-8">
     <!--投稿画像-->
-    <div class="show-img-resize text-center">
+    <div class="img-resize-show text-center">
       <%= image_tag @post.get_image %>
     </div>
 
@@ -67,12 +67,12 @@
 
     <!--タグ-->
     <% @post.post_tags.each do |pt| %>
-      <span class="basic-font">
+      <div class="basic-font mb-2">
         <span class="tag-option">
           <i class="fa-sharp fa-solid fa-tag"></i>
           <%= pt.tag.name %>
         </span>
-      </span>
+      </div>
     <% end %>
 
     <div class="show-border"></div>
