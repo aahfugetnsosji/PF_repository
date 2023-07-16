@@ -57,7 +57,7 @@
                   <%= link_to "タグ一覧", admin_tags_path, class: "nav-link adm-header" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+                  <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link adm-header" %>
                 </li>
               <% elsif user_signed_in? %><!-- ユーザログイン後メニュー -->
                 <li class="nav-item">
@@ -72,19 +72,6 @@
                 <li class="nav-item">
                   <%= link_to "全国の投稿一覧", posts_path, class: "nav-link pub-header" %>
                 </li>
-                <!--<div class="nav-item dropdown">-->
-                <!--  <button class="btn btn-secondary dropdown-toggle pub-header pub-header nav-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-flip="true">-->
-                <!--    絞り込み検索-->
-                <!--  </button>-->
-                <!--  <div class="dropdown-menu">-->
-                <!--    <div class="dropdown-item">-->
-                <!--      <%#= form_tag tags_path, method: :get do %>-->
-                <!--        <h6 class="form-label pub-header">タグ検索</h5>-->
-                <!--        <%#= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :name, params[:tag_id]), { prompt: "選択してください", class: "select", onchange: "submit(this.form);" } %>-->
-                <!--      <%# end %>-->
-                <!--    </div>-->
-                <!--  </div>-->
-                <!--</div>-->
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link pub-header" %>
                 </li>
@@ -102,7 +89,7 @@
                   <%= link_to "ログイン", new_user_session_path, class: "nav-link pub-header" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, method: :post, class: "nav-link pub-header" %>
+                  <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-link pub-header" %>
                 </li>
               <% end %>
             </ul>

@@ -41,7 +41,7 @@ header {
 }
 
 .nav-item {
-  width: 150px;
+  width: 160px;
   text-align: center;
 }
 
@@ -72,6 +72,17 @@ main .container {
 .table {
   border: 1px solid $thema-color2;
   word-break: break-word;
+}
+
+.table.ellipsis {
+  width: 100%;
+}
+
+.table.ellipsis td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
 }
 
 .table thead th {
@@ -206,11 +217,25 @@ main .container {
 
 @media screen and (max-width: 425px) {
   .text-omit {
-  max-width: 255px;
+  max-width: 280px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
+}
+
+.comment-omit {
+  display: inline-block;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.header-omit {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 // 透明背景
@@ -267,7 +292,7 @@ main .container {
 }
 
 .card-option {
-  background-color: $thema-color1;
+  background-color: rgba(184,184,184,0.5);
   border-top: 1px solid $thema-color2;
   border-right: 1px solid $thema-color2;
   border-bottom: 1px solid $thema-color1;

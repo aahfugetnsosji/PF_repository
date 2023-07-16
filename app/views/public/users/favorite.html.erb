@@ -7,7 +7,7 @@
 <div class="row mx-auto mt-3">
   <div class="col-lg-12">
     <% if @favorites.count == 0 %>
-      <p class="text-normal">
+      <p class="text-12rem">
         ブックマークに登録した投稿はありません。
       </p>
     <% else %>
@@ -70,7 +70,7 @@
       </div>
     <% end %>
   </div>
-  
+
   <div class="mt-5">
     <%= paginate @favorites, window: 1 %>
   </div>

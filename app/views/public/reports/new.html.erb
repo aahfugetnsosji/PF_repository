@@ -6,6 +6,10 @@
 
 <div class="row mt-3">
   <div class="col-md-6 mx-auto">
+    
+    <!--バリデーションエラーメッセージ表示-->
+    <%= render "public/shared/error_messages", model: @report %>
+    
     <%= form_with model: @report, url: post_reports_path, method: :post do |f| %>
       <h5 class="header-option pub-header mb-3">通報する投稿</h5>
       <p class="basic-font show-transparent-option">

@@ -108,7 +108,7 @@
             </div>
 
             <div class="comment-name-date">
-              <%= link_to post_comment.user.name, user_path(post_comment.user_id), class: "comment-name" %>
+              <%= link_to post_comment.user.name, user_path(post_comment.user_id), class: "comment-name comment-omit" %>
               <span class="comment-data">
                 <%= l post_comment.created_at, format: :short %>
               </span>

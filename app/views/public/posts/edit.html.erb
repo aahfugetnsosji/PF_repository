@@ -6,6 +6,9 @@
 
 <div class="row mt-3">
   <div class="col-lg-6 mx-auto">
+    <!--バリデーションエラーメッセージ表示-->
+    <%= render "public/shared/error_messages", model: @post %>
+
     <%= form_with model: @post, url: post_path, method: :patch do |f| %>
 
       <h5 class="header-option pub-header mb-3">投稿画像</h5>
