@@ -39,6 +39,11 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "投稿しました。"
       redirect_to post_path(@post.id)
     else
+      @post = Post.new(post_params)
+      @tags = Tag.all
+      @regions = Region.all
+      @prefectures = Prefecture.all
+      flash[:alert] = "投稿できませんでした。"
       render :new
     end
   end
@@ -64,9 +69,11 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "投稿を更新しました。"
       redirect_to post_path(@post.id)
     else
+      @post = Post.find(params[:id])
       @tags = Tag.all
       @regions = Region.all
       @prefectures = Prefecture.all
+      flash[:alert] = "投稿を更新できませんでした。"
       render :edit
     end
   end
@@ -78,6 +85,8 @@ class Public::PostsController < ApplicationController
       redirect_to mypage_path
       flash[:notice] = "投稿を削除しました。"
     else
+      @post = Post.find(params[:id])
+      flash[:alert] = "投稿を削除できませんでした。"
       render :show
     end
   end

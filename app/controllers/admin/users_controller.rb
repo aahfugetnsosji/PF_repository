@@ -11,12 +11,17 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.email == "guest@example.com"
-      redirect_to admin_user_path(@user.id), alert: "ゲストユーザーは削除できません。"
+      flash[:alert] = "ゲストユーザーは削除できません。"
+      redirect_to admin_user_path(@user.id)
     elsif @user.email != "guest@example.com"
       @user.destroy
-      redirect_to admin_users_path, notice: "退会処理が完了しました。"
+      flash[:notice] = "退会処理が完了しました。"
+      redirect_to admin_users_path
     else
-      render :show, alert: "退会処理が完了できませんでした。"
+      @user = User.find(params[:id])
+      @posts = @user.posts.page(params[:page]).per(10)
+      flash[:alert] = "退会処理が完了できませんでした。"
+      render :show
     end
   end
 end

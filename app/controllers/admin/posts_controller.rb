@@ -11,9 +11,11 @@ class Admin::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     if post.destroy
-      redirect_to admin_posts_path
       flash[notice] = "投稿を削除しました。"
+      redirect_to admin_posts_path
     else
+      @post = Post.find(params[:id])
+      @post_comments = @post.post_comments.all
       render :show, alert: "投稿の削除に失敗しました。"
     end
   end

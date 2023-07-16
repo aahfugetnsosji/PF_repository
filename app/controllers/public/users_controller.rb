@@ -22,10 +22,11 @@ class Public::UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if user.email == "guest@example.com"
-      redirect_to mypage_path, alert: "ゲストユーザは更新できません。"
-    else
-      user.update(user_params)
-      redirect_to mypage_path, notice: "ユーザー情報を更新しました。"
+      flash[:alert] = "ゲストユーザは更新できません。"
+      redirect_to mypage_path
+    elsif user.update(user_params)
+      flash[:notice] = "ユーザー情報を更新しました。"
+      redirect_to mypage_path
     end
   end
 
@@ -38,8 +39,10 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.id == current_user.id
       @user.destroy
+      flash[:notice] = "退会しました。"
       redirect_to root_path
     else
+      flash[:alert] = "退会できませんでした。"
       redirect_to mypage_path
     end
   end
