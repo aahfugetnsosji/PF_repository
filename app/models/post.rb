@@ -30,8 +30,8 @@ class Post < ApplicationRecord
   # 投稿画像
   def get_image
     unless image.attached?
-      file_path = Rails.root.join('app/assets/images/NoImage.jpg')
-      image.attach(io: File.open(file_path), filename: 'NoImage.jpg', content_type: 'image/jpeg')
+      file_path = Rails.root.join('app/assets/images/post-image.png')
+      image.attach(io: File.open(file_path), filename: 'post-image.png', content_type: 'image/png')
     end
     image
   end
