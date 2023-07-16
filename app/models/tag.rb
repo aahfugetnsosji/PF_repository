@@ -4,6 +4,6 @@ class Tag < ApplicationRecord
   # タグは投稿を複数持つ。post_tagsを通して参照可能
   has_many :posts, through: :post_tags
   
-  # 管理者側：タグ名が重複していないか確認
-  validates :name, uniqueness: true
+  # バリデーション 管理者側：タグ名が重複していないか確認
+  validates :name, presence: true, uniqueness: true
 end

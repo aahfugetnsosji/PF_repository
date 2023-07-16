@@ -2,6 +2,10 @@ class Report < ApplicationRecord
   # モデル間のアソシエーション
   # 外部キーのnilを許可する
   belongs_to :post, optional: true
+  
+  # バリデーション
+  validates :reason, presence: true
+  validates :body, presence: true
 
   # 通報理由
   enum reason: {

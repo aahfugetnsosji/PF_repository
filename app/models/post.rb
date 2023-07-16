@@ -21,6 +21,12 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :post_tags
   accepts_nested_attributes_for :post_prefectures
 
+  # バリデーション
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :region_id, presence: true
+  validates :user_id, presence: true
+
   # 投稿画像
   def get_image
     unless image.attached?
