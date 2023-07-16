@@ -25,11 +25,23 @@
         <div class="container-fluid">
 
           <% if admin_signed_in? %>
-            <%= link_to "うつしよ裏怪道", admin_root_path, class: "pub-header navbar-brand p-3" %>
+            <%= link_to admin_root_path, method: :get do %>
+              <div class="navbar-brand p-3">
+                <%= image_tag 'logo.png', size: "300x110", alt: "logo" %>
+              </div>
+            <% end %>
           <% elsif user_signed_in? %>
-            <%= link_to "うつしよ裏怪道", root_path, class: "pub-header navbar-brand p-3" %>
+            <%= link_to root_path, method: :get do %>
+              <div class="navbar-brand p-3">
+                <%= image_tag 'logo.png', size: "300x110", alt: "logo" %>
+              </div>
+            <% end %>
           <% else %>
-            <%= link_to "うつしよ裏怪道", root_path, class: "pub-header navbar-brand p-3" %>
+            <%= link_to root_path, method: :get do %>
+              <div class="navbar-brand p-3">
+                <%= image_tag 'logo.png', size: "300x110", alt: "logo" %>
+              </div>
+            <% end %>
           <% end %>
 
           <span class="text-white">
