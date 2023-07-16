@@ -20,25 +20,27 @@
   </head>
 
   <body class="d-flex flex-column">
-    <header id="header">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
+    <header class="sticky-top" id="header">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+
           <% if admin_signed_in? %>
-            <%= link_to "LOGO", admin_root_path, class: "navbar-brand p-3" %>
+            <%= link_to "うつしよ裏怪道", admin_root_path, class: "pub-header navbar-brand p-3" %>
           <% elsif user_signed_in? %>
-            <%= link_to "LOGO", root_path, class: "navbar-brand p-3" %>
+            <%= link_to "うつしよ裏怪道", root_path, class: "pub-header navbar-brand p-3" %>
           <% else %>
-            <%= link_to "LOGO", root_path, class: "navbar-brand p-3" %>
+            <%= link_to "うつしよ裏怪道", root_path, class: "pub-header navbar-brand p-3" %>
           <% end %>
+
           <span class="text-white">
             <%= flash[:alert] %>
             <%= flash[:notice] %>
           </span>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
+
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
               <% if admin_signed_in? %><!-- 管理者ログイン後メニュー -->
@@ -70,12 +72,28 @@
                 <li class="nav-item">
                   <%= link_to "全国の投稿一覧", posts_path, class: "nav-link pub-header" %>
                 </li>
+                <!--<div class="nav-item dropdown">-->
+                <!--  <button class="btn btn-secondary dropdown-toggle pub-header pub-header nav-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-flip="true">-->
+                <!--    絞り込み検索-->
+                <!--  </button>-->
+                <!--  <div class="dropdown-menu">-->
+                <!--    <div class="dropdown-item">-->
+                <!--      <%#= form_tag tags_path, method: :get do %>-->
+                <!--        <h6 class="form-label pub-header">タグ検索</h5>-->
+                <!--        <%#= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :name, params[:tag_id]), { prompt: "選択してください", class: "select", onchange: "submit(this.form);" } %>-->
+                <!--      <%# end %>-->
+                <!--    </div>-->
+                <!--  </div>-->
+                <!--</div>-->
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link pub-header" %>
                 </li>
               <% else %><!-- ログイン前メニュー -->
                 <li class="nav-item">
                   <%= link_to "About", about_path, class: "nav-link pub-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "全国の投稿一覧", posts_path, class: "nav-link pub-header" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "無料会員登録", new_user_registration_path, class: "nav-link pub-header" %>
@@ -88,11 +106,12 @@
                 </li>
               <% end %>
             </ul>
-            
+
             <form class="form-inline">
               <!--キーワード検索を配置-->
             </form>
           </div>
+
         </div>
       </nav>
     </header>

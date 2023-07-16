@@ -33,15 +33,29 @@ body {
 
 header {
   background-color: $thema-color2;
-  // position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px 40px;
+
+}
+// ナビゲーションバーのカスタマイズ
+.navbar {
+  background-color: $thema-color2 !important;
 }
 
-.navbar-dark {
-  background-color: $thema-color2;
+.nav-item {
+  width: 150px;
+  text-align: center;
+}
+
+.nav-link {
+  color: #fff;
+  margin: 10px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+}
+
+.nav-link:hover {
+  color: #fff;
+  background-color: rgba(153, 0, 0, 0.9);
+  border: 1px solid $thema-color3;
 }
 
 footer {
@@ -51,9 +65,10 @@ footer {
 }
 
 main .container {
-  padding: 50px 0;
+  padding: 50px 0 20px 0;
 }
 
+// テーブルのカスタマイズ
 .table {
   border: 1px solid $thema-color2;
   word-break: break-word;
@@ -549,11 +564,6 @@ a.link-option:hover {
 
 span.option-left {
   text-align: left;
-}
-
-// 入力フォーム
-input#keyword {
-  width: 100%;
 }
 
 // select2用

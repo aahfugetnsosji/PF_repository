@@ -8,11 +8,11 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery";
-import "./smoothscroll-min"; // スクロールボタンをIEとSafariに対応させるためのファイル
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import "./mystyle"; // 独自のjsファイル読み込み
+import "./smoothscroll-min"; // スクロールボタンをIEとSafariに対応させるためのファイル
 
 
 Rails.start()
