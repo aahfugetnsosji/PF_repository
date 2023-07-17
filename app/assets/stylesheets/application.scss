@@ -215,15 +215,6 @@ main .container {
   white-space: nowrap;
 }
 
-@media screen and (max-width: 425px) {
-  .text-omit {
-  max-width: 280px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-}
-
 .comment-omit {
   display: inline-block;
   max-width: 200px;
@@ -763,4 +754,20 @@ input.btn-option {
   position: absolute;
   bottom: 3px;
   right: 3px;
+}
+
+@media screen and (max-width: 320px) {
+  .navbar-brand img {
+    width: 270px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .text-omit {
+    max-width: 280px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }
