@@ -49,6 +49,10 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    post = Post.find(params[:id])
+    unless post.user_id == current_user.id
+      redirect_to post_path(post)
+    end
     @post = Post.find(params[:id])
     @tags = Tag.all
     @regions = Region.all
@@ -56,6 +60,10 @@ class Public::PostsController < ApplicationController
   end
 
   def update
+    post = Post.find(params[:id])
+    unless post.user_id == current_user.id
+      redirect_to post_path(post)
+    end
     @post = Post.find(params[:id])
     tag_ids = post_tags_params[:tag_ids]
     tag_ids.delete("")
