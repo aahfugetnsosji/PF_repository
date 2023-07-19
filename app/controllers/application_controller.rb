@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     def admin_url
       request.fullpath.include?("/admin")
     end
-    
+
     # ログイン後の遷移先
     def after_sign_in_path_for(resource_or_scope)
       if resource_or_scope.is_a?(Admin)
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
         root_path
       end
     end
-    
+
     # ログアウト後の遷移先
     def after_sign_out_path_for(resource_or_scope)
       if resource_or_scope == :admin
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     # ゲストユーザの削除制限
     def ensure_normal_user
       if resource.email == 'guest@example.com'
-        redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
+        redirect_to mypage_path, alert: 'ゲストユーザーは削除できません。'
       end
     end
 end

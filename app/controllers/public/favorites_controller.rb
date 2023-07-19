@@ -18,13 +18,13 @@ class Public::FavoritesController < ApplicationController
     post = Post.find(params[:post_id])
     favorite = current_user.favorites.find_by(post_id: post.id)
     if favorite.destroy
-      flash[:notice] = "ブックマークを削除しました。"
+      flash[:notice] = "ブックマークを解除しました。"
       # 削除後のリダイレクト先を直前のページに指定、直前のページに戻れなかった際はtopページに
       redirect_back fallback_location: root_path
     else
       @post = Post.find(params[:post_id])
       @favorite = current_user.favorites.find_by(post_id: post.id)
-      flash[:alert] = "ブックマークを削除できませんでした。"
+      flash[:alert] = "ブックマークを解除できませんでした。"
       render template: "public/posts/show"
     end
   end

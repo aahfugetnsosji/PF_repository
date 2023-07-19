@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show] #未ログインユーザのアクセス制限
+  before_action :authenticate_user!
 
   def show
     @user = User.find(params[:id])
@@ -22,10 +22,10 @@ class Public::UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if user.email == "guest@example.com"
-      flash[:alert] = "ゲストユーザは更新できません。"
+      flash[:alert] = "ゲストユーザーは更新できません。"
       redirect_to mypage_path
     elsif user.update(user_params)
-      flash[:notice] = "ユーザー情報を更新しました。"
+      flash[:notice] = "会員情報を更新しました。"
       redirect_to mypage_path
     end
   end
@@ -36,10 +36,12 @@ class Public::UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    if @user.id == current_user.id
-      @user.destroy
-      flash[:notice] = "退会しました。"
+    user = User.find(params[:id])
+    if user.email == "guest@example.com"
+      flash[:alert] = "ゲストユーザーは削除できません。"
+      redirect_to mypage_path
+    elsif user.id == current_user.id
+      user.destroy
       redirect_to root_path
     else
       flash[:alert] = "退会できませんでした。"
