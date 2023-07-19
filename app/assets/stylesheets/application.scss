@@ -524,16 +524,15 @@ a.link-option:hover {
   color: $thema-color3;
 }
 
-.link-option-15rem-red {
+.link-option-15rem {
   font-family: "text";
   font-size: 1.5rem;
-  color: $thema-color3;
-  text-decoration: none;
+  color: $thema-color2;
+  text-decoration: underline;
 }
 
-.link-option-15rem-red:hover {
+.link-option-15rem:hover {
   color: $thema-color3;
-  text-decoration: underline;
 }
 
 .link-option-bl-gr {

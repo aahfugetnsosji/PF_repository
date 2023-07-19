@@ -12,7 +12,7 @@
         </h2>
       </div>
     </div>
-  
+
 
   <div class="row mx-auto">
     <div class="col-md-8 mx-auto">
@@ -32,11 +32,11 @@
         </div>
       </div>
 
-      <div class="row mx-auto">
-        <h4 class="header-option adm-header mb-5">
-          投稿者 ：
-          <%= link_to @post.user.name, admin_user_path(@post.user_id), class: "link-option-15rem-red" %>
-        </h4>
+      <div class="row mx-auto mb-5">
+        <h4 class="header-option adm-header">投稿者</h4>
+        <div class="transparent-option-pd text-15rem">
+          <%= link_to @post.user.name, admin_user_path(@post.user_id), class: "link-option-15rem" %>
+        </div>
       </div>
 
       <div class="row mb-5">
@@ -104,7 +104,7 @@
           </div>
 
           <div class="comment-name-date">
-            <%= link_to post_comment.user.name, user_path(post_comment.user_id), class: "comment-name" %>
+            <%= link_to post_comment.user.name, admin_user_path(post_comment.user_id), class: "comment-name" %>
             <span class="comment-data">
               <%= l post_comment.created_at, format: :short %>
             </span>
@@ -112,7 +112,7 @@
         </div>
 
         <div class="option-right">
-          <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "comment-delete" %>
+          <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "comment-delete" %>
         </div>
         <div class="comment-border"></div>
       <% end %>

@@ -67,7 +67,7 @@
     <div class="my-4"></div>
 
     <!--本文-->
-    <div class="show-transparent-option basic-font">
+    <div class="transparent-option-pd basic-font">
       <%= safe_join(@post.body.split("\n"),tag(:br)) %>
     </div>
 
@@ -151,7 +151,7 @@
       </p>
     </div>
 <% elsif @post.user_id != current_user.id %>
-  <div class="mt-5 option-right">
+  <div class="mt-5 option-right mb-5">
     <%= link_to "不適切な投稿を通報する >>", new_post_reports_path(@post.id), class: "btn danger-btn" %>
   </div>
 <% end %>
