@@ -2,14 +2,14 @@
 
 ## サイト概要
 ### サイトテーマ
-「地元の怖い・不思議な民話」や「日常あるいは旅先で出会ったなんだか怖い・不思議な場所」を  
+「地元の怖い・不思議な民話」や「日常あるいは旅先で出会ったなんだか怖い・不思議な場所」を
 位置情報と共に投稿することで、ユーザみんなで日本のオカルト分布図を作っていくコミュニティサイト
 
 ### テーマを選んだ理由
-<ruby>柳田國男<rp>（</rp><rt>やなぎだくにお</rt><rp>）</rp></ruby>氏の「遠野物語」のような地域に根付いたちょっと怖い・不思議な民話や、学校の怪談、  
-なんだか怖い・不思議な雰囲気の場所や写真など、誰しも一度は経験したことのある『なんか怖い、不思議』を  
-誰かと共有し、同じ趣味を持つ人や同じような体験をした人と交流できる場を作りたい。  
-また、鳥取県<ruby>境港<rp>（</rp><rt>さかいみなと</rt><rp>）</rp></ruby>市にある「水木しげるロード」や、広島県<ruby>三次<rp>（</rp><rt>みよし</rt><rp>）</rp></ruby>市にある「もののけミュージアム」のような  
+<ruby>柳田國男<rp>（</rp><rt>やなぎだくにお</rt><rp>）</rp></ruby>氏の「遠野物語」のような地域に根付いたちょっと怖い・不思議な民話や、学校の怪談、
+なんだか怖い・不思議な雰囲気の場所や写真など、誰しも一度は経験したことのある『なんか怖い、不思議』を
+誰かと共有し、同じ趣味を持つ人や同じような体験をした人と交流できる場を作りたい。
+また、鳥取県<ruby>境港<rp>（</rp><rt>さかいみなと</rt><rp>）</rp></ruby>市にある「水木しげるロード」や、広島県<ruby>三次<rp>（</rp><rt>みよし</rt><rp>）</rp></ruby>市にある「もののけミュージアム」のような
 ホラー・オカルトを通した地域起こし活動等を発信する場のひとつになれたら、と思いこのテーマにしました。
 
 ### ターゲットユーザ
@@ -40,5 +40,24 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+## 使用gem
+- devise
+- pry-rails
+- enum-help
+- sheed-fu
+- kaminari
+
+## 使用プラグイン
+- [【Jmap jQuery plugin】](https://yugokimura.github.io/jmap/)
+- [【Select2】](https://select2.org/)
+
+## 使用フレームワーク
+- [【Bootstrap】](https://getbootstrap.jp/)
+
 ## 使用素材
-- [【無料のAi・PNG白黒シルエットイラスト】](https://www.silhouette-illust.com/)
+- [【Oradano明朝フォント】](https://www.asahi-net.or.jp/~sd5a-ucd/freefonts/Oradano-Mincho/)
+- [【XANO明朝フォント】](https://www.asahi-net.or.jp/~sd5a-ucd/freefonts/XANO-mincho/)
+- [【Google Fonts】](https://fonts.google.com/)
+- [【フロップデザイン】](https://www.flopdesign.com/)
+- [【イラストAC】](https://www.ac-illust.com/)
+- [【シルエットAC】](https://www.silhouette-ac.com/)
