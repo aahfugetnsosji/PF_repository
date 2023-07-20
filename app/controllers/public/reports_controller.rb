@@ -20,7 +20,7 @@ class Public::ReportsController < ApplicationController
     @report.post_id = @post.id
     if @report.save
       flash[:notice] = "通報しました。"
-      redirect_to post_complete_path
+      redirect_to post_reports_complete_path
     else
       @post = Post.find(params[:post_id])
       @report = Report.new(report_params)

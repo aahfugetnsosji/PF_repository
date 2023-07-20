@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       # 通報用
       resource :reports, only: [:new, :create]
-      get 'complete' => "reports#complete"
+      get 'reports/complete' => "reports#complete"
     end
     # キーワード検索用
     get 'search' => "posts#search"
