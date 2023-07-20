@@ -1,0 +1,128 @@
+<div class="row mb-5">
+  <div class="col-md-12">
+    <h1 class="header-option adm-header">投稿詳細</h1>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto mb-5">
+        <h2 class="header-option adm-header">投稿タイトル</h2>
+        <h2 class="transparent-option-pd basic-font">
+          <%= @post.title %>
+        </h2>
+      </div>
+    </div>
+
+
+  <div class="row mx-auto">
+    <div class="col-md-8 mx-auto">
+      <div class="row">
+        <div class="col-lg-4 mb-5">
+          <h6 class="header-option adm-header">
+            投稿ID ：
+            <%= @post.id %>
+          </h6>
+        </div>
+
+        <div class="col-lg-8 mb-5">
+          <h6 class="header-option adm-header">
+            投稿日時 ：
+            <%= l @post.created_at %>
+          </h6>
+        </div>
+      </div>
+
+      <div class="row mx-auto mb-5">
+        <h4 class="header-option adm-header">投稿者</h4>
+        <div class="transparent-option-pd text-15rem">
+          <%= link_to @post.user.name, admin_user_path(@post.user_id), class: "link-option-15rem" %>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col-lg-6 mx-auto">
+          <div class="img-resize-show">
+            <%= image_tag @post.get_image %>
+          </div>
+        </div>
+      </div>
+
+      <h5 class="header-option adm-header">本文</h5>
+      <div class="transparent-option-pd text-15rem">
+        <%= safe_join(@post.body.split("\n"),tag(:br)) %>
+      </div>
+
+      <h5 class="header-option adm-header mt-5">タグ</h5>
+      <div class="transparent-option-pd text-12rem">
+        <% if @post.post_tags.present? %>
+          <% @post.post_tags.each do |pt| %>
+            <span class="mr-3">
+              <%= pt.tag.name %>
+            </span>
+          <% end %>
+        <% else %>
+          <div class="text-12rem text-white">選択されていません</div>
+        <% end %>
+      </div>
+
+      <h5 class="header-option adm-header mt-5">地方区分</h5>
+      <div class="transparent-option-pd text-12rem">
+        <%= @post.region.region_name %>
+      </div>
+
+      <h5 class="header-option adm-header mt-5">都道府県</h5>
+      <div class="transparent-option-pd text-12rem">
+        <% if @post.post_prefectures.present? %>
+          <% @post.post_prefectures.each do |pp| %>
+            <%= pp.prefecture.prefecture_name %>
+          <% end %>
+        <% else %>
+          <div class="text-12rem text-white">選択されていません</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="comment-border mt-5 mb-4"></div>
+
+<div class="row mx-auto">
+  <div class="col-md-7 mx-auto">
+    <h5 class="header-option adm-header">
+      コメント一覧
+    </h5>
+  </div>
+</div>
+
+<div class="row mx-auto">
+  <div class="col-md-6 mx-auto mb-5">
+    <% if @post_comments.present? %>
+      <% @post_comments.each do |post_comment| %>
+        <div class="comment-option">
+          <div class="comment-body">
+            <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
+          </div>
+
+          <div class="comment-name-date">
+            <%= link_to post_comment.user.name, admin_user_path(post_comment.user_id), class: "comment-name" %>
+            <span class="comment-data">
+              <%= l post_comment.created_at, format: :short %>
+            </span>
+          </div>
+        </div>
+
+        <div class="option-right">
+          <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "comment-delete" %>
+        </div>
+        <div class="comment-border"></div>
+      <% end %>
+    <% else %>
+      <p class="basic-font ml-3">コメントはありません。</p>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="my-5 option-center">
+  <%= link_to "投稿を削除する", admin_post_path(@post.id), method: :delete, "data-confirm" => "本当によろしいですか？", class: "btn danger-btn" %>
+</div>

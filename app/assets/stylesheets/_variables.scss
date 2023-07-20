@@ -1,0 +1,20 @@
+$thema-color1: #f0ead5; // 全体背景色(ベージュ)
+$thema-color2: #0f0001; // 黒
+$thema-color3: #990000; // 赤
+$thema-color4: #b8b8b8; // 灰色
+$thema-color5: #AAAAAA; // ちょい濃いめ灰色
+
+@font-face {
+  font-family: "public-header";
+  src: asset_url("OradanoGSRR.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "admin-header";
+  src: asset_url("ShipporiMincho-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "text";
+  src: asset_url("XANO-mincho-U32.ttf") format("truetype");
+}

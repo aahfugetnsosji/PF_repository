@@ -1,0 +1,118 @@
+<div class="row mb-2">
+  <div class="col-lg-12">
+    <h1 class="header-option pub-header">マイページ</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-9 mx-auto my-5">
+    <h2 class="header-option pub-header">登録情報</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-1"></div>
+
+  <div class="col-lg-3 text-center mb-5">
+    <%= image_tag @user.get_profile_image(150, 150), class: "icon-option" %>
+  </div>
+
+  <div class="col-lg-6">
+    <h5 class="header-option pub-header">ユーザーネーム</h5>
+    <h4 class="basic-font transparent-option p-2">
+      <%= @user.name %>
+    </h4>
+
+    <h5 class="header-option pub-header mt-5">メールアドレス</h5>
+    <h4 class="basic-font transparent-option p-2">
+      <%= @user.email %>
+    </h4>
+
+    <h5 class="header-option pub-header mt-5">プロフィール</h5>
+    <h4 class="basic-font transparent-option-profile p-2">
+      <%= @user.profile %>
+    </h4>
+
+    <div class="row my-5">
+      <div class="text-center">
+        <%= link_to "プロフィールを編集", mypage_edit_path, class: "btn btn-option" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-2"></div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 mx-auto">
+    <h3 class="header-option pub-header">自分の投稿</h3>
+  </div>
+</div>
+<div class="option-right mt-3">
+  <%= link_to"ブックマーク一覧へ", mypage_favorites_path, class: "btn btn-option" %>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-12">
+    <% if @posts.count == 0 %>
+      <div class="text-12rem">
+        <p>
+          投稿はありません。
+        </p>
+        <p>
+          <%= link_to "ここ", new_post_path, class: "link-option" %><!--
+       -->から投稿できます。
+        </p>
+      </div>
+    <% else %>
+      <div class="row">
+        <% @posts.each do |post| %>
+          <div class="col-md-4">
+            <div class="card card-option flex-lg-row mb-4 h-md-300">
+              <a href="/posts/<%= post.id %>" class="card-img-left flex-auto d-none d-lg-block index-img-resize">
+                <%= image_tag post.get_image %>
+              </a>
+
+              <div class="card-body d-flex flex-column align-items-start text-omit">
+                <a href="/posts/<%= post.id %>" class="index-link-option">
+                  <h5 class="pub-header mb-0">
+                    <%= post.title %>
+                  </h5>
+                </a>
+
+                <div class="card-text mb-auto">
+                  <i class="fa-sharp fa-solid fa-tags"></i>
+                  <% post.post_tags.each do |pt| %>
+                    <span class="mb-0 basic-font">
+                      <%= pt.tag.name %>
+                    </span>
+                  <% end %>
+                </div>
+
+                <div class="card-text mb-auto">
+                  <i class="fa-sharp fa-solid fa-map"></i>
+                  <span class="mb-0 basic-font">
+                    <%= post.region.region_name %>
+                  </span>
+                </div>
+
+                <div class="card-text mb-auto">
+                  <i class="fa-sharp fa-solid fa-map-location-dot"></i>
+                  <% post.post_prefectures.each do |pp| %>
+                    <span class="mr-2 mb-0 basic-font">
+                      <%= pp.prefecture.prefecture_name %>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-5">
+    <%= paginate @posts, window: 1 %>
+  </div>
+</div>
