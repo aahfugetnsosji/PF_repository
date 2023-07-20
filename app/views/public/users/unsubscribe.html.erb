@@ -1,0 +1,19 @@
+<div class="row margin-t-150">
+  <div class="col-lg-6 mx-auto">
+    <h3 class="pub-header mb-5">本当に退会しますか？</h3>
+    <p class="text-12rem">
+      退会すると、今までの投稿・コメント・ブックマークが全て削除されます。<br>
+      また、投稿の閲覧や新規投稿、コメント、ブックマーク登録をすることができなくなります。<br>
+      それでも良い場合は下の退会ボタンを押してください。
+    </p>
+    <p class="text-12rem">ご利用ありがとうございました。</p>
+
+    <div class="option-center mt-5">
+      <%= link_to "退会する", user_registration_path, method: :delete, "data-confirm" => "本当によろしいですか？", class: "btn danger-btn" %>
+    </div>
+
+    <div class="option-right mt-5">
+      <%= link_to "退会しない", mypage_path, class: "link-option" %>
+    </div>
+  </div>
+</div>

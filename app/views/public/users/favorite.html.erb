@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-lg-12 mb-3">
+    <h1 class="header-option pub-header">ブックマーク一覧</h1>
+  </div>
+</div>
+
+<div class="row mx-auto mt-3">
+  <div class="col-lg-12">
+    <% if @favorites.count == 0 %>
+      <p class="text-12rem">
+        ブックマークに登録した投稿はありません。
+      </p>
+    <% else %>
+      <div class="row">
+      <% @favorites.each do |fav| %>
+        <div class="col-md-4">
+          <div class="card card-option flex-lg-row mb-4 h-md-300 relative-option">
+            <a href="/posts/<%= fav.post_id %>" class="card-img-left flex-auto d-none d-lg-block index-img-resize">
+              <%= image_tag fav.post.get_image %>
+            </a>
+
+            <div class="card-body d-flex flex-column align-items-start text-omit">
+              <a href="/posts/<%= fav.post_id %>" class="index-link-option">
+                <h5 class="pub-header mb-0">
+                  <%= fav.post.title %>
+                </h5>
+              </a>
+
+              <div class="mb-0 text-omit">
+                <a href="/users/<%= fav.post.user_id %>" class="index-name-link-option">
+                  <%= image_tag fav.post.user.get_profile_image(14, 14) %>
+                  <%= fav.post.user.name %>
+                </a>
+              </div>
+
+              <div class="card-text mb-auto">
+                <i class="fa-sharp fa-solid fa-tags"></i>
+                <% fav.post.post_tags.each do |pt| %>
+                  <span class="mb-0 basic-font">
+                    <%= pt.tag.name %>
+                  </span>
+                <% end %>
+              </div>
+
+              <div class="card-text mb-auto">
+                <i class="fa-sharp fa-solid fa-map"></i>
+                <span class="mb-0 basic-font">
+                  <%= fav.post.region.region_name %>
+                </span>
+              </div>
+
+              <div class="card-text mb-auto">
+                <i class="fa-sharp fa-solid fa-map-location-dot"></i>
+                <% fav.post.post_prefectures.each do |pp| %>
+                  <span class="mr-2 mb-0 basic-font">
+                    <%= pp.prefecture.prefecture_name %>
+                  </span>
+                <% end %>
+              </div>
+
+              <div class="absolute-option-top">
+                <%= link_to post_favorites_path(fav.post_id), class: "btn btn-option-sm font-very-small", "data-confirm" => "ブックマークから削除しますか？", method: :delete do %>
+                  <i class="fa-sharp fa-solid fa-trash-can"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-5">
+    <%= paginate @favorites, window: 1 %>
+  </div>
+</div>

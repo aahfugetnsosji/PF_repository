@@ -1,0 +1,793 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+@import "variables";
+
+// 共通オプション
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+}
+
+main {
+  background-color: $thema-color1;
+  min-height: 800px;
+  height: 100%;
+}
+
+body {
+  overflow-wrap: break-word;
+　word-wrap: break-word;
+}
+
+header {
+  background-color: $thema-color2;
+
+}
+// ナビゲーションバーのカスタマイズ
+.navbar {
+  background-color: $thema-color2 !important;
+}
+
+.nav-item {
+  width: 160px;
+  text-align: center;
+}
+
+.nav-link {
+  color: #fff;
+  margin: 10px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+}
+
+.nav-link:hover {
+  color: #fff;
+  background-color: rgba(153, 0, 0, 0.9);
+  border: 1px solid $thema-color3;
+}
+
+footer {
+  background-color: $thema-color2;
+  height: 100px;
+  width: 100%;
+}
+
+main .container {
+  padding: 50px 0 20px 0;
+}
+
+// テーブルのカスタマイズ
+.table {
+  border: 1px solid $thema-color2;
+  word-break: break-word;
+}
+
+.table.ellipsis {
+  width: 100%;
+}
+
+.table.ellipsis td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
+}
+
+.table thead th {
+  background-color: $thema-color2;
+  color: #fff;
+  font-family: "text";
+}
+
+.table tbody td {
+  background-color: $thema-color4;
+  font-family: "text";
+  font-size: 1.1rem;
+}
+
+// ユーザ側ヘッダー
+.pub-header {
+  font-family: "public-header";
+}
+
+// 管理者側ヘッダー
+.adm-header {
+  font-family: "admin-header";
+}
+
+// 見出しオプション
+.header-option {
+  border-bottom: 1px solid $thema-color2;
+  border-left: 4px solid $thema-color2;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  position: relative;
+}
+
+#header.scroll {
+  opacity: 0.9;
+}
+
+// テキストオプション
+.basic-font {
+  font-family: "text";
+}
+
+// テキスト-サイズ
+.text-15rem {
+  font-family: "text";
+  font-size: 1.5rem;
+}
+
+.text-12rem {
+  font-family: "text";
+  font-size: 1.2rem;
+}
+
+.font-big {
+  font-family: "text";
+  font-size: 2rem;
+}
+
+.font-small {
+  font-family: "text";
+  font-size: 0.9rem;
+}
+
+.font-very-small {
+  font-family: "text";
+  font-size: 0.5rem;
+}
+
+// テキスト-太字
+.text-bold {
+  font-family: "text";
+  font-weight: bold;
+}
+
+.bold-bl {
+  font-family: "text";
+  font-weight: bold;
+  color: $thema-color2;
+}
+
+.bold-red {
+  font-family: "text";
+  font-weight: bold;
+  color: $thema-color3;
+}
+
+// テキスト-カラー
+.text-white {
+  font-family: "text";
+  color: #fff;
+}
+
+.text-black {
+  font-family: "text";
+  color: $thema-color2;
+  text-decoration: none;
+}
+
+.text-red {
+  font-family: "text";
+  color: $thema-color3;
+  text-decoration: none;
+}
+
+.text-gray {
+  font-family: "text";
+  color: $thema-color4;
+  text-decoration: none;
+}
+
+// テキスト-注釈オプション
+.text-annotation {
+  font-family: "text";
+  font-size: 0.8rem;
+  color: $thema-color3;
+}
+
+// テキスト-投稿件数用
+.header-annotation {
+  font-size: 1.5rem;
+}
+
+// テキスト省略
+.text-omit {
+  max-width: 130px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.comment-omit {
+  display: inline-block;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.header-omit {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.username-omit {
+  display: inline-block;
+  max-width: 170px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// 透明背景
+.transparent-option {
+  background-color: rgba(184,184,184,0.5);
+  border-radius: 2px;
+}
+
+.transparent-option-pd {
+  background-color: rgba(184,184,184,0.5);
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.transparent-option-profile {
+  background-color: rgba(184,184,184,0.5);
+  border-radius: 5px;
+  min-height: 100px;
+}
+
+// kaminariのカスタマイズ
+.pagination {
+  justify-content: center;
+  display: flex;
+  font-family: "text";
+
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  background: $thema-color1;
+  color: $thema-color2;
+  border: none;
+  border-radius: 5px;
+  margin: 0 2px;
+  padding: 1px 8px;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: $thema-color3;
+  color: #fff;
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  background: $thema-color2;
+  color: #fff;
+}
+
+.disabled >.page-link {
+  background: $thema-color1;
+  color: $thema-color2;
+}
+
+.card-option {
+  background-color: rgba(184,184,184,0.5);
+  border-top: 1px solid $thema-color2;
+  border-right: 1px solid $thema-color2;
+  border-bottom: 1px solid $thema-color1;
+  border-left: 1px solid $thema-color1;
+  border-radius: 2px;
+  text-decoration: none;
+  padding: 3px;
+}
+
+.card-option:hover {
+  background-color: $thema-color4;
+  color: $thema-color2;
+}
+
+.tag-card-option {
+  background-color: rgba(184,184,184,0.5);
+  border: 1px solid $thema-color2;
+  border-radius: 2px;
+  text-decoration: none;
+  padding: 3px;
+}
+
+.card-header-option {
+  border-bottom: 1px dotted $thema-color2;
+}
+
+.card-img-border {
+  border-bottom: 1px solid $thema-color2;
+}
+
+.index-name {
+  font-family: "text";
+  font-size: 0.9rem;
+  color: $thema-color2;
+  margin: 5px 5px 0 0 !important;
+  position: absolute !important;
+  bottom: 5px !important;
+  white-space: wrap;
+	overflow: hidden;
+}
+
+.index-name-link-option {
+  font-family: "text";
+  font-size: 0.9remx;
+  color: $thema-color2;
+  text-decoration: none;
+}
+
+.index-name-link-option:hover {
+  color: $thema-color3;
+}
+
+// トップページの画像サイズ
+.top-img-resize img {
+  width: 135px;
+  height: 135px;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+// 投稿一覧ページのサムネイルサイズ
+.index-img-resize img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+// 投稿詳細ページの画像サイズ
+.img-resize-show img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid $thema-color2;
+  background-color: rgba(250,250,250,0.3)
+}
+
+// 投稿詳細ページのボーダー
+.show-border {
+  border-bottom: 2px solid $thema-color2;
+  margin: 20px 0 15px 0;
+}
+
+.show-dashed-border {
+  border-bottom: 1px dashed $thema-color2;
+  margin: 5px 0 15px 0;
+}
+
+.pos-absolute {
+  position: absolute !important;
+  right: 0;
+  bottom: 5px !important;
+}
+
+// タグオプション
+.tag-option {
+  color: $thema-color2;
+  background-color: $thema-color4;
+  padding: 5px;
+  border: 1px solid $thema-color2;
+  border-radius: 5px;
+  width: 100%;
+  margin: 10px;
+}
+
+// ブックマークアイコンオプション
+.favorite-icon-option {
+  color: $thema-color2;
+  padding: 0 20px;
+  font-size: 1.6rem;
+}
+
+// コメントオプション
+.comment-option {
+  font-family: "text";
+  font-size: 1rem;
+  position: relative;
+}
+
+.comment-body {
+  overflow-wrap: break-word;
+}
+
+.comment-name-date {
+  text-align: right;
+}
+
+.comment-name {
+  color: $thema-color2;
+  text-decoration: underline;
+}
+
+.comment-name:hover {
+  color: $thema-color3;
+}
+
+.comment-data {
+  font-size: 0.8rem;
+}
+
+.comment-border {
+  border-bottom: 1px solid $thema-color2;
+  margin: 2px 0 5px 0;
+}
+
+.comment-delete {
+  font-size: 0.8rem;
+  color: $thema-color3;
+  text-decoration: underline;
+}
+
+// ボタンオプション
+.btn-option {
+  font-size: 1rem;
+  background: $thema-color2;
+  font-family: "text";
+  color: #fff;
+  transition: .3s;
+}
+
+.btn-option:hover {
+  background: $thema-color3;
+  color: #fff;
+}
+
+.btn-option-sm {
+  font-size: 0.5rem;
+  background: $thema-color2;
+  font-family: "text";
+  color: #fff;
+  padding: 3px 6px;
+  transition: .3s;
+}
+
+.btn-option-sm:hover {
+  background: $thema-color3;
+  color: #fff;
+}
+
+.danger-btn {
+  font-size: 1rem;
+  background: $thema-color3;
+  font-family: "text";
+  color: #fff;
+  transition: .3s;
+}
+
+.danger-btn:hover {
+  background: $thema-color2;
+  color: #fff;
+}
+
+// リンクオプション
+.link-option {
+  font-family: "text";
+  font-size: 1rem;
+  color: $thema-color2;
+  text-decoration: none;
+}
+
+.link-option:hover {
+  color: $thema-color3;
+}
+
+a.link-option {
+  font-family: "text";
+  font-size: 1.1rem;
+  color: $thema-color2;
+  text-decoration: underline;
+}
+
+a.link-option:hover {
+  color: $thema-color3;
+}
+
+.index-link-option {
+  font-family: "text";
+  font-size: 1rem;
+  color: $thema-color2;
+  text-decoration: none;
+}
+
+.show-link-option {
+  font-family: "text";
+  font-size: 1.5rem;
+  color: $thema-color2;
+  text-decoration: none;
+}
+
+.show-link-option:hover {
+  color: $thema-color3;
+}
+
+.link-option-15rem {
+  font-family: "text";
+  font-size: 1.5rem;
+  color: $thema-color2;
+  text-decoration: underline;
+}
+
+.link-option-15rem:hover {
+  color: $thema-color3;
+}
+
+.link-option-bl-gr {
+  font-family: "text";
+  color: $thema-color2;
+  text-decoration: none;
+}
+
+.link-option-bl-gr:hover {
+  color: $thema-color4;
+}
+
+.link-option-rd-gr {
+  font-family: "text";
+  color: $thema-color3;
+  text-decoration: none;
+}
+
+.link-option-rd-gr:hover {
+  color: $thema-color4;
+}
+
+.link-option-rd-wh {
+  font-family: "text";
+  color: $thema-color3;
+  text-decoration: none;
+}
+
+.link-option-rd-wh:hover {
+  color: #fff;
+}
+
+// テキスト右寄せ
+.option-right {
+  text-align: right;
+}
+
+.option-right-padding {
+  padding-right: 40px;
+}
+
+// テキスト中央
+.option-center {
+  text-align: center;
+}
+
+// テキスト左寄せ
+.option-left {
+  text-align: left;
+}
+
+span.option-left {
+  text-align: left;
+}
+
+// select2��
+.select2-container {
+  font-family: "text";
+  font-size: 1rem;
+  border-color: $thema-color2;
+  width: 100% !important;
+}
+
+.select2-container--default .select2-selection__choice {
+  color: #fff;
+  background-color: $thema-color2 !important;
+  border-color: $thema-color2 !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: #fff !important;
+  margin-right: 3px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+  color: $thema-color4 !important;
+}
+
+// 入力フォームボタン
+input.btn-option {
+  margin: 0 auto;
+}
+
+.input-form {
+  font-family: "text";
+  font-size: 1.1rem;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid $thema-color5;
+}
+
+input#keyword {
+  width: 100%;
+  height: 28px;
+  border: 1px solid $thema-color5;
+  border-radius: 5px;
+}
+
+.tag-input-form {
+  font-family: "text";
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  border: 1px solid $thema-color2;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.comment-form {
+  font-family: "text";
+  font-size: 1.1rem;
+  width: 100%;
+  min-height: 100px;
+  margin-bottom: 10px;
+  border: 1px solid $thema-color5;
+}
+
+// 画像選択フォーム
+.input-file-form {
+  font-family: "text";
+  font-size: 13px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid $thema-color5;
+}
+
+#textarea {
+  min-height: 150px;
+}
+
+// スクロールボタン
+.pagetop {
+  font-family: "text";
+  font-size: 14px;
+  color: #fff;
+  line-height: 100px;
+  padding-right: 30px;
+  text-decoration: none;
+  transition: 0.3s0;
+}
+
+.pagetop:hover {
+  text-decoration: underline;
+}
+
+// ログイン・新規登録ページ
+.login-option {
+  width: 100%;
+  max-width: 420px;
+  margin: 30px auto;
+  padding: 80px;
+  border: 2px solid $thema-color2;
+}
+
+.login-text {
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 1px solid $thema-color2;
+}
+
+// アイコンオプション
+.icon-option {
+  border: 2px solid $thema-color2;
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 100%;
+}
+
+// 管理者側アイコンオプション
+.adm-icon-border {
+  border: 1px solid $thema-color2;
+}
+
+.border-b-1-bl {
+  border-bottom: 1px solid $thema-color2;
+  padding-bottom: 10px;
+}
+
+// 退会ページ
+.margin-t-150 {
+  margin-top: 150px;
+}
+
+.card-border-bottom-option {
+  background-color: $thema-color1;
+  border-top: 1px solid $thema-color1;
+  border-bottom: 1px solid $thema-color2;
+  border-right: 1px solid $thema-color1;
+  border-left: 1px solid $thema-color1;
+  border-radius: 0;
+}
+
+.border-all-option-edit {
+  background-color: rgba(250,250,250,0.8);
+  border: 1px solid $thema-color2;
+  padding: 5px 0 5px 9px;
+  border-radius: 2px;
+  margin-right: 10px;
+}
+
+.border-all-option-edit:hover {
+  background-color: rgba(250,250,250,0.5);
+}
+
+.border-all-option-delete {
+  background-color: rgba(250,250,250,0.8);
+  border: 1px solid $thema-color2;
+  padding: 5px 9px 5px 9px;
+  border-radius: 2px;
+}
+
+.border-all-option-delete:hover {
+  background-color: rgba(250,250,250,0.5);
+}
+
+// Jmapマウスホバー時の設定
+.jmap-pref:hover {
+  background-color: $thema-color3 !important;
+  opacity: 100% !important;
+}
+
+.relative-option {
+  position: relative;
+}
+
+.absolute-option-top {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.absolute-option-bottom {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+}
+
+@media screen and (max-width: 320px) {
+  .navbar-brand img {
+    width: 270px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .text-omit {
+    max-width: 280px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .username-omit {
+    display: inline-block;
+  max-width: 280px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  }
+}

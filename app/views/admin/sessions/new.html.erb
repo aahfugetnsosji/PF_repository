@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-12 mb-5">
+    <h1 class="header-option adm-header">管理者ログイン</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="login-option">
+    <%= form_with model: @admin, url: session_path(resource_name) do |f| %>
+    <div class="option-center">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "input-form" %>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "input-form" %>
+      <%= f.submit "ログイン", class: "btn btn-option mt-4" %>
+    </div>
+    <% end %>
+  </div>
+</div>

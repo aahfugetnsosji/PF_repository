@@ -1,16 +1,151 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PFApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>うつしよ裏怪道</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--FontAwesomeの読み込み-->
+    <script src="https://kit.fontawesome.com/04b8ef8016.js" crossorigin="anonymous"></script>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Select2.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
+    <!-- Select2本体 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column">
+    <header class="sticky-top" id="header">
+      <nav class="navbar navbar-expand-xl navbar-dark">
+        <div class="container-fluid">
+
+          <% if admin_signed_in? %>
+            <%= link_to admin_root_path, method: :get do %>
+              <div class="navbar-brand p-3">
+                <%= image_tag 'logo.png', size: "300x115", alt: "logo" %>
+              </div>
+            <% end %>
+          <% elsif user_signed_in? %>
+            <%= link_to root_path, method: :get do %>
+              <div class="navbar-brand p-3">
+                <%= image_tag 'logo.png', size: "300x110", alt: "logo" %>
+              </div>
+            <% end %>
+          <% else %>
+            <%= link_to root_path, method: :get do %>
+              <div class="navbar-brand p-3">
+                <%= image_tag 'logo.png', size: "300x110", alt: "logo" %>
+              </div>
+            <% end %>
+          <% end %>
+
+          <span class="text-white">
+            <%= flash[:alert] %>
+            <%= flash[:notice] %>
+          </span>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <% if admin_signed_in? %><!-- 管理者ログイン後メニュー -->
+                <li class="nav-item">
+                  <%= link_to "会員一覧", admin_users_path, class: "nav-link adm-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "投稿一覧", admin_posts_path, class: "nav-link adm-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "通報一覧", admin_root_path, class: "nav-link adm-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "タグ一覧", admin_tags_path, class: "nav-link adm-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link adm-header" %>
+                </li>
+              <% elsif user_signed_in? %><!-- ユーザログイン後メニュー -->
+                <li class="nav-item">
+                  <%= link_to "About", about_path, class: "nav-link pub-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "マイページ", mypage_path, class: "nav-link pub-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "投稿する", new_post_path, class: "nav-link pub-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "全国の投稿一覧", posts_path, class: "nav-link pub-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link pub-header" %>
+                </li>
+              <% else %><!-- ログイン前メニュー -->
+                <li class="nav-item">
+                  <%= link_to "About", about_path, class: "nav-link pub-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "全国の投稿一覧", posts_path, class: "nav-link pub-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "無料会員登録", new_user_registration_path, class: "nav-link pub-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_user_session_path, class: "nav-link pub-header" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "nav-link pub-header" %>
+                </li>
+              <% end %>
+            </ul>
+
+            <form class="form-inline">
+              <!--キーワード検索を配置-->
+            </form>
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div id="page_top"></div>
+      <div class="container px-2">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="row option-right">
+          <a href="#page_top" class="pagetop">頁の先頭へ ↑</a>
+        </div>
+      </div>
+    </footer>
+
+    <!--select2読み込み-->
+    <script>
+        $(document).ready(function () {
+            $('.select').select2();
+                placeholder: "選択してください"
+        });
+    </script>
+
+    <!--Jmap読み込み-->
+    <script type = "text/javascript">
+        $(document).ready(function() {
+            $('#jmap').jmap();
+        });
+    </script>
+    <script type = "text/javascript">
+      <%= render partial: 'public/partials/Jmap' %>
+    </script>
   </body>
 </html>

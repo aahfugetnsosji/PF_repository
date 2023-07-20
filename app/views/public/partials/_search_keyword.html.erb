@@ -1,0 +1,19 @@
+<div class="col-md-3 mx-auto">
+  <%= form_tag search_path, method: :get do %>
+    <table class="table option-center">
+      <thead>
+        <tr>
+          <th>キーワード検索</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-center">
+            <%= text_field_tag :keyword %><br>
+            <%= submit_tag '検索', :body => nil, class: "btn btn-option mt-2" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>

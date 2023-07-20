@@ -1,0 +1,43 @@
+<div class="row mb-5">
+  <div class="col-md-12">
+    <h1 class="header-option adm-header">投稿一覧</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mx-auto">
+    <table class="table ellipsis">
+      <thead class="text-center">
+        <tr>
+          <th style="width: 15%">投稿ID</th>
+          <th style="width: 20%">投稿日時</th>
+          <th style="width: 30%">タイトル</th>
+          <th style="width: 30%">投稿者</th>
+        </tr>
+      </thead>
+
+      <% @posts.each do |post| %>
+      <tbody>
+        <tr>
+          <td class="text-center">
+            <%= post.id %>
+          </td>
+          <td class="text-center">
+            <%= l post.created_at %>
+          </td>
+          <td>
+            <%= link_to post.title, admin_post_path(post.id), class: "link-option" %>
+          </td>
+          <td>
+            <%= post.user.name %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="mt-5">
+    <%= paginate @posts %>
+  </div>
+</div>
