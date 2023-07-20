@@ -40,20 +40,6 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## 使用gem
-- devise
-- pry-rails
-- enum-help
-- sheed-fu
-- kaminari
-
-## 使用プラグイン
-- [【Jmap jQuery plugin】](https://yugokimura.github.io/jmap/)
-- [【Select2】](https://select2.org/)
-
-## 使用フレームワーク
-- [【Bootstrap】](https://getbootstrap.jp/)
-
 ## 使用素材
 - [【Oradano明朝フォント】](https://www.asahi-net.or.jp/~sd5a-ucd/freefonts/Oradano-Mincho/)
 - [【XANO明朝フォント】](https://www.asahi-net.or.jp/~sd5a-ucd/freefonts/XANO-mincho/)
