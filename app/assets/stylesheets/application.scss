@@ -216,13 +216,39 @@ main .container {
 
 .comment-omit {
   display: inline-block;
-  max-width: 220px;
+  max-width: 240px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.comment-omit-adm {
+  display: inline-block;
+  max-width: 240px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
 .header-omit {
+  display: inline-block;
+  max-width: 280px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.header-omit-usershow {
+  display: inline-block;
+  max-width: 280px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.header-omit-adm {
+  display: inline-block;
+  max-width: 280px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -793,6 +819,22 @@ input#keyword {
   .comment-omit {
     max-width: 280px;
   }
+
+  .comment-omit-adm {
+    max-width: 290px;
+  }
+
+  .header-omit {
+    max-width: 330px;
+  }
+
+  .header-omit-usershow {
+    max-width: 330px;
+  }
+
+  .header-omit-adm {
+    max-width: 330px;
+  }
 }
 
 @media (min-width: 425px) and (max-width: 767px) {
@@ -806,6 +848,22 @@ input#keyword {
 
   .comment-omit {
     max-width: 325px;
+  }
+
+  .comment-omit-adm {
+    max-width: 340px;
+  }
+
+  .header-omit {
+    max-width: 380px;
+  }
+
+  .header-omit-usershow {
+    max-width: 390px;
+  }
+
+  .header-omit-adm {
+    max-width: 390px;
   }
 }
 
@@ -821,6 +879,22 @@ input#keyword {
   .comment-omit {
     max-width: 190px;
   }
+
+  .comment-omit-adm {
+    max-width: 300px;
+  }
+
+  .header-omit {
+    max-width: 360px;
+  }
+
+  .header-omit-usershow {
+    max-width: 550px;
+  }
+
+  .header-omit-adm {
+    max-width: 440px;
+  }
 }
 
 @media (min-width: 1024px) and (max-width: 1339px) {
@@ -835,6 +909,22 @@ input#keyword {
   .comment-omit {
     max-width: 280px;
   }
+
+  .comment-omit-adm {
+    max-width: 430px;
+  }
+
+  .header-omit {
+    max-width: 590px;
+  }
+
+  .header-omit-usershow {
+    max-width: 780px;
+  }
+
+  .header-omit-adm {
+    max-width: 650px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -848,5 +938,21 @@ input#keyword {
 
   .comment-omit {
     max-width: 420px;
+  }
+
+  .comment-omit-adm {
+    max-width: 640px;
+  }
+
+  .header-omit {
+    max-width: 930px;
+  }
+
+  .header-omit-usershow {
+    max-width: 1140px;
+  }
+
+  .header-omit-adm {
+    max-width: 980px;
   }
 }

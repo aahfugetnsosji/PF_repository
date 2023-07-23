@@ -5,26 +5,26 @@
 </div>
 
 <div class="row">
-    <div class="col-md-8 mx-auto mb-5">
-        <h2 class="header-option adm-header">投稿タイトル</h2>
-        <h2 class="transparent-option-pd basic-font">
-          <%= @post.title %>
-        </h2>
-      </div>
+  <div class="col-md-10 mx-auto mb-5">
+      <h2 class="header-option adm-header">投稿タイトル</h2>
+      <h2 class="transparent-option-pd basic-font">
+        <%= @post.title %>
+      </h2>
     </div>
+  </div>
 
 
   <div class="row mx-auto">
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-10 mx-auto">
       <div class="row">
-        <div class="col-lg-4 mb-5">
+        <div class="col-md-4 mb-5">
           <h6 class="header-option adm-header">
             投稿ID ：
             <%= @post.id %>
           </h6>
         </div>
 
-        <div class="col-lg-8 mb-5">
+        <div class="col-md-8 mb-5">
           <h6 class="header-option adm-header">
             投稿日時 ：
             <%= l @post.created_at %>
@@ -40,7 +40,7 @@
       </div>
 
       <div class="row mb-5">
-        <div class="col-lg-6 mx-auto">
+        <div class="col-md-6 mx-auto">
           <div class="img-resize-show">
             <%= image_tag @post.get_image %>
           </div>
@@ -99,21 +99,22 @@
     <% if @post_comments.present? %>
       <% @post_comments.each do |post_comment| %>
         <div class="comment-option">
+          <div class="comment-data">
+            <%= l post_comment.created_at, format: :short %>
+          </div>
+
           <div class="comment-body">
             <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
           </div>
 
-          <div class="comment-name-date">
-            <%= link_to post_comment.user.name, admin_user_path(post_comment.user_id), class: "comment-name" %>
-            <span class="comment-data">
-              <%= l post_comment.created_at, format: :short %>
+          <div class="mt-2 option-right">
+            <%= link_to post_comment.user.name, admin_user_path(post_comment.user_id), class: "comment-name comment-omit-adm" %>
+            <span>
+              <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn comment-delete" %>
             </span>
           </div>
         </div>
 
-        <div class="option-right">
-          <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "comment-delete" %>
-        </div>
         <div class="comment-border"></div>
       <% end %>
     <% else %>
