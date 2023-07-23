@@ -57,8 +57,8 @@
                     </h5>
                   </a>
 
-                  <div class="mb-0">
-                    <a href="/users/<%= post.user_id %>" class="index-name-link-option text-omit">
+                  <div class="mb-0 text-omit">
+                    <a href="/users/<%= post.user_id %>" class="index-name-link-option">
                       <%= image_tag post.user.get_profile_image(14, 14) %>
                       <%= post.user.name %>
                     </a>
