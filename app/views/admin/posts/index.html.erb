@@ -6,35 +6,41 @@
 
 <div class="row">
   <div class="col-md-12 mx-auto">
-    <table class="table ellipsis">
-      <thead class="text-center">
-        <tr>
-          <th style="width: 15%">投稿ID</th>
-          <th style="width: 20%">投稿日時</th>
-          <th style="width: 30%">タイトル</th>
-          <th style="width: 30%">投稿者</th>
-        </tr>
-      </thead>
+    <% if @posts.count == 0 %>
+      <p class="text-15rem">
+        投稿はありません。
+      </p>
+    <% else %>
+      <table class="table ellipsis">
+        <thead class="text-center">
+          <tr>
+            <th style="width: 15%">投稿ID</th>
+            <th style="width: 20%">投稿日時</th>
+            <th style="width: 30%">タイトル</th>
+            <th style="width: 30%">投稿者</th>
+          </tr>
+        </thead>
 
-      <% @posts.each do |post| %>
-      <tbody>
-        <tr>
-          <td class="text-center">
-            <%= post.id %>
-          </td>
-          <td class="text-center">
-            <%= l post.created_at %>
-          </td>
-          <td>
-            <%= link_to post.title, admin_post_path(post.id), class: "link-option" %>
-          </td>
-          <td>
-            <%= post.user.name %>
-          </td>
-        </tr>
-      </tbody>
-      <% end %>
-    </table>
+        <% @posts.each do |post| %>
+        <tbody>
+          <tr>
+            <td class="text-center">
+              <%= post.id %>
+            </td>
+            <td class="text-center">
+              <%= l post.created_at %>
+            </td>
+            <td>
+              <%= link_to post.title, admin_post_path(post.id), class: "link-option" %>
+            </td>
+            <td>
+              <%= post.user.name %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    <% end %>
   </div>
 
   <div class="mt-5">

@@ -6,41 +6,47 @@
 
 <div class="row">
   <div class="col-md-12 mx-auto">
-    <table class="table ellipsis">
-      <thead class="text-center">
-        <tr>
-          <th style="width: 15%">通報ID</th>
-          <th style="width: 20%">通報日時</th>
-          <th style="width: 40%">通報理由</th>
-          <th style="width: 20%">対応確認</th>
-        </tr>
-      </thead>
-
-      <% @reports.each do |report| %>
-        <tbody>
+    <% if @reports.count == 0 %>
+      <p class="text-15rem">
+        通報はありません。
+      </p>
+    <% else %>
+      <table class="table ellipsis">
+        <thead class="text-center">
           <tr>
-            <td class="text-center">
-              <%= report.id %>
-            </td>
-            <td class="text-center">
-              <a href="admin/reports/<%= report.id %>" class="link-option">
-                <%= l report.created_at %>
-              </a>
-            </td>
-            <td>
-              <%= report.reason_i18n %>
-            </td>
-            <td class="text-center">
-              <% if report.is_handled == false %>
-                <span class="bold-red">未対処</span>
-              <% else %>
-                <span class="bold-bl">対処済み</span>
-              <% end %>
-            </td>
+            <th style="width: 15%">通報ID</th>
+            <th style="width: 20%">通報日時</th>
+            <th style="width: 40%">通報理由</th>
+            <th style="width: 20%">対応確認</th>
           </tr>
-        </tbody>
-      <% end %>
-    </table>
+        </thead>
+
+        <% @reports.each do |report| %>
+          <tbody>
+            <tr>
+              <td class="text-center">
+                <%= report.id %>
+              </td>
+              <td class="text-center">
+                <a href="admin/reports/<%= report.id %>" class="link-option">
+                  <%= l report.created_at %>
+                </a>
+              </td>
+              <td>
+                <%= report.reason_i18n %>
+              </td>
+              <td class="text-center">
+                <% if report.is_handled == false %>
+                  <span class="bold-red">未対処</span>
+                <% else %>
+                  <span class="bold-bl">対処済み</span>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    <% end %>
   </div>
 
   <div class="mt-5">
