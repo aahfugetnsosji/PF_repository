@@ -31,6 +31,10 @@ class Public::ReportsController < ApplicationController
   end
 
   def complete
+    post = Post.find(params[:post_id])
+    unless post.user_id != current_user.id
+      redirect_to post_path(post)
+    end
   end
 
   private
