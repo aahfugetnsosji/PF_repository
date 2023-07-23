@@ -1,23 +1,18 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :search]
+  before_action :sellection_items, only: [:new, :edit]
+  before_action :find_post, only: [:show, :edit]
 
   def index
     @posts = Post.page(params[:page])
     @all_posts = Post.all
-    @tags = Tag.all
-    @regions = Region.all
-    @prefectures = Prefecture.all
   end
 
   def new
     @post = Post.new
-    @tags = Tag.all
-    @regions = Region.all
-    @prefectures = Prefecture.all
   end
 
   def show
-    @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = @post.post_comments.all
   end
@@ -49,14 +44,9 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    post = Post.find(params[:id])
-    unless post.user_id == current_user.id
-      redirect_to post_path(post)
+    unless @post.user_id == current_user.id
+      redirect_to post_path(@post)
     end
-    @post = Post.find(params[:id])
-    @tags = Tag.all
-    @regions = Region.all
-    @prefectures = Prefecture.all
   end
 
   def update
@@ -119,5 +109,16 @@ class Public::PostsController < ApplicationController
 
   def prefectures_params
     params.require(:post).permit(prefecture_ids:[])
+  end
+
+  def sellection_items
+    @all_posts = Post.all
+    @tags = Tag.all
+    @regions = Region.all
+    @prefectures = Prefecture.all
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end
