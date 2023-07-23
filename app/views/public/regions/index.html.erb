@@ -24,15 +24,15 @@
               <%= image_tag post.get_image %>
             </a>
 
-            <div class="card-body d-flex flex-column align-items-start text-omit">
+            <div class="card-body d-flex flex-column align-items-start">
               <a href="/posts/<%= post.id %>" class="index-link-option">
-                <h5 class="pub-header mb-0">
+                <h5 class="pub-header mb-0 text-omit">
                   <%= post.title %>
                 </h5>
               </a>
 
-              <div class="mb-0 text-omit">
-                <a href="/users/<%= post.user_id %>" class="index-name-link-option">
+              <div class="mb-0">
+                <a href="/users/<%= post.user_id %>" class="index-name-link-option text-omit">
                   <%= image_tag post.user.get_profile_image(14, 14) %>
                   <%= post.user.name %>
                 </a>

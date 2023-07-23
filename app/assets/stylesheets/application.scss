@@ -208,7 +208,7 @@ main .container {
 
 // テキスト省略
 .text-omit {
-  max-width: 130px;
+  max-width: 260px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -774,12 +774,15 @@ input#keyword {
   }
 }
 
-@media screen and (max-width: 425px) {
+@media (min-width: 321px) and (max-width: 424px) {
   .text-omit {
-    max-width: 250px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    max-width: 310px;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 767px) {
+  .text-omit {
+    max-width: 360px;
   }
 
   .username-omit {
@@ -788,5 +791,23 @@ input#keyword {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+.text-omit {
+    max-width: 180px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1339px) {
+  .text-omit {
+    max-width: 130px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .text-omit {
+    max-width: 260px;
   }
 }
