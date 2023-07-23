@@ -56,3 +56,4 @@
 - [フロップデザイン](https://www.flopdesign.com/)
 - [イラストAC](https://www.ac-illust.com/)
 - [シルエットAC](https://www.silhouette-ac.com/)
+- [icooon-mono](https://icooon-mono.com/)
