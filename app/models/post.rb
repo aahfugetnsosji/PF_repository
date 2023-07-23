@@ -48,6 +48,9 @@ class Post < ApplicationRecord
 
   # タグ編集メソッド(destroy_allを使うタイプ)
   def save_tag(post_tags_params)
+    if post_tags_params.empty?
+      post_tags.destroy_all
+    end
     # 送信されたタグが空でない場合、その投稿の既存のタグをすべて削除
     unless post_tags_params.empty?
       self.post_tags.destroy_all
@@ -67,6 +70,10 @@ class Post < ApplicationRecord
 
   # 都道府県編集メソッド(タグと同様)
   def save_prefecture(prefectures_params)
+    if prefectures_params.empty?
+      post_prefectures.destroy_all
+    end
+
     unless prefectures_params.empty?
       self.post_prefectures.destroy_all
 
