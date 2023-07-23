@@ -9,19 +9,20 @@
   </div>
 </div>
 
-<div class="row mt-5 px-2">
-  <div class="row mx-auto header-option">
-    <div class="col-md-9">
-      <h2 class="pub-header header-omit">
-        <%= @post.title %>
-      </h2>
+<div class="row mt-5">
+  <div class="col-md-12 basic-font username-omit">
+    <div>
+      投稿者：
     </div>
-    <div class="col-md-3 basic-font">
-      <div>
-        投稿者：
-      </div>
-      <%= link_to @post.user.name, user_path(@post.user_id), class: "show-link-option username-omit" %>
-    </div>
+    <%= link_to @post.user.name, user_path(@post.user_id), class: "show-link-option" %>
+  </div>
+</div>
+
+<div class="row mt-4 px-2">
+  <div class="col-md-12 mx-auto header-option">
+    <h2 class="pub-header text-wrap">
+      <%= @post.title %>
+    </h2>
   </div>
 </div>
 
@@ -111,22 +112,24 @@
         <% end %>
         <% @post_comments.each do |post_comment| %>
           <div class="comment-option">
+            <div class="comment-data">
+              <%= l post_comment.created_at, format: :short %>
+            </div>
+
             <div class="comment-body">
               <%= safe_join(post_comment.comment.split("\n"),tag(:br)) %>
             </div>
 
-            <div class="comment-name-date">
+            <div class="mt-2 option-right">
               <%= link_to post_comment.user.name, user_path(post_comment.user_id), class: "comment-name comment-omit" %>
-              <span class="comment-data">
-                <%= l post_comment.created_at, format: :short %>
-              </span>
+              <% if post_comment.user == current_user %>
+                <span>
+                  <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn comment-delete" %>
+                </span>
+              <% end %>
             </div>
           </div>
-          <% if post_comment.user == current_user %>
-            <div class="option-right">
-              <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "comment-delete" %>
-            </div>
-          <% end %>
+
           <div class="comment-border"></div>
         <% end %>
       </div>

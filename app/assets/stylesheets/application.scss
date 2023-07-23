@@ -216,7 +216,7 @@ main .container {
 
 .comment-omit {
   display: inline-block;
-  max-width: 200px;
+  max-width: 220px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -229,11 +229,15 @@ main .container {
 }
 
 .username-omit {
-  display: inline-block;
-  max-width: 170px;
+  max-width: 320px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+// テキスト折り返し
+.text-wrap {
+  overflow-wrap: break-word;
 }
 
 // 透明背景
@@ -412,11 +416,8 @@ main .container {
   overflow-wrap: break-word;
 }
 
-.comment-name-date {
-  text-align: right;
-}
-
 .comment-name {
+  font-size: 0.8rem;
   color: $thema-color2;
   text-decoration: underline;
 }
@@ -432,13 +433,6 @@ main .container {
 .comment-border {
   border-bottom: 1px solid $thema-color2;
   margin: 2px 0 5px 0;
-}
-
-.comment-delete {
-  font-family: "text";
-  font-size: 0.8rem;
-  color: $thema-color3;
-  text-decoration: underline;
 }
 
 // ボタンオプション
@@ -470,14 +464,27 @@ main .container {
 }
 
 .danger-btn {
-  font-size: 1rem;
-  background: $thema-color3;
   font-family: "text";
+  font-size: 1rem;
   color: #fff;
+  background: $thema-color3;
   transition: .3s;
 }
 
 .danger-btn:hover {
+  background: $thema-color2;
+  color: #fff;
+}
+
+.comment-delete {
+  font-family: "text";
+  font-size: 0.8rem;
+  color: #fff;
+  background: $thema-color3;
+  transition: .3s;
+}
+
+.comment-delete:hover {
   background: $thema-color2;
   color: #fff;
 }
@@ -778,6 +785,14 @@ input#keyword {
   .text-omit {
     max-width: 310px;
   }
+
+  .username-omit {
+    max-width: 450px;
+  }
+
+  .comment-omit {
+    max-width: 280px;
+  }
 }
 
 @media (min-width: 425px) and (max-width: 767px) {
@@ -786,17 +801,25 @@ input#keyword {
   }
 
   .username-omit {
-    display: inline-block;
-    max-width: 280px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    max-width: 420px;
+  }
+
+  .comment-omit {
+    max-width: 325px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-.text-omit {
+  .text-omit {
     max-width: 180px;
+  }
+
+  .username-omit {
+    max-width: 820px;
+  }
+
+  .comment-omit {
+    max-width: 190px;
   }
 }
 
@@ -804,10 +827,26 @@ input#keyword {
   .text-omit {
     max-width: 130px;
   }
+
+  .username-omit {
+    max-width: 1000px;
+  }
+
+  .comment-omit {
+    max-width: 280px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .text-omit {
     max-width: 260px;
+  }
+
+  .username-omit {
+    max-width: 1600px;
+  }
+
+  .comment-omit {
+    max-width: 420px;
   }
 }
