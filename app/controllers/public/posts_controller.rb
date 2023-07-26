@@ -1,6 +1,5 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :search]
-  before_action :sellection_items, only: [:new, :edit]
   before_action :find_post, only: [:show, :edit]
 
   def index
@@ -109,13 +108,6 @@ class Public::PostsController < ApplicationController
 
   def prefectures_params
     params.require(:post).permit(prefecture_ids:[])
-  end
-
-  def sellection_items
-    @all_posts = Post.all
-    @tags = Tag.all
-    @regions = Region.all
-    @prefectures = Prefecture.all
   end
 
   def find_post
