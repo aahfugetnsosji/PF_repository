@@ -1,10 +1,8 @@
 <div class="col-md-4">
   <div class="card card-option flex-lg-row mb-4 h-md-300">
-    <%= link_to post_path(post.id), method: :get do %>
-      <span class="card-img-left flex-auto d-none d-lg-block index-img-resize">
-        <%= image_tag post.get_image %>
-      </span>
-    <% end %>
+    <a href="/posts/<%= post.id %>" class="card-img-left flex-auto d-none d-lg-block index-img-resize">
+      <%= image_tag post.get_image %>
+    </a>
 
     <div class="card-body d-flex flex-column align-items-start">
       <a href="/posts/<%= post.id %>" class="index-link-option">
