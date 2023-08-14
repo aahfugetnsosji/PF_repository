@@ -19,7 +19,8 @@ class Public::PostCommentsController < ApplicationController
 
   def destroy
     post_comment = PostComment.find(params[:id])
-    if post_comment.destroy
+    if post_comment.user_id == current_user.id
+      post_comment.destroy
       flash[:notice] = "コメントを削除しました。"
       redirect_to post_path(params[:post_id])
     else
