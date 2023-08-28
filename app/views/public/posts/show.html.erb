@@ -110,6 +110,7 @@
         <% unless @post_comments.present? %>
           <p class="basic-font ml-3">コメントはありません。</p>
         <% end %>
+        <!--コメント一覧-->
         <% @post_comments.each do |post_comment| %>
           <div class="comment-option">
             <div class="comment-data">
