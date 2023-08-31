@@ -83,6 +83,8 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "投稿を削除しました。"
     else
       @post = Post.find(params[:id])
+      @post_comment = PostComment.new
+      @post_comments = @post.post_comments.all
       flash[:alert] = "投稿を削除できませんでした。"
       render :show
     end
