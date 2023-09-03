@@ -18,6 +18,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    # ユーザが選択したタグ・都道府県データをtag_ids/prefecture_idsとして受け取り、空のデータを削除する
     tag_ids = post_tags_params[:tag_ids]
     tag_ids.delete("")
     prefecture_ids = prefectures_params[:prefecture_ids]
@@ -37,7 +38,7 @@ class Public::PostsController < ApplicationController
       @tags = Tag.all
       @regions = Region.all
       @prefectures = Prefecture.all
-      flash[:alert] = "投稿できませんでした。"
+      flash[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -70,7 +71,7 @@ class Public::PostsController < ApplicationController
       @tags = Tag.all
       @regions = Region.all
       @prefectures = Prefecture.all
-      flash[:alert] = "投稿を更新できませんでした。"
+      flash[:alert] = "投稿の更新に失敗しました。"
       render :edit
     end
   end
@@ -85,7 +86,7 @@ class Public::PostsController < ApplicationController
       @post = Post.find(params[:id])
       @post_comment = PostComment.new
       @post_comments = @post.post_comments.all
-      flash[:alert] = "投稿を削除できませんでした。"
+      flash[:alert] = "投稿の削除に失敗しました。"
       render :show
     end
   end
