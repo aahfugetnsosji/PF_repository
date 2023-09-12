@@ -2,12 +2,12 @@
   <div class="col-md-12">
     <h1 class="header-option pub-header">
       検索結果
-      <% if @posts.count >= 1 %>
-        <span class="header-annotation">
-          <%= @posts.count %>件がヒット
-        </span>
-      <% end %>
     </h1>
+    <% if @posts.count >= 1 %>
+      <p class="header-annotation pub-header">
+        　<%= @posts.count %>件がヒット
+      </p>
+    <% end %>
   </div>
 </div>
 
