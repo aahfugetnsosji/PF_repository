@@ -1,17 +1,26 @@
 <div class="col-md-4">
   <div class="card card-option flex-lg-row mb-4 h-md-300">
-    <a href="/posts/<%= post.id %>" class="card-img-left flex-auto d-none d-lg-block index-img-resize">
+    <a href="/posts/<%= post.id %>" class="my-auto card-img-left flex-auto d-none d-lg-block index-img-resize">
       <%= image_tag post.get_image %>
     </a>
 
     <div class="card-body d-flex flex-column align-items-start">
+      <div class="card-text mb-auto">
+        <!--投稿日時-->
+        <span class="mb-0 basic-font">
+          <%= l post.created_at, format: :short %>
+        </span>
+      </div>
+
       <a href="/posts/<%= post.id %>" class="index-link-option">
+        <!--投稿タイトル-->
         <h5 class="pub-header mb-0 text-omit">
           <%= post.title %>
         </h5>
       </a>
 
       <div class="mb-0 text-omit">
+        <!--投稿者-->
         <a href="/users/<%= post.user_id %>" class="index-name-link-option">
           <%= image_tag post.user.get_profile_image(14, 14) %>
           <%= post.user.name %>
@@ -19,6 +28,7 @@
       </div>
 
       <div class="card-text mb-auto">
+        <!--タグ-->
         <i class="fa-sharp fa-solid fa-tags"></i>
         <% post.post_tags.each do |pt| %>
           <span class="mb-0 basic-font">
@@ -28,6 +38,7 @@
       </div>
 
       <div class="card-text mb-auto">
+        <!--地方区分-->
         <i class="fa-sharp fa-solid fa-map"></i>
         <span class="mb-0 basic-font">
           <%= post.region.region_name %>
@@ -35,6 +46,7 @@
       </div>
 
       <div class="card-text mb-auto">
+        <!--都道府県-->
         <i class="fa-sharp fa-solid fa-map-location-dot"></i>
         <% post.post_prefectures.each do |pp| %>
           <span class="mr-2 mb-0 basic-font">
