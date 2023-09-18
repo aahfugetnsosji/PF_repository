@@ -387,6 +387,7 @@ main .container {
   height: 130px;
   object-fit: cover;
   border-radius: 50%;
+  margin-left: 5px;
 }
 
 // 投稿詳細ページの画像サイズ
@@ -933,7 +934,7 @@ input#keyword {
 
 @media screen and (min-width: 1440px) {
   .text-omit {
-    max-width: 260px;
+    max-width: 250px;
   }
 
   .username-omit {
