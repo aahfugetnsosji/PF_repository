@@ -194,6 +194,11 @@ main .container {
   text-decoration: none;
 }
 
+// テキスト下線
+.text-border {
+  border-bottom: 1px solid $thema-color2;
+}
+
 // テキスト-注釈オプション
 .text-annotation {
   font-family: "text";
@@ -746,7 +751,7 @@ input#keyword {
   padding-bottom: 10px;
 }
 
-// 退会ページ
+// 退会ページ余白
 .margin-t-150 {
   margin-top: 150px;
 }
