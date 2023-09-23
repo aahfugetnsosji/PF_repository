@@ -37,12 +37,12 @@
       　そしてそれらの民話や怪談、風景が、一体どの地域に伝わっているものなのか、あるいはどこで見つけたものなのか、<!--
      -->「関東」「四国」などの地方区分や、「岩手」「三重」などの都道府県といった「<span class="text-border">位置情報</span>」と共に投稿することで…、
     </p>
-    <p class="mt-5 pub-header">
+    <p class="my-5 pub-header">
       　この国のうつしよに存在する、「裏街道」ならぬ「裏"<span class="bold-red-nofont">怪</span>"道」分布図の作成に、どうかご協力をお願いいたします。
     </p>
     <% unless user_signed_in? %>
-      <div class="option-center mt-5">
-        <%= link_to ">> 新規会員登録する <<", new_user_registration_path, class: "btn btn-option mb-4" %><br>
+      <div class="option-center">
+        <%= link_to ">> 新規会員登録する <<", new_user_registration_path, class: "btn btn-option mb-4 mt-4" %><br>
         <%= link_to "会員の方はこちらからログイン", new_user_session_path, class: "link-option" %>
       </div>
     <% end %>
