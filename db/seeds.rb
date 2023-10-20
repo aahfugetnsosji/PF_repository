@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "seedの実行を開始"
+
 users = User.create!(
   [
     {email: 'kakuriyo@example.com', name: 'かくりよ', password: 'password', profile: '創作怪談を投稿していきます。', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")},
@@ -37,3 +39,5 @@ Tag.create!(
     {name: '観光地'}
   ]
 )
+
+puts "seedの実行が完了しました"
