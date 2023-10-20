@@ -1,4 +1,4 @@
 Admin.create!(
-  email: "utsushiyo-urakaidoh@admin.com",
-  password: "admin000"
+  email: ENV['ADMIN_MAIL'],
+  password: ENV['ADMIN_PASS']
 )
