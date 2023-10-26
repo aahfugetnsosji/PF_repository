@@ -1,3 +1,5 @@
+puts 'prefecturesのseed_fu、実行開始。'
+
 Prefecture.seed_once(:id,
   { id: 1, region_id: 1, prefecture_name: "北海道" },
   { id: 2, region_id: 1, prefecture_name: "青森県" },
@@ -47,3 +49,5 @@ Prefecture.seed_once(:id,
   { id: 46, region_id: 8, prefecture_name: "鹿児島県" },
   { id: 47, region_id: 8, prefecture_name: "沖縄県" }
 )
+
+puts 'prefecturesのseed_fu、実行完了。'

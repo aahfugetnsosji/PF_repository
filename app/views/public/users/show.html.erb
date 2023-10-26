@@ -24,7 +24,9 @@
 
     <h5 class="header-option pub-header mt-5">プロフィール</h5>
     <h4 class="basic-font transparent-option-profile p-2">
-      <%= @user.profile %>
+      <% unless @user.profile == nil %>
+        <%= safe_join(@user.profile.split("\n"),tag(:br)) %>
+      <% end %>
     </h4>
   </div>
 
