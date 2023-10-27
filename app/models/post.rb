@@ -57,7 +57,7 @@ class Post < ApplicationRecord
 
       post_tags_params.each do |new|
         # 送信された各タグについて、PostTagモデルから既存のタグを検索し、存在しない場合は新しく作成
-        new_post_tag = PostTag.find_or_create_by(tag_id: new)
+        new_post_tag = PostTag.find_or_create_by(post_id: :id, tag_id: new)
 
         #同じタグを登録するとエラーになるので、include?で回避
         unless self.post_tags.include?(new_post_tag)
@@ -78,7 +78,7 @@ class Post < ApplicationRecord
       self.post_prefectures.destroy_all
 
       prefectures_params.each do |new|
-        new_post_prefecture = PostPrefecture.find_or_create_by(prefecture_id: new)
+        new_post_prefecture = PostPrefecture.find_or_create_by(post_id: :id, prefecture_id: new)
 
         #同じ都道府県を登録するとエラーになるので、include?で回避
         unless self.post_prefectures.include?(new_post_prefecture)
