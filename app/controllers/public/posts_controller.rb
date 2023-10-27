@@ -59,9 +59,9 @@ class Public::PostsController < ApplicationController
     prefecture_ids = prefectures_params[:prefecture_ids]
     prefecture_ids.delete("")
     if @post.update(post_params)
-      # save_tagはモデルに記述、53行目で空のパラメータを削除した後の値を引数に指定
+      # save_tagはモデルに記述、58行目で空のパラメータを削除した後の値を引数に指定
       @post.save_tag(tag_ids)
-      # save_prefectureはモデルに記述、55行目で空のパラメータを削除した後の値を引数に指定
+      # save_prefectureはモデルに記述、60行目で空のパラメータを削除した後の値を引数に指定
       @post.save_prefecture(prefecture_ids)
       flash[:notice] = "投稿を更新しました。"
       redirect_to post_path(@post.id)
