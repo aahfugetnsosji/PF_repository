@@ -61,7 +61,7 @@ class Post < ApplicationRecord
 
         #同じタグを登録するとエラーになるので、include?で回避
         unless self.post_tags.include?(new_post_tag)
-          # 左オペランドにあるオブジェクトに右オペランドにあるオブジェクトを追加
+          # 左のオブジェクト(post_tags)に右のオブジェクト(new_post_tag)を追加
           self.post_tags << new_post_tag
         end
       end
